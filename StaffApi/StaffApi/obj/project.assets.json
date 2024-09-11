@@ -8607,11 +8607,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CODE\\dotNetApi\\StaffApi\\StaffApi\\StaffApi.csproj",
+      "projectUniqueName": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\StaffApi.csproj",
       "projectName": "StaffApi",
-      "projectPath": "D:\\CODE\\dotNetApi\\StaffApi\\StaffApi\\StaffApi.csproj",
+      "projectPath": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\StaffApi.csproj",
       "packagesPath": "C:\\Users\\quang\\.nuget\\packages\\",
-      "outputPath": "D:\\CODE\\dotNetApi\\StaffApi\\StaffApi\\obj\\",
+      "outputPath": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages"

@@ -24,6 +24,6 @@ namespace StaffApi.Models.Entities
         public string SECTION_NAME_VI { get; set; }
         public string USERNAME { get; set; }
         public string PASS_WORD { get; set; }   
-
+        public string SEX { get; set; }
     }
 }
