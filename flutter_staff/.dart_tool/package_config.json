@@ -39,15 +39,9 @@
     },
     {
       "name": "dio",
-      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/dio-5.7.0",
+      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/dio-5.4.3+1",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
-    },
-    {
-      "name": "dio_web_adapter",
-      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/dio_web_adapter-2.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "2.15"
     },
     {
       "name": "dropdown_button2",
@@ -81,7 +75,7 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.2.2",
+      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -93,9 +87,9 @@
     },
     {
       "name": "intl",
-      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.19.0",
+      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.17.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "2.12"
     },
     {
       "name": "ionicons",
@@ -213,9 +207,9 @@
     },
     {
       "name": "web",
-      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/web-1.0.0",
+      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/web-0.5.1",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.3"
     },
     {
       "name": "flutter_staff",
@@ -224,7 +218,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-09-12T02:14:04.099073Z",
+  "generated": "2024-09-12T07:52:38.424959Z",
   "generator": "pub",
   "generatorVersion": "3.5.1",
   "flutterRoot": "file:///C:/dev/flutter",
