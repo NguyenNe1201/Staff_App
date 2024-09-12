@@ -41,16 +41,16 @@ class TimeKeepModel {
     dATEOFMONTH = json['DATEOFMONTH'];
     tIMECHECKIN = json['TIME_CHECKIN'];
     tIMECHECKOUT = json['TIME_CHECKOUT'];
-    hOURWORK = json['HOUR_WORK'];
-    oTWORK = json['OT_WORK'];
-    oT200WORK = json['OT200_WORK'];
-    nIGHTTIME = json['NIGHT_TIME'];
-    aNUALLEAVE = json['ANUAL_LEAVE'];
-    wEDFULLEAVE = json['WED_FUL_LEAVE'];
-    oTHERLEAVE = json['OTHER_LEAVE'];
-    oTHOLIDAY = json['OT_HOLIDAY'];
+     _convertToDouble(hOURWORK = json['HOUR_WORK']);
+    _convertToDouble( oTWORK = json['OT_WORK']);
+    _convertToDouble( oT200WORK = json['OT200_WORK']);
+    _convertToDouble( nIGHTTIME = json['NIGHT_TIME']);
+   _convertToDouble(  aNUALLEAVE = json['ANUAL_LEAVE']);
+    _convertToDouble( wEDFULLEAVE = json['WED_FUL_LEAVE']);
+    _convertToDouble( oTHERLEAVE = json['OTHER_LEAVE']);
+    _convertToDouble( oTHOLIDAY = json['OT_HOLIDAY']);
     rEMARK = json['REMARK'];
-    dAYOFF = json['DAYOFF'];
+    _convertToDouble(dAYOFF = json['DAYOFF']);
   }
 
   Map<String, dynamic> toJson() {
@@ -74,3 +74,9 @@ class TimeKeepModel {
     return data;
   }
 }
+   double? _convertToDouble(dynamic value) {
+    if (value == null) return null;
+    if (value is double) return value;
+    if (value is int) return value.toDouble();
+    return null;
+  }

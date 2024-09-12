@@ -8,10 +8,27 @@ import 'package:flutter_staff/models/timKeeps.dart';
 import 'package:dio/dio.dart';
 
 class ApiServices {
-  //final String baseUrl = 'https://localhost:7144/api';
-  final String baseUrl = 'https://localhost:443/api';
-  final dio = Dio();
-
+final String baseUrl = 'https://localhost:7144/api';
+// final String baseUrl = 'https://gw.conectvn.com:4432/api';
+   final dio = Dio();
+//  final dio = Dio(BaseOptions(
+//     baseUrl: 'https://localhost:443/api',
+//   ))..interceptors.add(InterceptorsWrapper(
+//       onRequest: (options, handler) {
+   
+//         return handler.next(options); 
+//       },
+//       onError: (DioError e, handler) {
+      
+//         if (e.type == DioErrorType.unknown && e.message!.contains('CERTIFICATE_VERIFY_FAILED')) {
+      
+//           print("SSL error bypassed");
+//           handler.resolve(Response(requestOptions: e.requestOptions));
+//         } else {
+//           handler.next(e); 
+//         }
+//       },
+//     ));
   Future<bool> deleteUser(int userId) async {
     try {
       await dio.delete('$baseUrl/users/$userId');
@@ -63,6 +80,7 @@ class ApiServices {
   // get employee = code
   Future<EmployeeViewModel?> fetchInfoEmpCode(String code) async {
     var response = await dio.get('$baseUrl/Employee/GetByCode?code=$code');
+    //  var response = await dio.get('/Employee/GetByCode?code=$code');
     if (response.data is List) {
       return EmployeeViewModel.fromJson(response.data[0]);
     } else if (response.data is Map) {
@@ -187,6 +205,10 @@ class ApiServices {
   Future<CalLeaveModel?> fetchGetCalLeave(int emp_id) async {
     try {
       var response = await dio.get('$baseUrl/Leave/Cal_EmpID?emp_id=$emp_id');
+      //  var response = await dio.get('/Leave/Cal_EmpID?emp_id=$emp_id');
+      if (response.data is List) {
+        return CalLeaveModel.fromJson(response.data[0]);
+      }
       if (response.statusCode == 200) {
         return CalLeaveModel.fromJson(response.data);
       } else {
@@ -224,10 +246,13 @@ class ApiServices {
       throw Exception('Failed to load data');
     }
   }
+
   // get list leave 1 employee by month
-  Future<List<ListLeaveModel>> fetchListLeaveEmpIdByMonth(int empId, int month) async {
+  Future<List<ListLeaveModel>> fetchListLeaveEmpIdByMonth(
+      int empId, int month) async {
     try {
-      var response = await dio.get('$baseUrl/Leave/GetListByMonth_EmpID?emp_id=$empId&month=$month');
+      var response = await dio.get(
+          '$baseUrl/Leave/GetListByMonth_EmpID?emp_id=$empId&month=$month');
       List<ListLeaveModel> lists = (response.data as List)
           .map((dataJson) => ListLeaveModel.fromJson(dataJson))
           .toList();
@@ -236,6 +261,7 @@ class ApiServices {
       throw Exception('Failed to load data');
     }
   }
+
   // insert leave for employee
   Future<Map<String, dynamic>> fetchAddLeave(int empID, int kindLeaveID,
       int period, String startDate, String endDate, String detailReason) async {
