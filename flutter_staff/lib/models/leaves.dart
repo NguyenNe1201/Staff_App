@@ -51,22 +51,22 @@ class CalLeaveModel {
     eMPLOYEEID = json['EMPLOYEE_ID'];
     kINDLEAVEID = json['KINDLEAVE_ID'];
     lEAVESTARTDATE = json['LEAVE_STARTDATE'];
-    t1 = json['T1'];
-    t2 = json['T2'];
-    t3 = json['T3'];
-    t4 = json['T4'];
-    t5 = json['T5'];
-    t6 = json['T6'];
-    t7 = json['T7'];
-    t8 = json['T8'];
-    t9 = json['T9'];
-    t10 = json['T10'];
-    t11 = json['T11'];
-    t12 = json['T12'];
-    tONGCONG = json['TONGCONG'];
-    aNUALLEAVEDAY = json['ANUAL_LEAVE_DAY'];
-    lASTYEARAL = json['LASTYEAR_AL'];
-    rEMAIN = json['REMAIN'];
+    t1 = (json['T1'] as num?)?.toDouble();
+    t2 = (json['T2'] as num?)?.toDouble();
+    t3 = (json['T3'] as num?)?.toDouble();
+    t4 = (json['T4'] as num?)?.toDouble();
+    t5 = (json['T5'] as num?)?.toDouble();
+    t6 = (json['T6'] as num?)?.toDouble();
+    t7 = (json['T7'] as num?)?.toDouble();
+    t8 = (json['T8'] as num?)?.toDouble();
+    t9 = (json['T9'] as num?)?.toDouble();
+    t10 = (json['T10'] as num?)?.toDouble();
+    t11 = (json['T11'] as num?)?.toDouble();
+    t12 = (json['T12'] as num?)?.toDouble();
+    tONGCONG = (json['TONGCONG'] as num?)?.toDouble();
+    aNUALLEAVEDAY = (json['ANUAL_LEAVE_DAY'] as num?)?.toDouble();
+    lASTYEARAL = (json['LASTYEAR_AL'] as num?)?.toDouble();
+    rEMAIN = (json['REMAIN'] as num?)?.toDouble();
   }
 
   Map<String, dynamic> toJson() {

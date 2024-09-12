@@ -8,8 +8,8 @@ import 'package:flutter_staff/models/timKeeps.dart';
 import 'package:dio/dio.dart';
 
 class ApiServices {
-final String baseUrl = 'https://localhost:7144/api';
-// final String baseUrl = 'https://gw.conectvn.com:4432/api';
+//final String baseUrl = 'https://localhost:7144/api';
+final String baseUrl = 'https://gw.conectvn.com:4432/api';
    final dio = Dio();
 //  final dio = Dio(BaseOptions(
 //     baseUrl: 'https://localhost:443/api',

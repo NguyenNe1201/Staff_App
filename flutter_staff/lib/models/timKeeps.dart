@@ -35,22 +35,22 @@ class TimeKeepModel {
       this.dAYOFF});
 
   TimeKeepModel.fromJson(Map<String, dynamic> json) {
-    eMPLOYEEID = json['EMPLOYEE_ID'];
-    eMPCODE = json['EMP_CODE'];
-    dATENAME = json['DATENAME'];
-    dATEOFMONTH = json['DATEOFMONTH'];
-    tIMECHECKIN = json['TIME_CHECKIN'];
-    tIMECHECKOUT = json['TIME_CHECKOUT'];
-     _convertToDouble(hOURWORK = json['HOUR_WORK']);
-    _convertToDouble( oTWORK = json['OT_WORK']);
-    _convertToDouble( oT200WORK = json['OT200_WORK']);
-    _convertToDouble( nIGHTTIME = json['NIGHT_TIME']);
-   _convertToDouble(  aNUALLEAVE = json['ANUAL_LEAVE']);
-    _convertToDouble( wEDFULLEAVE = json['WED_FUL_LEAVE']);
-    _convertToDouble( oTHERLEAVE = json['OTHER_LEAVE']);
-    _convertToDouble( oTHOLIDAY = json['OT_HOLIDAY']);
-    rEMARK = json['REMARK'];
-    _convertToDouble(dAYOFF = json['DAYOFF']);
+    eMPLOYEEID = json['EMPLOYEE_ID'] as int?;
+    eMPCODE = json['EMP_CODE'] as String?;
+    dATENAME = json['DATENAME'] as String?;
+    dATEOFMONTH = json['DATEOFMONTH'] as String?;
+    tIMECHECKIN = json['TIME_CHECKIN'] as String?;
+    tIMECHECKOUT = json['TIME_CHECKOUT'] as String?;
+    hOURWORK = (json['HOUR_WORK'] as num?)?.toDouble();
+    oTWORK = (json['OT_WORK'] as num?)?.toDouble();
+    oT200WORK = (json['OT200_WORK'] as num?)?.toDouble();
+    nIGHTTIME = (json['NIGHT_TIME'] as num?)?.toDouble();
+    aNUALLEAVE = (json['ANUAL_LEAVE'] as num?)?.toDouble();
+    wEDFULLEAVE = (json['WED_FUL_LEAVE'] as num?)?.toDouble();
+    oTHERLEAVE = (json['OTHER_LEAVE'] as num?)?.toDouble();
+    oTHOLIDAY = (json['OT_HOLIDAY'] as num?)?.toDouble();
+    rEMARK = json['REMARK'] as String?;
+    dAYOFF = (json['DAYOFF'] as num?)?.toDouble();
   }
 
   Map<String, dynamic> toJson() {
