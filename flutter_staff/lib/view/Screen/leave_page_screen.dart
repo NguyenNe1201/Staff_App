@@ -173,7 +173,7 @@ class _LeavePageState extends State<LeavePage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => LeaveDetailsPage(
-                            month: 1, emp_id: 64, emp_code: "164")),
+                            month: 1, emp_id:widget.emp_id, emp_code: widget.emp_code)),
                   );
                 }),
                 buildBoxLeaveByMonth(
@@ -182,7 +182,7 @@ class _LeavePageState extends State<LeavePage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => LeaveDetailsPage(
-                            month: 2, emp_id: 64, emp_code: '164')),
+                            month: 2, emp_id: widget.emp_id, emp_code: widget.emp_code)),
                   );
                 }),
                 buildBoxLeaveByMonth(
@@ -190,8 +190,8 @@ class _LeavePageState extends State<LeavePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const LeaveDetailsPage(
-                            month: 3, emp_id: 64, emp_code: "164")),
+                        builder: (context) =>  LeaveDetailsPage(
+                            month: 3, emp_id: widget.emp_id, emp_code: widget.emp_code)),
                   );
                 }),
                 buildBoxLeaveByMonth(
@@ -199,8 +199,8 @@ class _LeavePageState extends State<LeavePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const LeaveDetailsPage(
-                            month: 4, emp_id: 64, emp_code: "164")),
+                        builder: (context) => LeaveDetailsPage(
+                            month: 4, emp_id: widget.emp_id, emp_code: widget.emp_code)),
                   );
                 }),
                 buildBoxLeaveByMonth(
@@ -208,8 +208,8 @@ class _LeavePageState extends State<LeavePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const LeaveDetailsPage(
-                            month: 5, emp_id: 64, emp_code: "164")),
+                        builder: (context) =>  LeaveDetailsPage(
+                            month: 5, emp_id: widget.emp_id, emp_code: widget.emp_code)),
                   );
                 }),
                 if (showAll) ...[
@@ -218,8 +218,8 @@ class _LeavePageState extends State<LeavePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LeaveDetailsPage(
-                              month: 6, emp_id: 64, emp_code: "164")),
+                          builder: (context) =>LeaveDetailsPage(
+                              month: 6, emp_id: widget.emp_id, emp_code: widget.emp_code)),
                     );
                   }),
                   buildBoxLeaveByMonth(
@@ -227,8 +227,8 @@ class _LeavePageState extends State<LeavePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LeaveDetailsPage(
-                              month: 7, emp_id: 64, emp_code: "164")),
+                          builder: (context) =>  LeaveDetailsPage(
+                              month: 7, emp_id: widget.emp_id, emp_code: widget.emp_code)),
                     );
                   }),
                   buildBoxLeaveByMonth(
@@ -236,8 +236,8 @@ class _LeavePageState extends State<LeavePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LeaveDetailsPage(
-                              month: 8, emp_id: 64, emp_code: "164")),
+                          builder: (context) => LeaveDetailsPage(
+                              month: 8, emp_id:widget.emp_id, emp_code: widget.emp_code)),
                     );
                   }),
                   buildBoxLeaveByMonth(
@@ -245,8 +245,8 @@ class _LeavePageState extends State<LeavePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LeaveDetailsPage(
-                              month: 9, emp_id: 64, emp_code: "164")),
+                          builder: (context) => LeaveDetailsPage(
+                              month: 9, emp_id: widget.emp_id, emp_code: widget.emp_code)),
                     );
                   }),
                   buildBoxLeaveByMonth(
@@ -254,8 +254,8 @@ class _LeavePageState extends State<LeavePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LeaveDetailsPage(
-                              month: 10, emp_id: 64, emp_code: "164")),
+                          builder: (context) =>  LeaveDetailsPage(
+                              month: 10, emp_id: widget.emp_id, emp_code: widget.emp_code)),
                     );
                   }),
                   buildBoxLeaveByMonth(
@@ -263,8 +263,8 @@ class _LeavePageState extends State<LeavePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LeaveDetailsPage(
-                              month: 11, emp_id: 64, emp_code: "164")),
+                          builder: (context) =>  LeaveDetailsPage(
+                              month: 11, emp_id: widget.emp_id, emp_code: widget.emp_code)),
                     );
                   }),
                   buildBoxLeaveByMonth(
@@ -272,8 +272,8 @@ class _LeavePageState extends State<LeavePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LeaveDetailsPage(
-                              month: 12, emp_id: 64, emp_code: "164")),
+                          builder: (context) =>  LeaveDetailsPage(
+                              month: 12, emp_id: widget.emp_id, emp_code:widget.emp_code)),
                     );
                   }),
                 ],

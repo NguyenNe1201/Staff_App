@@ -1,3 +1,5 @@
+
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/view/Screen/leave_page_screen.dart';
@@ -10,7 +12,16 @@ import 'package:flutter_staff/view/template/home_chatbox.dart';
 import 'package:flutter_staff/view/Screen/home_page_screen.dart';
 import 'package:flutter_staff/view/template/team_folder.dart';
 
+class MyHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(SecurityContext? context){
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+  }
+}
+
 void main() {
+ HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
 }
 
@@ -24,7 +35,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "HRM",
      //  home: TeamFolderPage(),
-      home: HomePage(emp_code: '164',emp_id: 64),
+      home: LoginPage(),
       routes: {},
     );
   }

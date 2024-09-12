@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "D:\\Github\\Staff_App\\StaffApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\controllers\\timekeepcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\controllers\\timekeepcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\entities\\loglistmonth_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\models\\entities\\loglistmonth_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\entities\\leave_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\models\\entities\\leave_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\entities\\timekeep_enitites.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\models\\entities\\timekeep_enitites.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\entities\\timeloginapp_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\models\\entities\\timeloginapp_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\entities\\employee_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\models\\entities\\employee_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -41,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\do\\leave_do.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\do\\leave_do.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\entities\\leave_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\models\\entities\\leave_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\httppost\\leave_httppost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -91,10 +107,6 @@
       "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\common\\randomotp_common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\controllers\\timekeepcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\controllers\\timekeepcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -127,24 +139,12 @@
       "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\do\\salary_do.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\entities\\loglistmonth_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\models\\entities\\loglistmonth_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\entities\\timeloginapp_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\models\\entities\\timeloginapp_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\staffapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
       "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\staffapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\entities\\emailsms_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\models\\entities\\emailsms_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\models\\entities\\timekeep_enitites.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|solutionrelative:staffapi\\models\\entities\\timekeep_enitites.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F2ECA6C-C6F3-4B4A-A3D2-8E7A9FA6124F}|StaffApi\\StaffApi.csproj|d:\\github\\staff_app\\staffapi\\staffapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -187,58 +187,84 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "LeaveController.cs",
-              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\LeaveController.cs",
-              "RelativeDocumentMoniker": "StaffApi\\Controllers\\LeaveController.cs",
-              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\LeaveController.cs",
-              "RelativeToolTip": "StaffApi\\Controllers\\LeaveController.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAUwGoAAAAAAAAA",
+              "Title": "Employee_Entities.cs",
+              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\Employee_Entities.cs",
+              "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\Employee_Entities.cs",
+              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\Employee_Entities.cs",
+              "RelativeToolTip": "StaffApi\\Models\\Entities\\Employee_Entities.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAA9wBkAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T01:08:19.918Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Employee_DO.cs",
-              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\Employee_DO.cs",
-              "RelativeDocumentMoniker": "StaffApi\\DO\\Employee_DO.cs",
-              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\Employee_DO.cs",
-              "RelativeToolTip": "StaffApi\\DO\\Employee_DO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAABKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T14:26:39.309Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EmployeeController.cs",
-              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\EmployeeController.cs",
-              "RelativeDocumentMoniker": "StaffApi\\Controllers\\EmployeeController.cs",
-              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\EmployeeController.cs",
-              "RelativeToolTip": "StaffApi\\Controllers\\EmployeeController.cs",
-              "ViewState": "AQIAAD0AAAAAAAAAAAAgwCAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-07T01:23:45.261Z",
+              "WhenOpened": "2024-06-06T14:33:24.477Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "TimeKeep_DO.cs",
-              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\TimeKeep_DO.cs",
-              "RelativeDocumentMoniker": "StaffApi\\DO\\TimeKeep_DO.cs",
-              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\TimeKeep_DO.cs",
-              "RelativeToolTip": "StaffApi\\DO\\TimeKeep_DO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAJAAAA",
+              "Title": "TimeLoginApp_Entities.cs",
+              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\TimeLoginApp_Entities.cs",
+              "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\TimeLoginApp_Entities.cs",
+              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\TimeLoginApp_Entities.cs",
+              "RelativeToolTip": "StaffApi\\Models\\Entities\\TimeLoginApp_Entities.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T06:38:38.806Z",
+              "WhenOpened": "2024-07-22T06:15:10.984Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "TimeKeep_Enitites.cs",
+              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\TimeKeep_Enitites.cs",
+              "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\TimeKeep_Enitites.cs",
+              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\TimeKeep_Enitites.cs",
+              "RelativeToolTip": "StaffApi\\Models\\Entities\\TimeKeep_Enitites.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T07:02:03.277Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Leave_Entities.cs",
+              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\Leave_Entities.cs",
+              "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\Leave_Entities.cs",
+              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\Leave_Entities.cs",
+              "RelativeToolTip": "StaffApi\\Models\\Entities\\Leave_Entities.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T01:09:50.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LogListMonth_Entities.cs",
+              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\LogListMonth_Entities.cs",
+              "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\LogListMonth_Entities.cs",
+              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\LogListMonth_Entities.cs",
+              "RelativeToolTip": "StaffApi\\Models\\Entities\\LogListMonth_Entities.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAiwA0AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T01:59:56.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TimeKeepController.cs",
+              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\TimeKeepController.cs",
+              "RelativeDocumentMoniker": "StaffApi\\Controllers\\TimeKeepController.cs",
+              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\TimeKeepController.cs",
+              "RelativeToolTip": "StaffApi\\Controllers\\TimeKeepController.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwBEAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T02:16:21.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Employee_Service.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Services\\Employee_Service.cs",
               "RelativeDocumentMoniker": "StaffApi\\Services\\Employee_Service.cs",
@@ -246,25 +272,59 @@
               "RelativeToolTip": "StaffApi\\Services\\Employee_Service.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAqwBgAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T08:17:58.553Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T08:17:58.553Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Employee_Entities.cs",
-              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\Employee_Entities.cs",
-              "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\Employee_Entities.cs",
-              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\Employee_Entities.cs",
-              "RelativeToolTip": "StaffApi\\Models\\Entities\\Employee_Entities.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAwwBoAAAAnAAAA",
+              "DocumentIndex": 9,
+              "Title": "TimeKeep_DO.cs",
+              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\TimeKeep_DO.cs",
+              "RelativeDocumentMoniker": "StaffApi\\DO\\TimeKeep_DO.cs",
+              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\TimeKeep_DO.cs",
+              "RelativeToolTip": "StaffApi\\DO\\TimeKeep_DO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T14:33:24.477Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-25T06:38:38.806Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "StaffApi\\Controllers\\EmployeeController.cs",
+              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "StaffApi\\Controllers\\EmployeeController.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAgwCAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T01:23:45.261Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Employee_DO.cs",
+              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\Employee_DO.cs",
+              "RelativeDocumentMoniker": "StaffApi\\DO\\Employee_DO.cs",
+              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\Employee_DO.cs",
+              "RelativeToolTip": "StaffApi\\DO\\Employee_DO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T14:26:39.309Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LeaveController.cs",
+              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\LeaveController.cs",
+              "RelativeDocumentMoniker": "StaffApi\\Controllers\\LeaveController.cs",
+              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\LeaveController.cs",
+              "RelativeToolTip": "StaffApi\\Controllers\\LeaveController.cs",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAUwGoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T01:08:19.918Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "FolderProfile.pubxml",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Properties\\PublishProfiles\\FolderProfile.pubxml",
               "RelativeDocumentMoniker": "StaffApi\\Properties\\PublishProfiles\\FolderProfile.pubxml",
@@ -272,12 +332,11 @@
               "RelativeToolTip": "StaffApi\\Properties\\PublishProfiles\\FolderProfile.pubxml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
-              "WhenOpened": "2024-09-11T04:01:48.734Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-11T04:01:48.734Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\appsettings.json",
               "RelativeDocumentMoniker": "StaffApi\\appsettings.json",
@@ -285,12 +344,11 @@
               "RelativeToolTip": "StaffApi\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-06T14:49:19.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T14:49:19.395Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Program.cs",
               "RelativeDocumentMoniker": "StaffApi\\Program.cs",
@@ -298,24 +356,11 @@
               "RelativeToolTip": "StaffApi\\Program.cs",
               "ViewState": "AQIAAB8AAAAAMjMzMzMLwCEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T14:49:50.919Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T14:49:50.919Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Leave_Entities.cs",
-              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\Leave_Entities.cs",
-              "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\Leave_Entities.cs",
-              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\Leave_Entities.cs",
-              "RelativeToolTip": "StaffApi\\Models\\Entities\\Leave_Entities.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T01:09:50.345Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "SalaryController.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\SalaryController.cs",
               "RelativeDocumentMoniker": "StaffApi\\Controllers\\SalaryController.cs",
@@ -327,7 +372,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "Salary_Entities.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\Salary_Entities.cs",
               "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\Salary_Entities.cs",
@@ -339,7 +384,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "Leave_DO.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\Leave_DO.cs",
               "RelativeDocumentMoniker": "StaffApi\\DO\\Leave_DO.cs",
@@ -351,7 +396,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "Leave_HttpPost.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\HttpPost\\Leave_HttpPost.cs",
               "RelativeDocumentMoniker": "StaffApi\\Models\\HttpPost\\Leave_HttpPost.cs",
@@ -363,7 +408,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "apiDbContext.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\apiDbContext.cs",
               "RelativeDocumentMoniker": "StaffApi\\Models\\apiDbContext.cs",
@@ -375,7 +420,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "StaffApi.csproj",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\StaffApi.csproj",
               "RelativeDocumentMoniker": "StaffApi\\StaffApi.csproj",
@@ -383,12 +428,11 @@
               "RelativeToolTip": "StaffApi\\StaffApi.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-07-24T03:26:06.984Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T03:26:06.984Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "SendEmail_Service.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Services\\SendEmail_Service.cs",
               "RelativeDocumentMoniker": "StaffApi\\Services\\SendEmail_Service.cs",
@@ -400,7 +444,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "RandomOTP_Common.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Common\\RandomOTP_Common.cs",
               "RelativeDocumentMoniker": "StaffApi\\Common\\RandomOTP_Common.cs",
@@ -412,7 +456,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "Calculate_Common.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Common\\Calculate_Common.cs",
               "RelativeDocumentMoniker": "StaffApi\\Common\\Calculate_Common.cs",
@@ -424,7 +468,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "DbHelper.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\DbHelper.cs",
               "RelativeDocumentMoniker": "StaffApi\\DO\\DbHelper.cs",
@@ -436,7 +480,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "LoginController.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "StaffApi\\Controllers\\LoginController.cs",
@@ -448,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "ConvertDateTime_Common.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Common\\ConvertDateTime_Common.cs",
               "RelativeDocumentMoniker": "StaffApi\\Common\\ConvertDateTime_Common.cs",
@@ -460,7 +504,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "EmailController.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\EmailController.cs",
               "RelativeDocumentMoniker": "StaffApi\\Controllers\\EmailController.cs",
@@ -472,19 +516,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "TimeKeepController.cs",
-              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\TimeKeepController.cs",
-              "RelativeDocumentMoniker": "StaffApi\\Controllers\\TimeKeepController.cs",
-              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\TimeKeepController.cs",
-              "RelativeToolTip": "StaffApi\\Controllers\\TimeKeepController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T02:16:21.366Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "KindLeave_Entities.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\KindLeave_Entities.cs",
               "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\KindLeave_Entities.cs",
@@ -496,7 +528,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "EmailSMS_DO.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\EmailSMS_DO.cs",
               "RelativeDocumentMoniker": "StaffApi\\DO\\EmailSMS_DO.cs",
@@ -508,7 +540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "BaseDO.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\BaseDO.cs",
               "RelativeDocumentMoniker": "StaffApi\\DO\\BaseDO.cs",
@@ -520,7 +552,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Login_DO.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\Login_DO.cs",
               "RelativeDocumentMoniker": "StaffApi\\DO\\Login_DO.cs",
@@ -532,7 +564,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "EmpLogin_Entities.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\EmpLogin_Entities.cs",
               "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\EmpLogin_Entities.cs",
@@ -544,7 +576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "Cal_Leave_Entities.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\Cal_Leave_Entities.cs",
               "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\Cal_Leave_Entities.cs",
@@ -556,7 +588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "Salary_DO.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\DO\\Salary_DO.cs",
               "RelativeDocumentMoniker": "StaffApi\\DO\\Salary_DO.cs",
@@ -568,19 +600,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "LogListMonth_Entities.cs",
-              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\LogListMonth_Entities.cs",
-              "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\LogListMonth_Entities.cs",
-              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\LogListMonth_Entities.cs",
-              "RelativeToolTip": "StaffApi\\Models\\Entities\\LogListMonth_Entities.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAiwAwAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-26T01:59:56.792Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "StaffApi.http",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\StaffApi.http",
               "RelativeDocumentMoniker": "StaffApi\\StaffApi.http",
@@ -592,19 +612,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "TimeLoginApp_Entities.cs",
-              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\TimeLoginApp_Entities.cs",
-              "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\TimeLoginApp_Entities.cs",
-              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\TimeLoginApp_Entities.cs",
-              "RelativeToolTip": "StaffApi\\Models\\Entities\\TimeLoginApp_Entities.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T06:15:10.984Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "EmailSMS_Entities.cs",
               "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\EmailSMS_Entities.cs",
               "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\EmailSMS_Entities.cs",
@@ -613,18 +621,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-03T09:58:28.876Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "TimeKeep_Enitites.cs",
-              "DocumentMoniker": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\TimeKeep_Enitites.cs",
-              "RelativeDocumentMoniker": "StaffApi\\Models\\Entities\\TimeKeep_Enitites.cs",
-              "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Models\\Entities\\TimeKeep_Enitites.cs",
-              "RelativeToolTip": "StaffApi\\Models\\Entities\\TimeKeep_Enitites.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T07:02:03.277Z"
             },
             {
               "$type": "Document",
@@ -647,8 +643,7 @@
               "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\StaffApi.csproj",
               "RelativeToolTip": "StaffApi\\StaffApi.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-06T09:03:25.822Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T09:03:25.822Z"
             }
           ]
         }

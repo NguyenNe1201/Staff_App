@@ -179,8 +179,10 @@ class _SettingPageState extends State<SettingPage> {
 }
 
 class TProfileButton extends StatelessWidget {
+  final String empCode;
+  final int empId;
   const TProfileButton({
-    super.key,
+    super.key, required this.empCode, required this.empId,
   });
 
   @override
@@ -191,8 +193,7 @@ class TProfileButton extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) => ProfilePage(
-                    emp_code: '164',
-                    emp_id: 64,
+                    emp_code: empCode,emp_id: empId,
                   )),
         );
       },
