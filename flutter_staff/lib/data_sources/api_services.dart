@@ -48,7 +48,6 @@ class ApiServices {
       throw Exception("Error fetching user: $e");
     }
   }
-
   Future<bool> deleteUser(int userId) async {
     try {
       await dio.delete('$baseUrl/users/$userId');
