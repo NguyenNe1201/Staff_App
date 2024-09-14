@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "HRM",
      //  home: TeamFolderPage(),
-      home: LoginPage(),
+      home: HomePage(emp_code: '164', emp_id: 64),
       routes: {},
     );
   }

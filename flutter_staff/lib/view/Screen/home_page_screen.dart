@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_staff/models/tests.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/models/employee_views.dart';
@@ -53,9 +54,11 @@ class _HomePageState extends State<HomePage> {
   Future<void> getDataEmpCode(String code) async {
     try {
       _employeeViewModel = await apiServices.fetchInfoEmpCode(code);
+      User firstUser = await apiServices.fetchInfoTest();
       if (_employeeViewModel != null) {
         setState(() {
-          FullNameView = _employeeViewModel?.fULLNAME ?? '';
+          FullNameView = firstUser.phone.toString();
+          // FullNameView = _employeeViewModel?.fULLNAME ?? '';
         });
       }
     } catch (e) {
@@ -120,21 +123,21 @@ class _HomePageState extends State<HomePage> {
             children: [
               buildBoxCountLeave(
                   title_: 'Tổng',
-                  number_: Cal_leave_model?.aNUALLEAVEDAY.toString() ?? '',
+                  number_: Cal_leave_model?.aNUALLEAVEDAY.toString() ?? '0',
                   colors_: const Color(0xfff62d51).withOpacity(0.8),
                   availableScreenWidth_: availableScreenWidth,
                   with_: .31),
               const SizedBox(width: 10),
               buildBoxCountLeave(
                   title_: 'Sử dụng',
-                  number_: Cal_leave_model?.tONGCONG.toString() ?? "",
+                  number_: Cal_leave_model?.tONGCONG.toString() ?? "0",
                   colors_: const Color(0xff55ce63).withOpacity(0.8),
                   availableScreenWidth_: availableScreenWidth,
                   with_: .31),
               const SizedBox(width: 10),
               buildBoxCountLeave(
                   title_: "Còn lại",
-                  number_: Cal_leave_model?.rEMAIN.toString() ?? "",
+                  number_: Cal_leave_model?.rEMAIN.toString() ?? "0",
                   colors_: Colors.orange.shade800.withOpacity(0.8),
                   availableScreenWidth_: availableScreenWidth,
                   with_: .31),
@@ -341,7 +344,7 @@ class CategoryCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-               const SizedBox(height: 10),
+            const SizedBox(height: 10),
             Align(
               alignment: Alignment.topCenter,
               child: Image.asset(
