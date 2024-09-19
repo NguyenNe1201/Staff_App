@@ -39,8 +39,7 @@
     },
     {
       "name": "dio",
-      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/dio-5.4.3+1",
-
+      "rootUri": "file:///C:/Users/quang/AppData/Local/Pub/Cache/hosted/pub.dev/dio-5.4.3+1",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -76,8 +75,7 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.2.1",
-
+      "rootUri": "file:///C:/Users/quang/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -89,8 +87,7 @@
     },
     {
       "name": "intl",
-      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.17.0",
-
+      "rootUri": "file:///C:/Users/quang/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.17.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -210,7 +207,7 @@
     },
     {
       "name": "web",
-      "rootUri": "file:///C:/Users/leuye/AppData/Local/Pub/Cache/hosted/pub.dev/web-0.5.1",
+      "rootUri": "file:///C:/Users/quang/AppData/Local/Pub/Cache/hosted/pub.dev/web-0.5.1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -221,7 +218,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-09-12T08:04:31.781595Z",
+  "generated": "2024-09-19T13:43:40.722095Z",
   "generator": "pub",
   "generatorVersion": "3.4.1",
   "flutterRoot": "file:///D:/Setup%20file/Flutter/flutter",

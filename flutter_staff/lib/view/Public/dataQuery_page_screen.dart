@@ -163,8 +163,7 @@ class _TimekeepPageState extends State<TimekeepPage> {
         });
       });
     } catch (e) {
-      // Xử lý lỗi nếu cần
-    //  print(e);
+      //  print(e);
       setState(() {
         isLoading = false;
       });
@@ -183,29 +182,43 @@ class _TimekeepPageState extends State<TimekeepPage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          AppBarForm(title_: 'Timekeep'),
+          const AppBarForm(title_: 'Timekeep'),
           Expanded(
-            //  child: Padding(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              scrollDirection: Axis.horizontal,
+              //  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              scrollDirection: Axis.vertical,
               child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: isLoading
-                      ? const Center(child: CircularProgressIndicator())
-                      : _Lists.isEmpty
-                          ? const Center(child: Text('No users found'))
-                          : DataTable(
-                              columns: [
-                                buildTitleRowDatatable("DATE"),
-                                buildTitleRowDatatable('DAY'),
-                                buildTitleRowDatatable('CHECK-IN'),
-                                buildTitleRowDatatable('CHECK-OUT'),
-                                buildTitleRowDatatable('HOUR'),
-                                buildTitleRowDatatable('OT150'),
-                                buildTitleRowDatatable('REMARK'),
-                              ],
-                              rows: _Lists.map((timekeeps) {
+                scrollDirection: Axis.horizontal,
+                child: isLoading
+                    ? const Center(child: CircularProgressIndicator())
+                    : _Lists.isEmpty
+                        ? const Center(child: Text('No data timekeep found'))
+                        : DataTable(
+                            columns: [
+                              DataColumn(
+                                label: buildTitleRowDatatable1("DATE"),
+                              ),
+                              DataColumn(
+                                label: buildTitleRowDatatable1('DAY'),
+                              ),
+                              DataColumn(
+                                label: buildTitleRowDatatable1('CHECK-IN'),
+                              ),
+                              DataColumn(
+                                label: buildTitleRowDatatable1('CHECK-OUT'),
+                              ),
+                              DataColumn(
+                                label: buildTitleRowDatatable1('HOUR'),
+                              ),
+                              DataColumn(
+                                label: buildTitleRowDatatable1('OT150'),
+                              ),
+                              DataColumn(
+                                label: buildTitleRowDatatable1('REMARK'),
+                              ),
+                            ],
+                            rows: _Lists.map(
+                              (timekeeps) {
                                 return DataRow(
                                   color:
                                       MaterialStateProperty.resolveWith<Color?>(
@@ -251,12 +264,37 @@ class _TimekeepPageState extends State<TimekeepPage> {
                                     DataCell(Text(timekeeps.rEMARK ?? '-')),
                                   ],
                                 );
-                              }).toList(),
-                            )),
+                              },
+                            ).toList(),
+                          ),
+              ),
             ),
           ),
-          //),
         ],
+      ),
+    );
+  }
+
+  // Hàm tạo DataCell trong hàng dữ liệu
+  Widget buildDataCell(String content) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Text(content),
+    );
+  }
+
+  // Hàm xây dựng tiêu đề
+  Widget buildTitleRowDatatable1(String name_title) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Text(
+        name_title,
+        style: TextStyle(
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.bold,
+          color: Colors.orange.shade800,
+          fontSize: 17,
+        ),
       ),
     );
   }

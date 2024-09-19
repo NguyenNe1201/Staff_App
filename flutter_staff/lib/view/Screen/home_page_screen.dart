@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_staff/models/tests.dart';
+import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/models/employee_views.dart';
@@ -13,7 +13,6 @@ import 'package:flutter_staff/view/Screen/leave_page_screen.dart';
 import 'package:flutter_staff/view/Screen/salary_page_screen.dart';
 import 'package:flutter_staff/view/Widget/boxCountLeave_widget.dart';
 import 'package:flutter_staff/view/Screen/setting_page_screen.dart';
-import 'package:flutter_staff/view/Widget/fileSizeChart_widget.dart';
 
 class HomePage extends StatefulWidget {
   final String? emp_code;
@@ -28,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   String FullNameView = '';
   EmployeeViewModel? _employeeViewModel;
   CalLeaveModel? Cal_leave_model;
+  String year_current = DateFormat('yyyy').format(DateTime.now());
   final ApiServices apiServices = ApiServices();
 
   int _selectedIndex = 0; // Biến lưu chỉ số tab hiện tại
@@ -54,11 +54,9 @@ class _HomePageState extends State<HomePage> {
   Future<void> getDataEmpCode(String code) async {
     try {
       _employeeViewModel = await apiServices.fetchInfoEmpCode(code);
-      User firstUser = await apiServices.fetchInfoTest();
       if (_employeeViewModel != null) {
         setState(() {
-          FullNameView = firstUser.phone.toString();
-          // FullNameView = _employeeViewModel?.fULLNAME ?? '';
+          FullNameView = _employeeViewModel?.fULLNAME ?? '';
         });
       }
     } catch (e) {
@@ -79,7 +77,7 @@ class _HomePageState extends State<HomePage> {
       }
     } catch (e) {
       // ignore: avoid_print
-      print('Failed to fetch employee data: $e');
+      print('Failed to fetch calculator leave data: $e');
     }
   }
 
@@ -97,144 +95,159 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          AppBar(fullName: FullNameView),
-          const SizedBox(height: 15),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Phép - 2024",
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildBoxCountLeave(
-                  title_: 'Tổng',
-                  number_: Cal_leave_model?.aNUALLEAVEDAY.toString() ?? '0',
-                  colors_: const Color(0xfff62d51).withOpacity(0.8),
-                  availableScreenWidth_: availableScreenWidth,
-                  with_: .31),
-              const SizedBox(width: 10),
-              buildBoxCountLeave(
-                  title_: 'Sử dụng',
-                  number_: Cal_leave_model?.tONGCONG.toString() ?? "0",
-                  colors_: const Color(0xff55ce63).withOpacity(0.8),
-                  availableScreenWidth_: availableScreenWidth,
-                  with_: .31),
-              const SizedBox(width: 10),
-              buildBoxCountLeave(
-                  title_: "Còn lại",
-                  number_: Cal_leave_model?.rEMAIN.toString() ?? "0",
-                  colors_: Colors.orange.shade800.withOpacity(0.8),
-                  availableScreenWidth_: availableScreenWidth,
-                  with_: .31),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "Danh Mục",
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Tất Cả",
-                    style: TextStyle(
-                      color: Colors.blue.shade300,
-                      fontSize: 16,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
+          AppBarHomePage(fullName: FullNameView),
           Expanded(
-            child: GridView(
-              shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.9,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 24,
-              ),
-              children: [
-                CategoryCard(
-                  thumbnail: 'assets/images/check-in.png',
-                  name: 'Check-in/out',
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          LoglistPage(emp_code: widget.emp_code.toString()),
-                    ),
-                  ),
-                ),
-                CategoryCard(
-                  thumbnail: 'assets/images/timepiece.png',
-                  name: 'Timekeeping',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            TimekeepPage(emp_code: widget.emp_code.toString()),
-                      ),
-                    );
-                  },
-                ),
-                CategoryCard(
-                  thumbnail: 'assets/images/cv.png',
-                  name: 'Leave Staff',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LeavePage(
-                          emp_code: widget.emp_code.toString(),
-                          emp_id: widget.emp_id!,
+              child: ListView(
+            padding: const EdgeInsets.all(20.0),
+            children: [
+              Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Phép - $year_current",
+                        style: const TextStyle(
+                          color: Colors.black87,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    );
-                  },
-                ),
-                CategoryCard(
-                  thumbnail: 'assets/images/calendar.png',
-                  name: 'Salary',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            SalaryPage(emp_code: widget.emp_code.toString()),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      buildBoxCountLeave(
+                          title_: 'Tổng',
+                          number_:
+                              Cal_leave_model?.aNUALLEAVEDAY.toString() ?? '0',
+                          colors_: const Color(0xfff62d51).withOpacity(0.8),
+                          availableScreenWidth_: availableScreenWidth,
+                          with_: .31),
+                      const SizedBox(width: 10),
+                      buildBoxCountLeave(
+                          title_: 'Sử dụng',
+                          number_: Cal_leave_model?.tONGCONG.toString() ?? "0",
+                          colors_: const Color(0xff55ce63).withOpacity(0.8),
+                          availableScreenWidth_: availableScreenWidth,
+                          with_: .31),
+                      const SizedBox(width: 10),
+                      buildBoxCountLeave(
+                          title_: "Còn lại",
+                          number_: Cal_leave_model?.rEMAIN.toString() ?? "0",
+                          colors_: Colors.orange.shade800.withOpacity(0.8),
+                          availableScreenWidth_: availableScreenWidth,
+                          with_: .31),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Danh Mục",
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
                       ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Tất Cả",
+                          style: TextStyle(
+                            color: Colors.blue.shade300,
+                            fontSize: 16,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center, 
+                    children: [
+                      CategoryCard(
+                        thumbnail: 'assets/images/check-in.png',
+                        name: 'Check-in/out',
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoglistPage(
+                                emp_code: widget.emp_code.toString()
+                                
+                                ),
+                          ),
+                        ),
+                        availableScreenWidth_: availableScreenWidth,
+                        width_: 0.47,
+                      ),
+                      const SizedBox(width: 15),
+                      CategoryCard(
+                        thumbnail: 'assets/images/timepiece.png',
+                        name: 'Timekeeping',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TimekeepPage(
+                                  emp_code: widget.emp_code.toString()),
+                            ),
+                          );
+                        },
+                        availableScreenWidth_: availableScreenWidth,
+                        width_: 0.47,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CategoryCard(
+                        thumbnail: 'assets/images/cv.png',
+                        name: 'Leave Staff',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LeavePage(
+                                emp_code: widget.emp_code.toString(),
+                                emp_id: widget.emp_id!,
+                              ),
+                            ),
+                          );
+                        },
+                        availableScreenWidth_: availableScreenWidth,
+                        width_: 0.47,
+                      ),
+                          const SizedBox(width: 15),
+                      CategoryCard(
+                        thumbnail: 'assets/images/calendar.png',
+                        name: 'Salary',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SalaryPage(
+                                  emp_code: widget.emp_code.toString()),
+                            ),
+                          );
+                        },
+                        availableScreenWidth_: availableScreenWidth,
+                        width_: 0.47,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          )),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -316,12 +329,13 @@ class CategoryCard extends StatelessWidget {
   final String thumbnail;
   final String name;
   final VoidCallback onTap;
-
+  final double width_;
+  final double availableScreenWidth_ ;
   const CategoryCard({
     Key? key,
     required this.thumbnail,
     required this.name,
-    required this.onTap,
+    required this.onTap, required this.width_, required this.availableScreenWidth_,
   }) : super(key: key);
 
   @override
@@ -330,6 +344,7 @@ class CategoryCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(10),
+        width:  availableScreenWidth_ * width_,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -367,70 +382,3 @@ class CategoryCard extends StatelessWidget {
   }
 }
 
-class AppBar extends StatelessWidget {
-  final String fullName;
-  const AppBar({
-    Key? key,
-    required this.fullName,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-      height: 140,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          stops: [0.1, 0.5],
-          colors: [
-            Color(0xff886ff2),
-            Color(0xff6849ef),
-          ],
-        ),
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Hello,\n $fullName",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
-                ),
-              ),
-              Container(
-                height: 40,
-                width: 40,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0xff8a72f1),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.notifications,
-                    color: Colors.white,
-                  ),
-                ),
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-        ],
-      ),
-    );
-  }
-}

@@ -29,6 +29,7 @@ class _LeavePageState extends State<LeavePage> {
   bool showAll = false;
   double availableScreenWidth = 0;
   CalLeaveModel? CalLeave_model;
+  String year_current = DateFormat('yyyy').format(DateTime.now());
   void toggleShowAll() {
     setState(() {
       showAll = !showAll;
@@ -64,248 +65,278 @@ class _LeavePageState extends State<LeavePage> {
       body: Column(
         children: [
           const AppBarForm(title_: 'Staff On Leave'),
-          const SizedBox(height: 15),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Phép - 2024",
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildBoxCountLeave(
-                title_: 'Tổng',
-                number_: CalLeave_model?.aNUALLEAVEDAY.toString() ?? "0",
-                colors_: const Color(0xfff62d51).withOpacity(0.8),
-                availableScreenWidth_: availableScreenWidth,
-                with_: .31,
-              ),
-              const SizedBox(width: 10),
-              buildBoxCountLeave(
-                  title_: 'Sử dụng',
-                  number_: CalLeave_model?.tONGCONG.toString() ?? "0",
-                  colors_: const Color(0xff55ce63).withOpacity(0.8),
-                  availableScreenWidth_: availableScreenWidth,
-                  with_: .31),
-              const SizedBox(width: 10),
-              buildBoxCountLeave(
-                  title_: "Còn lại",
-                  number_: CalLeave_model?.rEMAIN.toString() ?? "0",
-                  colors_: Colors.orange.shade800.withOpacity(0.8),
-                  availableScreenWidth_: availableScreenWidth,
-                  with_: .31),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Chi tiết phép',
-                  style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700),
-                ),
-                // GestureDetector(
-                //   onTap: toggleShowAll,
-                //   child: Text(
-                //     "Tất cả",
-                //     style: TextStyle(
-                //         fontSize: 17,
-                //         fontWeight: FontWeight.bold,
-                //         color: Colors.blue.shade300),
-                //   ),
-                // ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NewLeavePage(
-                              empId: widget.emp_id, empCode: widget.emp_code)),
-                    );
-                  },
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff886ff2),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Icon(
-                      Ionicons.add,
-                      color: Colors.white,
-                      size: 30,
-                      weight: 2,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               children: [
-                buildBoxLeaveByMonth(
-                    'Tháng 1', CalLeave_model?.t1.toString() ?? "", () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LeaveDetailsPage(
-                            month: 1, emp_id:widget.emp_id, emp_code: widget.emp_code)),
-                  );
-                }),
-                buildBoxLeaveByMonth(
-                    'Tháng 2', CalLeave_model?.t2.toString() ?? "", () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LeaveDetailsPage(
-                            month: 2, emp_id: widget.emp_id, emp_code: widget.emp_code)),
-                  );
-                }),
-                buildBoxLeaveByMonth(
-                    'Tháng 3', CalLeave_model?.t3.toString() ?? "", () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>  LeaveDetailsPage(
-                            month: 3, emp_id: widget.emp_id, emp_code: widget.emp_code)),
-                  );
-                }),
-                buildBoxLeaveByMonth(
-                    'Tháng 4', CalLeave_model?.t4.toString() ?? "", () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LeaveDetailsPage(
-                            month: 4, emp_id: widget.emp_id, emp_code: widget.emp_code)),
-                  );
-                }),
-                buildBoxLeaveByMonth(
-                    'Tháng 5', CalLeave_model?.t5.toString() ?? "", () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>  LeaveDetailsPage(
-                            month: 5, emp_id: widget.emp_id, emp_code: widget.emp_code)),
-                  );
-                }),
-                if (showAll) ...[
-                  buildBoxLeaveByMonth(
-                      'Tháng 6', CalLeave_model?.t6.toString() ?? "", () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>LeaveDetailsPage(
-                              month: 6, emp_id: widget.emp_id, emp_code: widget.emp_code)),
-                    );
-                  }),
-                  buildBoxLeaveByMonth(
-                      'Tháng 7', CalLeave_model?.t7.toString() ?? "", () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  LeaveDetailsPage(
-                              month: 7, emp_id: widget.emp_id, emp_code: widget.emp_code)),
-                    );
-                  }),
-                  buildBoxLeaveByMonth(
-                      'Tháng 8', CalLeave_model?.t8.toString() ?? "", () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => LeaveDetailsPage(
-                              month: 8, emp_id:widget.emp_id, emp_code: widget.emp_code)),
-                    );
-                  }),
-                  buildBoxLeaveByMonth(
-                      'Tháng 9', CalLeave_model?.t9.toString() ?? "", () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => LeaveDetailsPage(
-                              month: 9, emp_id: widget.emp_id, emp_code: widget.emp_code)),
-                    );
-                  }),
-                  buildBoxLeaveByMonth(
-                      'Tháng 10', CalLeave_model?.t10.toString() ?? "", () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  LeaveDetailsPage(
-                              month: 10, emp_id: widget.emp_id, emp_code: widget.emp_code)),
-                    );
-                  }),
-                  buildBoxLeaveByMonth(
-                      'Tháng 11', CalLeave_model?.t11.toString() ?? "", () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  LeaveDetailsPage(
-                              month: 11, emp_id: widget.emp_id, emp_code: widget.emp_code)),
-                    );
-                  }),
-                  buildBoxLeaveByMonth(
-                      'Tháng 12', CalLeave_model?.t12.toString() ?? "", () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  LeaveDetailsPage(
-                              month: 12, emp_id: widget.emp_id, emp_code:widget.emp_code)),
-                    );
-                  }),
-                ],
-                GestureDetector(
-                  onTap: toggleShowAll,
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    height: 58,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff886ff2).withOpacity(0.9),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                Column(
+                  children: [
+                    //  Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: 20),
+                    //   child:
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(
-                          showAll == false
-                              ? Icons.arrow_circle_down
-                              : Icons.arrow_circle_up,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                        const SizedBox(width: 10),
                         Text(
-                          showAll == true ? 'Rút gọn' : 'Nhiều hơn',
+                          "Phép - $year_current",
                           style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                            color: Colors.black87,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
-                  ),
+                    // ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        buildBoxCountLeave(
+                          title_: 'Tổng',
+                          number_:
+                              CalLeave_model?.aNUALLEAVEDAY.toString() ?? "0",
+                          colors_: const Color(0xfff62d51).withOpacity(0.8),
+                          availableScreenWidth_: availableScreenWidth,
+                          with_: .31,
+                        ),
+                        const SizedBox(width: 10),
+                        buildBoxCountLeave(
+                            title_: 'Sử dụng',
+                            number_: CalLeave_model?.tONGCONG.toString() ?? "0",
+                            colors_: const Color(0xff55ce63).withOpacity(0.8),
+                            availableScreenWidth_: availableScreenWidth,
+                            with_: .31),
+                        const SizedBox(width: 10),
+                        buildBoxCountLeave(
+                            title_: "Còn lại",
+                            number_: CalLeave_model?.rEMAIN.toString() ?? "0",
+                            colors_: Colors.orange.shade800.withOpacity(0.8),
+                            availableScreenWidth_: availableScreenWidth,
+                            with_: .31),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Chi tiết phép',
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        // GestureDetector(
+                        //   onTap: toggleShowAll,
+                        //   child: Text(
+                        //     "Tất cả",
+                        //     style: TextStyle(
+                        //         fontSize: 17,
+                        //         fontWeight: FontWeight.bold,
+                        //         color: Colors.blue.shade300),
+                        //   ),
+                        // ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => NewLeavePage(
+                                      empId: widget.emp_id,
+                                      empCode: widget.emp_code)),
+                            );
+                          },
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: const Color(0xff886ff2),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Icon(
+                              Ionicons.add,
+                              color: Colors.white,
+                              size: 30,
+                              weight: 2,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    buildBoxLeaveByMonth(
+                        'Tháng 1', CalLeave_model?.t1.toString() ?? "", () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LeaveDetailsPage(
+                              month: 1,
+                              emp_id: widget.emp_id,
+                              emp_code: widget.emp_code),
+                        ),
+                      );
+                    }),
+                    buildBoxLeaveByMonth(
+                        'Tháng 2', CalLeave_model?.t2.toString() ?? "", () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LeaveDetailsPage(
+                                month: 2,
+                                emp_id: widget.emp_id,
+                                emp_code: widget.emp_code)),
+                      );
+                    }),
+                    buildBoxLeaveByMonth(
+                        'Tháng 3', CalLeave_model?.t3.toString() ?? "", () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LeaveDetailsPage(
+                                month: 3,
+                                emp_id: widget.emp_id,
+                                emp_code: widget.emp_code)),
+                      );
+                    }),
+                    buildBoxLeaveByMonth(
+                        'Tháng 4', CalLeave_model?.t4.toString() ?? "", () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LeaveDetailsPage(
+                                month: 4,
+                                emp_id: widget.emp_id,
+                                emp_code: widget.emp_code)),
+                      );
+                    }),
+                    buildBoxLeaveByMonth(
+                        'Tháng 5', CalLeave_model?.t5.toString() ?? "", () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LeaveDetailsPage(
+                                month: 5,
+                                emp_id: widget.emp_id,
+                                emp_code: widget.emp_code)),
+                      );
+                    }),
+                    if (showAll) ...[
+                      buildBoxLeaveByMonth(
+                          'Tháng 6', CalLeave_model?.t6.toString() ?? "", () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LeaveDetailsPage(
+                                  month: 6,
+                                  emp_id: widget.emp_id,
+                                  emp_code: widget.emp_code)),
+                        );
+                      }),
+                      buildBoxLeaveByMonth(
+                          'Tháng 7', CalLeave_model?.t7.toString() ?? "", () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LeaveDetailsPage(
+                                  month: 7,
+                                  emp_id: widget.emp_id,
+                                  emp_code: widget.emp_code)),
+                        );
+                      }),
+                      buildBoxLeaveByMonth(
+                          'Tháng 8', CalLeave_model?.t8.toString() ?? "", () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LeaveDetailsPage(
+                                  month: 8,
+                                  emp_id: widget.emp_id,
+                                  emp_code: widget.emp_code)),
+                        );
+                      }),
+                      buildBoxLeaveByMonth(
+                          'Tháng 9', CalLeave_model?.t9.toString() ?? "", () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LeaveDetailsPage(
+                                  month: 9,
+                                  emp_id: widget.emp_id,
+                                  emp_code: widget.emp_code)),
+                        );
+                      }),
+                      buildBoxLeaveByMonth(
+                          'Tháng 10', CalLeave_model?.t10.toString() ?? "", () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LeaveDetailsPage(
+                                  month: 10,
+                                  emp_id: widget.emp_id,
+                                  emp_code: widget.emp_code)),
+                        );
+                      }),
+                      buildBoxLeaveByMonth(
+                          'Tháng 11', CalLeave_model?.t11.toString() ?? "", () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LeaveDetailsPage(
+                                  month: 11,
+                                  emp_id: widget.emp_id,
+                                  emp_code: widget.emp_code)),
+                        );
+                      }),
+                      buildBoxLeaveByMonth(
+                          'Tháng 12', CalLeave_model?.t12.toString() ?? "", () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LeaveDetailsPage(
+                                  month: 12,
+                                  emp_id: widget.emp_id,
+                                  emp_code: widget.emp_code)),
+                        );
+                      }),
+                    ],
+                    GestureDetector(
+                      onTap: toggleShowAll,
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        height: 58,
+                        decoration: BoxDecoration(
+                          color: const Color(0xff886ff2).withOpacity(0.9),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              showAll == false
+                                  ? Icons.arrow_circle_down
+                                  : Icons.arrow_circle_up,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              showAll == true ? 'Rút gọn' : 'Nhiều hơn',
+                              style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -320,13 +351,19 @@ class _LeavePageState extends State<LeavePage> {
     return GestureDetector(
       onTap: _onTap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: 10),
+        margin: const EdgeInsets.only(bottom: 15),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         height: 65,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-        ),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(.1),
+                blurRadius: 4.0,
+                spreadRadius: .05,
+              )
+            ]),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -738,7 +775,6 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
       });
     } catch (e) {
       // Xử lý lỗi nếu cần
-      // print(e);
       setState(() {
         isLoading = false;
       });
@@ -842,7 +878,8 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
                         children: _lists.asMap().entries.map((entry) {
                           int index = entry.key;
                           ListLeaveModel leave = entry.value;
-                          String startDate=DateFormat('EEE, dd/MM/yyyy').format(DateTime.parse(leave.lEAVESTARTDATE!));
+                          String startDate = DateFormat('EEE, dd/MM/yyyy')
+                              .format(DateTime.parse(leave.lEAVESTARTDATE!));
                           return buildBoxLeaveDetailsMonth(
                             leave.hOURS == 8
                                 ? "Đơn Xin Cả Ngày"
@@ -876,6 +913,13 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.9),
         borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(.1),
+            blurRadius: 4.0,
+            spreadRadius: .05,
+          ),
+        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

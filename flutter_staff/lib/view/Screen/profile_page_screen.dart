@@ -25,7 +25,6 @@ class _ProfilePageState extends State<ProfilePage> {
       _employeeViewModel = await apiServices.fetchInfoEmpCode(code);
       if (_employeeViewModel != null) {
         setState(() {
-          //  FullNameView = _employeeViewModel?.fULLNAME ?? '';
           birdthdayEmp = DateFormat('dd/MM/yyyy')
               .format(DateTime.parse(_employeeViewModel!.dATEOFBIRTH!));
         });
@@ -35,13 +34,11 @@ class _ProfilePageState extends State<ProfilePage> {
       print('Failed to fetch employee data: $e');
     }
   }
-
   @override
   void initState() {
     super.initState();
     getDataEmpCode(widget.emp_code.toString());
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,17 +90,17 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 10,
                     ),
                     const Text(
-                      "Profile Infomation",
+                      "Thông tin nhân viên",
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
-                          color: Colors.black),
+                          color: Colors.black87),
                     ),
                     const SizedBox(height: 10),
 
                     TProfileMenu(
                       onPressed: () {},
-                      title: 'Name',
+                      title: 'Họ tên',
                       value: _employeeViewModel?.fULLNAME ?? "",
                     ),
                     TProfileMenu(
@@ -121,17 +118,17 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 10,
                     ),
                     const Text(
-                      "Profile Infomation",
+                      "Thôn tin nhân viên",
                       style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
-                          color: Colors.black),
+                          color: Colors.black87),
                     ),
                     const SizedBox(height: 10),
 
                     TProfileMenu(
                       onPressed: () {},
-                      title: 'Code',
+                      title: 'Mã NV',
                       value: _employeeViewModel?.eMPCODE ?? "",
                     ),
                     TProfileMenu(
@@ -141,17 +138,17 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     TProfileMenu(
                       onPressed: () {},
-                      title: 'Phone',
+                      title: 'SDT',
                       value: _employeeViewModel?.pHONENUMBER ?? "",
                     ),
                     TProfileMenu(
                       onPressed: () {},
-                      title: 'Gender',
+                      title: 'Giới tính',
                       value:_employeeViewModel?.sEX ?? "",
                     ),
                     TProfileMenu(
                       onPressed: () {},
-                      title: 'Date of Birth',
+                      title: 'Ngày sinh',
                       value: birdthdayEmp,
                     ),
                   ],

@@ -42,20 +42,17 @@ namespace StaffApi.Controllers
                 return NotFound();
             }
             return Ok(data);
-
         }
         // 
         [HttpGet("logListTime")]
         public async Task<ActionResult> GetLogListTimeEmp(string code)
-        {
-           
+        { 
             var data = (await _timekeepDo.GetTimeLogListMonthByCode(code)).ToList();
             if (data == null)
             {
                 return NotFound();
             }
             return Ok(data);
-
         }
     }
 }
