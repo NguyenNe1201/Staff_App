@@ -1,9 +1,12 @@
+import 'package:flutter_staff/data_sources/api_services.dart';
+import 'package:flutter_staff/view/Screen/login_page_screen.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staff/view/Widget/button_widget.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Screen/profile_page_screen.dart';
+import 'package:flutter_staff/models/employee_views.dart';
 
 class SettingPage extends StatefulWidget {
   final String? emp_code;
@@ -16,6 +19,30 @@ class SettingPage extends StatefulWidget {
 
 class _SettingPageState extends State<SettingPage> {
   bool isDarkMode = false;
+  String FullNameView = '';
+  EmployeeViewModel? _employeeViewModel;
+  final ApiServices apiServices = ApiServices();
+
+  Future<void> getDataEmpCode(String code) async {
+    try {
+      var result = await apiServices.fetchInfoEmpCode(code);
+      if (result != null) {
+        setState(() {
+          _employeeViewModel = result;
+        });
+      }
+    } catch (e) {
+      // ignore: avoid_print
+      print('Failed to fetch employee data: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getDataEmpCode(widget.emp_code.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,19 +86,19 @@ class _SettingPageState extends State<SettingPage> {
                         ),
                       ),
                       const SizedBox(width: 10),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Trường Nguyên',
-                            style: TextStyle(
+                            _employeeViewModel?.fULLNAME ?? "",
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Colors.black87,
                             ),
                           ),
                           Text(
-                            "Director",
+                            _employeeViewModel?.titleNameVi ?? "",
                             style: TextStyle(fontSize: 16, color: Colors.grey),
                           )
                         ],
@@ -159,7 +186,14 @@ class _SettingPageState extends State<SettingPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const LoginPage(),
+                          ),
+                          (Route<dynamic> route) => false);
+                    },
                     child: const Text(
                       "SIGN OUT",
                       style: TextStyle(
@@ -182,7 +216,9 @@ class TProfileButton extends StatelessWidget {
   final String empCode;
   final int empId;
   const TProfileButton({
-    super.key, required this.empCode, required this.empId,
+    super.key,
+    required this.empCode,
+    required this.empId,
   });
 
   @override
@@ -193,7 +229,8 @@ class TProfileButton extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) => ProfilePage(
-                    emp_code: empCode,emp_id: empId,
+                    emp_code: empCode,
+                    emp_id: empId,
                   )),
         );
       },

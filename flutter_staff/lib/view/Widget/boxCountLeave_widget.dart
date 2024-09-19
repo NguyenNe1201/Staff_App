@@ -20,6 +20,13 @@ class buildBoxCountLeave extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
+             boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.1),
+              blurRadius: 4.0,
+              spreadRadius: .05,
+            )
+          ],
           ),
           child: Padding(
             padding: const EdgeInsets.all(10.0),

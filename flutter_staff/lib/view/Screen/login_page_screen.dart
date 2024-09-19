@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 30),
                 const Text(
-                  "Wellcome back",
+                  "Wellcome",
                   style: TextStyle(
                     fontSize: 27,
                     fontWeight: FontWeight.bold,
@@ -331,7 +331,7 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
   }
 
   void _verifyOTP() {
-    final enteredOtp = _otpController1.text +
+    var enteredOtp = _otpController1.text +
         _otpController2.text +
         _otpController3.text +
         _otpController4.text;
@@ -340,27 +340,22 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
               title: "Thông báo", content: "Không được để trống!")
           .showMyDialog(context);
     } else if (enteredOtp == _currentOtpData.otp) {
-      final info = apiService.fetchUpStatusLogin(
-          _currentOtpData.emp_code.toString(),
-          _currentOtpData.phone.toString(),
-          _currentOtpData.otp.toString());
-      if (info == true) {
-        Navigator.of(context).push(
-          MaterialPageRoute<void>(
+      apiService.fetchUpStatusLogin(_currentOtpData.emp_code.toString(),
+          _currentOtpData.phone.toString(), _currentOtpData.otp.toString());
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
             builder: (BuildContext context) => HomePage(
               emp_code: _currentOtpData.emp_code.toString(),
               emp_id: _currentOtpData.emp_id!,
             ),
           ),
-        );
-      }
+          (Route<dynamic> route) => false);
     } else {
       const MyDialogNotification(
               title: "Thông báo", content: "OTP không hợp lệ!")
           .showMyDialog(context);
     }
   }
-
   Future<void> _resendOTP() async {
     if (_isButtonEnabled) {
       var otpData = await apiService.fetchSendOtp(_phoneController_hidden);
@@ -744,19 +739,19 @@ class _ConfirmPassWordState extends State<ConfirmPassWord> {
               final check_password_user =
                   await apiService.fetchCheckPassword(username, password);
               if (check_password_user == null) {
-                MyDialogNotification(
+                const MyDialogNotification(
                         title: "Thông báo",
                         content: "Mật khẩu không đúng. Vui lòng nhập lại!")
                     .showMyDialog(context);
               } else {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => HomePage(
-                      emp_code: check_password_user.emp_code.toString(),
-                      emp_id: check_password_user.emp_id!,
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => HomePage(
+                        emp_code: check_password_user.emp_code.toString(),
+                        emp_id: check_password_user.emp_id!,
+                      ),
                     ),
-                  ),
-                );
+                    (Route<dynamic> route) => false);
               }
             }
           : null,

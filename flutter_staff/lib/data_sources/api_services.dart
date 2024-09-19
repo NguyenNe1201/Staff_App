@@ -5,84 +5,16 @@ import 'package:flutter_staff/models/leaves.dart';
 import 'package:flutter_staff/models/logListMonths.dart';
 import 'package:flutter_staff/models/logins.dart';
 import 'package:flutter_staff/models/salarys.dart';
-import 'package:flutter_staff/models/tests.dart';
+
 import 'package:flutter_staff/models/timeKeeps.dart';
 import 'package:dio/dio.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 class ApiServices {
-
-  final String baseUrl = 'https://localhost:443/api';
-//  final String baseUrl = 'https://gw.conectvn.com:4432/api';
+  final String baseUrl = 'https://192.168.2.61/api';
+ // final String baseUrl = 'https://gw.conectvn.com:4432/api';
   final dio = Dio();
-  // late final Dio dio;
-  // ApiServices() {
-  //   dio = Dio();
-  //   // Configure Dio to accept invalid SSL certificates
-  //   (dio.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
-  //     final HttpClient client =
-  //         HttpClient(context: SecurityContext(withTrustedRoots: false));
-  //     client.badCertificateCallback =
-  //         (X509Certificate cert, String host, int port) => true;
-  //     return client;
-  //   };
-  // }
-  // test --------------------
-
-  Future<User> fetchInfoTest() async {
-    try {
-      final response = await dio.get('https://api.randomuser.me/?results=10');
-      if (response.statusCode == 200) {
-        final data = response.data;
-        final List userList = data['results'];
-        if (userList.isNotEmpty) {
-          // Return the first user
-          return User.fromJson(userList[0]);
-        } else {
-          throw Exception("No users found");
-        }
-      } else {
-        throw Exception("Failed to load API: ${response.statusCode}");
-      }
-    } catch (e) {
-      throw Exception("Error fetching user: $e");
-    }
-  }
-  Future<bool> deleteUser(int userId) async {
-    try {
-      await dio.delete('$baseUrl/users/$userId');
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  Future<bool> addUser(String name, String address) async {
-    try {
-      await dio.post('$baseUrl/users/add', queryParameters: {
-        'name': name,
-        'address': address,
-      });
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-
-  // api/users/edit?userId=&name=&address=
-  Future<bool> updateUser(int userId, String name, String address) async {
-    try {
-      await dio.put('$baseUrl/users/edit', queryParameters: {
-        'userId': userId,
-        'name': name,
-        'address': address,
-      });
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
 
   // get employee
   Future<List<EmployeeModel>> fetchEmpolyee() async {
@@ -178,8 +110,7 @@ class ApiServices {
   }
 
   // update status login = otp
-  Future<bool> fetchUpStatusLogin(
-      String emp_code, String phone, String otp) async {
+  Future<bool> fetchUpStatusLogin(String emp_code, String phone, String otp) async {
     try {
       await dio.put('$baseUrl/login/UpdateStatus', queryParameters: {
         'emp_code': emp_code,

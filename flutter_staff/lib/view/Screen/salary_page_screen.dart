@@ -115,7 +115,7 @@ class _SalaryPageState extends State<SalaryPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 buildDropdown(
-                  'month',
+                  'Tháng',
                   items_month,
                   120,
                   selectedMonth,
@@ -135,7 +135,7 @@ class _SalaryPageState extends State<SalaryPage> {
                 ),
                 const SizedBox(width: 10),
                 buildDropdown(
-                  'year',
+                  'Năm',
                   items_year,
                   120,
                   selectedYear,
