@@ -4,15 +4,17 @@ import 'package:flutter/material.dart';
 //AppBar for all page
 class AppBarForm extends StatelessWidget {
   final String title_;
-  const AppBarForm({super.key, required this.title_});
+  final String? title_1;
+  final double width_;
+  const AppBarForm({super.key, required this.title_, this.title_1, required this.width_});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       alignment: Alignment.bottomCenter,
-      decoration: BoxDecoration(color: Color(0xff886ff2)),
-      height: 120,
+      decoration: const BoxDecoration(color: Color(0xff886ff2)),
+      height: width_,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -31,17 +33,26 @@ class AppBarForm extends StatelessWidget {
               ),
             ],
           ),
-           Column(
+          Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 title_,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                   fontSize: 22,
                 ),
-              )
+              ),
+              if (title_1 != null)
+                Text(
+                  title_1 ?? "",
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
+                  ),
+                )
             ],
           ),
           Row(
@@ -61,6 +72,7 @@ class AppBarForm extends StatelessWidget {
     );
   }
 }
+
 // Appbar home page
 class AppBarHomePage extends StatelessWidget {
   final String fullName;
@@ -72,8 +84,8 @@ class AppBarHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-      height: 130,
+      padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
+      height: 100,
       width: double.infinity,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -97,11 +109,11 @@ class AppBarHomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Hello,\n $fullName",
+                "Xin Chào, \n $fullName",
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 22,
+                  fontSize: 18,
                 ),
               ),
               Container(
@@ -121,9 +133,7 @@ class AppBarHomePage extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          // const SizedBox(height: 20),
         ],
       ),
     );

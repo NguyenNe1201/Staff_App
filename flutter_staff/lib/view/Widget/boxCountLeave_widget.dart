@@ -17,19 +17,19 @@ class buildBoxCountLeave extends StatelessWidget {
         Container(
           width: availableScreenWidth_ * with_,
           //   height: 90,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-             boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(.1),
-              blurRadius: 4.0,
-              spreadRadius: .05,
-            )
-          ],
-          ),
+          // decoration: BoxDecoration(
+          //   color: Colors.white.withOpacity(.9),
+          //   borderRadius: BorderRadius.circular(20),
+          //    boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.black.withOpacity(.1),
+          //     blurRadius: 4.0,
+          //     spreadRadius: .05,
+          //   )
+          // ],
+          // ),
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -54,7 +54,7 @@ class buildBoxCountLeave extends StatelessWidget {
                 Text(
                   title_,
                   style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w700),
+                      fontSize: 15, fontWeight: FontWeight.w700),
                 )
               ],
             ),

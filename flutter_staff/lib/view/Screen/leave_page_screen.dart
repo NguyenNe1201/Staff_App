@@ -15,6 +15,7 @@ import 'package:flutter_staff/view/Widget/dialogNotification_widget.dart';
 import 'package:flutter_staff/view/Widget/dropdown_widget.dart';
 import 'package:flutter_staff/view/Widget/inputField_widget.dart';
 
+// ------------------------------- form nghỉ phép ------------------------------
 class LeavePage extends StatefulWidget {
   final String emp_code;
   final int emp_id;
@@ -64,10 +65,10 @@ class _LeavePageState extends State<LeavePage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          const AppBarForm(title_: 'Staff On Leave'),
+          const AppBarForm(title_: 'Nghỉ Phép',width_: 100),
           Expanded(
             child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
               children: [
                 Column(
                   children: [
@@ -78,7 +79,7 @@ class _LeavePageState extends State<LeavePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Phép - $year_current",
+                          "Phép năm - $year_current",
                           style: const TextStyle(
                             color: Colors.black87,
                             fontSize: 18,
@@ -123,7 +124,7 @@ class _LeavePageState extends State<LeavePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          'Chi tiết phép',
+                          'Chi tiết',
                           style: TextStyle(
                               color: Colors.black87,
                               fontSize: 18,
@@ -383,7 +384,7 @@ class _LeavePageState extends State<LeavePage> {
                     ),
                   ),
                   const SizedBox(width: 20),
-                  if (_value != "")
+                  if (_value !="0.0" && _value !="")
                     Container(
                       height: 25,
                       width: 50,
@@ -401,6 +402,25 @@ class _LeavePageState extends State<LeavePage> {
                         ),
                       ),
                     ),
+                  //   const SizedBox(width: 10),
+                  // if(_value != "0.0" || _value != "0")
+                  // Container(
+                  //   height: 25,
+                  //   width: 50,
+                  //   decoration: BoxDecoration(
+                  //     color: const Color(0xfffde6d8),
+                  //     borderRadius: BorderRadius.circular(5),
+                  //   ),
+                  //   child: Center(
+                  //     child: Text(
+                  //       _value,
+                  //       style: const TextStyle(
+                  //           color: Color(0xffF5803E),
+                  //           fontSize: 16,
+                  //           fontWeight: FontWeight.w700),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -474,7 +494,7 @@ class _LeavePageState extends State<LeavePage> {
   }
 }
 
-// tạo phép nhân viên
+// ------------------------ form tạo phép nhân viên ------------------------------
 class NewLeavePage extends StatefulWidget {
   final int? empId;
   final String? empCode;
@@ -488,10 +508,10 @@ class _NewLeavePageState extends State<NewLeavePage> {
   final ApiServices apiService = ApiServices();
   String? selectedLeaveType;
   String? selectedPeriod;
-  TextEditingController reasonController = TextEditingController();
   int? selectedKindLeaveID;
   bool _isPeriodDropdownOpened = false;
   bool _isKindLeaveDropdownOpened = false;
+  TextEditingController reasonController = TextEditingController();
   final List<String> items_LeavePeriod = ['8h', '4h'];
   String _selectedToDate = DateFormat('dd/MM/yyyy').format(DateTime.now());
   String _selectedFromDate = DateFormat('dd/MM/yyyy').format(DateTime.now());
@@ -566,7 +586,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const AppBarForm(title_: "New Leave"),
+          const AppBarForm(title_: "Tạo Phép",width_: 100),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -662,7 +682,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
                           MyInputField(
                             hint: _selectedToDate,
                             widget: IconButton(
-                              icon: Icon(Icons.calendar_month_outlined),
+                              icon: const Icon(Icons.calendar_month_outlined),
                               color: Colors.grey[600],
                               onPressed: () {
                                 _getToDate();
@@ -692,7 +712,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
                         ? 4
                         : (selectedPeriod == "8h" ? 8 : 0);
                     if (hours == 0 || selectedKindLeaveID == null) {
-                      print(selectedKindLeaveID.toString());
+                     // print(selectedKindLeaveID.toString());
                       const MyDialogNotification(
                               content: "Vui lòng chọn đầy đủ thông tin.",
                               title: 'Thông báo')
@@ -741,7 +761,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
   }
 }
 
-// Chi tiết phép nhân viên
+// ---------------------- form Chi tiết phép nhân viên -----------------------
 class LeaveDetailsPage extends StatefulWidget {
   final int month;
   final String emp_code;
@@ -833,7 +853,7 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          const AppBarForm(title_: "Leave Details"),
+          const AppBarForm(title_: "Chi Tiết Phép",width_: 100),
           // const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

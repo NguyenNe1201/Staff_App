@@ -29,7 +29,7 @@ class MyInputField extends StatelessWidget {
           Expanded(
               child: TextFormField(
             readOnly: widget == null ? false : true,
-            autofocus: false,
+            autofocus: true,
             controller: controller,
             style: TextStyle(
                 fontSize: 16,

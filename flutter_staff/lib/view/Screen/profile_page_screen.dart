@@ -45,7 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          const AppBarForm(title_: 'Profile'),
+          const AppBarForm(title_: 'Trang Cá Nhân',width_: 100),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

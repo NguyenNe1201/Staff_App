@@ -12,8 +12,9 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 class ApiServices {
-  final String baseUrl = 'https://192.168.2.62/api';
- // final String baseUrl = 'https://gw.conectvn.com:4432/api';
+ final String baseUrl = 'https://localhost:443/api';
+  //final String baseUrl = 'https://192.168.90.112/api';
+  // final String baseUrl = 'https://gw.conectvn.com:4432/api';
   final dio = Dio();
 
   // get employee
@@ -42,6 +43,7 @@ class ApiServices {
     }
   }
 
+  //----------------------------- login ----------------------------
   // check time login app
   Future<bool> fetchCheckTimeLogin(String phone) async {
     try {
@@ -71,12 +73,12 @@ class ApiServices {
     }
   }
 
-  // login == password
-  Future<RequestByAccount?> fetchCheckPassword(
+  // login == phone, password
+  Future<RequestByAccount?> fetchCheckAcByPhone(
       String phone, String pass) async {
     try {
       final response = await dio
-          .get('$baseUrl/Login/CheckAccount?phone=$phone&password=$pass');
+          .get('$baseUrl/Login/CheckAcByPhone?phone=$phone&password=$pass');
       if (response.statusCode == 200) {
         return RequestByAccount.fromJson(response.data);
       } else {
@@ -110,7 +112,8 @@ class ApiServices {
   }
 
   // update status login = otp
-  Future<bool> fetchUpStatusLogin(String emp_code, String phone, String otp) async {
+  Future<bool> fetchUpStatusLogin(
+      String emp_code, String phone, String otp) async {
     try {
       await dio.put('$baseUrl/login/UpdateStatus', queryParameters: {
         'emp_code': emp_code,
@@ -123,12 +126,44 @@ class ApiServices {
     }
   }
 
-  // ------------------------- Public -------------------------
+  // =========================== SignUp Account ===========================
+  Future<bool> fetchSignUpCheckAccount(String phone) async {
+    try {
+      final response =
+          await dio.get('$baseUrl/SignUp/CheckAccountByPhone?phone=$phone');
+      if (response.statusCode == 200) {
+        return response.data == true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> fetchSignUpAddAccount(int empID, String password) async {
+    try {
+      final response =
+          await dio.put('$baseUrl/SignUp/AddAccount', queryParameters: {
+        'empId': empID,
+        'password': password,
+      });
+      if (response.statusCode == 200) {
+        return response.data == true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // ------------------------- timekeep -------------------------
   // get data timekeep
-  Future<List<TimeKeepModel>> fetchTimeKeep(String code) async {
+  Future<List<TimeKeepModel>> fetchTimeKeep(String code,String month,String year) async {
     try {
       var response =
-          await dio.get('$baseUrl/TimeKeep/timeKeepMonth?code=$code');
+          await dio.get('$baseUrl/TimeKeep/timeKeepMonth?code=$code&month=$month&year=$year');
       List<TimeKeepModel> timekeeps = (response.data as List)
           .map((userJson) => TimeKeepModel.fromJson(userJson))
           .toList();
