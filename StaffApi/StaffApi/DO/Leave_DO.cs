@@ -37,6 +37,11 @@ namespace StaffApi.DO
                 "LEAVE_ENDDATE", "REASON", "ANNUAL_LEAVE_USED","COM_MONTH","COM_YEAR","COM_YEAR_MONTH" },
                 new object[] { emp_id, kindLeave_id, hour, startDate, endDate, detailReason, ANNUAL_LEAVE_USED, COM_MONTH, COM_YEAR, COM_YEAR_MONTH });
         }
+        public async Task<int> UPD_LEAVE_STATUS(string POSITION, int LEAVE_ID, int STATUS, int EMP_ID_APP)
+        {
+            return await _dbHelper.ExecStoreProcedureAsync("UPD_Leave_Status", new string[] { "POSITION", "LEAVE_ID", "STATUS", "EMP_ID_APP" },
+                new object[] { POSITION, LEAVE_ID,STATUS,EMP_ID_APP });
+        }
         public async Task<IEnumerable<Leave_Entities>> GetLeaveByEmpID(decimal emp_id)
         {
             return await _dbHelper.ExecuteReaderAsync<Leave_Entities>("sp_SEL_LeaveByEmployeeID", new string[] { "EMPLOYEE_ID" }, new object[] { emp_id });

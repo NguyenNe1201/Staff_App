@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SPa+MciaTpYdIqo5vReFMx+zoQgOf8e0nJcGF7xQznc=",
+  "Hash": "PeP0biCPL6PfJ9n92wn+pB1sWfVSqbQBoOQrNzbcrTM=",
   "Source": "StaffApi",
   "BasePath": "_content/StaffApi",
   "Mode": "Default",
@@ -47,10 +47,10 @@
       "OriginalItemSpec": "C:\\Users\\quang\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.0\\staticwebassets\\QuickGrid.razor.js"
     },
     {
-      "Identity": "D:\\CODE\\dotNetApi\\StaffApi\\StaffApi\\obj\\Release\\net8.0\\scopedcss\\bundle\\StaffApi.styles.css",
+      "Identity": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\obj\\Release\\net8.0\\scopedcss\\bundle\\StaffApi.styles.css",
       "SourceId": "StaffApi",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\CODE\\dotNetApi\\StaffApi\\StaffApi\\obj\\Release\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\obj\\Release\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/StaffApi",
       "RelativePath": "StaffApi.styles.css",
       "AssetKind": "All",
@@ -63,7 +63,7 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\CODE\\dotNetApi\\StaffApi\\StaffApi\\obj\\Release\\net8.0\\scopedcss\\bundle\\StaffApi.styles.css"
+      "OriginalItemSpec": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\obj\\Release\\net8.0\\scopedcss\\bundle\\StaffApi.styles.css"
     }
   ]
 }

@@ -1,14 +1,10 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/models/employee_views.dart';
 import 'package:flutter_staff/models/leaves.dart';
-import 'package:flutter_staff/view/Public/dataQuery_page_screen.dart';
+import 'package:flutter_staff/view/Screen/timekeep_page_screen.dart';
 import 'package:flutter_staff/view/Screen/leave_page_screen.dart';
 import 'package:flutter_staff/view/Screen/salary_page_screen.dart';
 import 'package:flutter_staff/view/Widget/boxCountLeave_widget.dart';
@@ -106,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Phép - $year_current",
+                        "Phép Năm - $year_current",
                         style: const TextStyle(
                           color: Colors.black87,
                           fontSize: 18,
@@ -174,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       CategoryCard(
                         thumbnail: 'assets/images/check-in.png',
-                        name: 'Check-in/out',
+                        name: 'Chấm công thực tế',
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -190,7 +186,7 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(width: 15),
                       CategoryCard(
                         thumbnail: 'assets/images/timepiece.png',
-                        name: 'Timekeeping',
+                        name: 'Bảng chấm công',
                         onTap: () {
                           Navigator.push(
                             context,
@@ -211,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       CategoryCard(
                         thumbnail: 'assets/images/cv.png',
-                        name: 'Leave Staff',
+                        name: 'Nghỉ phép',
                         onTap: () {
                           Navigator.push(
                             context,
@@ -229,7 +225,7 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(width: 15),
                       CategoryCard(
                         thumbnail: 'assets/images/calendar.png',
-                        name: 'Salary',
+                        name: 'Phiếu lương',
                         onTap: () {
                           Navigator.push(
                             context,

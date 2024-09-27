@@ -14,14 +14,14 @@ class MyDialogNotification extends StatelessWidget {
             title,
             style:const TextStyle(
               color: Color(0xff6849ef),
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.w600,
             ),
           ),
           content: Text(
             content,
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 15,
             ),
           ),
           actions: [

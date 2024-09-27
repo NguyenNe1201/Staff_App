@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StaffApi.DO;
+using System.Data;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace StaffApi.Controllers
@@ -36,8 +37,9 @@ namespace StaffApi.Controllers
             }
             return Ok(true);
         }
-        [HttpGet("CheckAccount")]
-        public async Task<ActionResult> LoginByAccount(string phone, string password)
+        // check account user = phone,password
+        [HttpGet("CheckAcByPhone")]
+        public async Task<ActionResult> LoginAccountByPhone(string phone, string password)
         {
             var data = (await employee_Do.GetInfoAllEmployee()).Where(w => w.PHONE_NUMBER == phone && w.PASS_WORD == password).FirstOrDefault();
             if (data == null)
@@ -46,6 +48,29 @@ namespace StaffApi.Controllers
             }
             return Ok(new { emp_code = data.EMP_CODE, emp_id = data.EMPLOYEE_ID });
         }
+        //check account user = email,password
+        [HttpGet("CheckAcByEmail")]
+        public async Task<ActionResult> LoginAccountByEmail(string email, string password)
+        {
+            var data = (await employee_Do.GetInfoAllEmployee()).Where(w => w.EMAIL == email && w.PASS_WORD == password).FirstOrDefault();
+            if (data == null)
+            {
+                return NotFound();
+            }
+            return Ok(new { emp_code = data.EMP_CODE, emp_id = data.EMPLOYEE_ID });
+        }
+        //check account user = email,password
+        [HttpGet("CheckAcByUsername")]
+        public async Task<ActionResult> LoginAccountByUsername(string username, string password)
+        {
+            var data = (await employee_Do.GetInfoAllEmployee()).Where(w => w.USERNAME == username && w.PASS_WORD == password).FirstOrDefault();
+            if (data == null)
+            {
+                return NotFound();
+            }
+            return Ok(new { emp_code = data.EMP_CODE, emp_id = data.EMPLOYEE_ID });
+        }
+        // 
         [HttpPut("UpdateStatus")]
         public async Task<ActionResult<bool>> UpStatus_LoginByOTP(string emp_code, string phone, string otp)
         {

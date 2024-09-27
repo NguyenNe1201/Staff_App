@@ -49,7 +49,7 @@ class _SettingPageState extends State<SettingPage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          AppBarForm(title_: 'Setting'),
+        const AppBarForm(title_: 'Cài Đặt',width_: 100),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -63,7 +63,7 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     SizedBox(width: 10),
                     Text(
-                      "Account",
+                      "Tài khoản",
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -130,7 +130,7 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     SizedBox(width: 10),
                     Text(
-                      "Setting",
+                      "Cài đặt",
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -141,7 +141,7 @@ class _SettingPageState extends State<SettingPage> {
                 const Divider(height: 20, thickness: 0.5),
                 const SizedBox(height: 20),
                 SettingItem(
-                  title: "Language",
+                  title: "Ngôn ngữ",
                   icon: Ionicons.earth,
                   bgColor: Colors.orange.shade100,
                   iconColor: Colors.orange,
@@ -150,7 +150,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 const SizedBox(height: 20),
                 SettingItem(
-                  title: "Notifications",
+                  title: "Thông báo",
                   icon: Ionicons.notifications,
                   bgColor: Colors.blue.shade100,
                   iconColor: Colors.blue,
@@ -158,7 +158,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 const SizedBox(height: 20),
                 SettingSwitch(
-                  title: "Dark Mode",
+                  title: "Chế độ tối",
                   icon: Ionicons.earth,
                   bgColor: Colors.purple.shade100,
                   iconColor: Colors.purple,
@@ -171,7 +171,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 const SizedBox(height: 20),
                 SettingItem(
-                  title: "Help",
+                  title: "Hỗ trợ",
                   icon: Ionicons.nuclear,
                   bgColor: Colors.red.shade100,
                   iconColor: Colors.red,
@@ -195,9 +195,9 @@ class _SettingPageState extends State<SettingPage> {
                           (Route<dynamic> route) => false);
                     },
                     child: const Text(
-                      "SIGN OUT",
+                      "Đăng Xuất",
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 17,
                           letterSpacing: 2.2,
                           color: Colors.black87),
                     ),
@@ -292,7 +292,7 @@ class SettingSwitch extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            value ? "On" : "Off",
+            value ? "Bật" : "Tắt",
             style: const TextStyle(
               fontSize: 16,
               color: Colors.grey,

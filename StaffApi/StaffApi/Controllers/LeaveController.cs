@@ -129,5 +129,18 @@ namespace StaffApi.Controllers
                     return Ok(new { error = "Thêm phép không thành công!" });
             }
         }
+        [HttpPut("UpdateStatus")]
+        public async Task<ActionResult> UpdateStatus(string position, int leave_id, int status, int emp_id_app)
+        {
+            int i = await leave_do.UPD_LEAVE_STATUS(position, leave_id, status, emp_id_app);
+            if (i > 0)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

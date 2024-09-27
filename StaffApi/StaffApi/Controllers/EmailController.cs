@@ -42,7 +42,7 @@ namespace StaffApi.Controllers
                 common = new RandomOTP_Common();
                 Code_OTP = common.MakeRandomOTP(4);
                 await _emailService.SendEmail_OTP(data.EMAIL, Code_OTP);
-                _loginDo.AddOTPEmp(data.EMAIL,data.EMP_CODE, Code_OTP,date_getotp);
+               _loginDo.AddOTPEmpByPhone(data.PHONE_NUMBER,data.EMP_CODE, Code_OTP,date_getotp);
                 return Ok(new { Emp_code = data.EMP_CODE,Emp_id =data.EMPLOYEE_ID,Gmail = data.EMAIL, Phone = number_phone ,Otp =Code_OTP});
             }
         }

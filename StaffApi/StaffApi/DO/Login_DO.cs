@@ -19,9 +19,13 @@ namespace StaffApi.DO
         {
             return await _dbHelper.ExecuteReaderAsync<EmpLogin_Entities>("GetEmpLoginByAll", new string[] { }, new object[] { });
         }
-        public async Task<int> AddOTPEmp(string Email, string Emp_CODE, string OTP, DateTime TimeGetOTP)
+        public async Task<int> AddOTPEmpByEmail(string Email, string Emp_CODE, string OTP, DateTime TimeGetOTP)
         {
             return await _dbHelper.ExecStoreProcedureAsync("Add_OtpByEmail", new string[] { "EMAIL", "EMPLOYEE_CODE", "OTP", "TIME_GET_OTP" }, new object[] { Email, Emp_CODE, OTP, TimeGetOTP });
+        }
+        public async Task<int> AddOTPEmpByPhone(string Email, string Emp_CODE, string OTP, DateTime TimeGetOTP)
+        {
+            return await _dbHelper.ExecStoreProcedureAsync("Add_OtpByPhone", new string[] { "PHONE_NUMBER", "EMPLOYEE_CODE", "OTP", "TIME_GET_OTP" }, new object[] { Email, Emp_CODE, OTP, TimeGetOTP });
         }
         public async Task<int> UpdateTime_LoginOTP(string emp_code, DateTime TimeGetOTP, DateTime time_login)
         {
