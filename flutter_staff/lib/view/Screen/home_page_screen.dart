@@ -182,6 +182,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         availableScreenWidth_: availableScreenWidth,
                         width_: 0.47,
+                        size: 13,
                       ),
                       const SizedBox(width: 15),
                       CategoryCard(
@@ -198,6 +199,7 @@ class _HomePageState extends State<HomePage> {
                         },
                         availableScreenWidth_: availableScreenWidth,
                         width_: 0.47,
+                        size: 14,
                       ),
                     ],
                   ),
@@ -221,6 +223,7 @@ class _HomePageState extends State<HomePage> {
                         },
                         availableScreenWidth_: availableScreenWidth,
                         width_: 0.47,
+                        size: 14,
                       ),
                           const SizedBox(width: 15),
                       CategoryCard(
@@ -237,6 +240,7 @@ class _HomePageState extends State<HomePage> {
                         },
                         availableScreenWidth_: availableScreenWidth,
                         width_: 0.47,
+                        size: 14,
                       ),
                     ],
                   ),
@@ -327,11 +331,12 @@ class CategoryCard extends StatelessWidget {
   final VoidCallback onTap;
   final double width_;
   final double availableScreenWidth_ ;
+  final double? size;
   const CategoryCard({
     Key? key,
     required this.thumbnail,
     required this.name,
-    required this.onTap, required this.width_, required this.availableScreenWidth_,
+    required this.onTap, required this.width_, required this.availableScreenWidth_, required this.size,
   }) : super(key: key);
 
   @override
@@ -368,7 +373,7 @@ class CategoryCard extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Text(
                 name,
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold,fontSize: size),
               ),
             ),
           ],

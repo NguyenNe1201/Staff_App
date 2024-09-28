@@ -1,12 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:ionicons/ionicons.dart';
 
 //AppBar for all page
 class AppBarForm extends StatelessWidget {
   final String title_;
   final String? title_1;
   final double width_;
-  const AppBarForm({super.key, required this.title_, this.title_1, required this.width_});
+  final Function()? onTapLeftBtn;
+  final IconData icon_;
+  const AppBarForm(
+      {super.key,
+      required this.title_,
+      this.title_1,
+      required this.width_,
+      this.onTapLeftBtn,
+      required this.icon_});
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +68,12 @@ class AppBarForm extends StatelessWidget {
           Row(
             children: [
               IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.contact_support_outlined,
+                onPressed: onTapLeftBtn,
+                icon: Icon(
+                  // Icons.contact_support_outlined,
+                  // Ionicons.search_sharp,
+                  //  Iconsax.,
+                  icon_,
                   color: Colors.white,
                   size: 24,
                 ),

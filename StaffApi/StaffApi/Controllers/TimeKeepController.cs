@@ -27,11 +27,21 @@ namespace StaffApi.Controllers
             }
             return Ok(data);
         }
-        // 
+        // chấm công thực tế tháng hiện tại
         [HttpGet("logListTime")]
         public async Task<ActionResult> GetLogListTimeEmp(string code)
         { 
-            var data = (await _timekeepDo.GetTimeLogListMonthByCode(code)).OrderByDescending(o=>o.DATECHECK).ToList();
+            var data = (await _timekeepDo.GetTimeLogListByEmpCode(code)).OrderByDescending(o=>o.DATECHECK).ToList();
+            if (data == null)
+            {
+                return NotFound();
+            }
+            return Ok(data);
+        }
+        [HttpGet("logListTimeByMonth")]
+        public async Task<ActionResult> GetLogListTimeEmp_ByMonth(string code,string month,string year)
+        {
+            var data = (await _timekeepDo.GetLogListTimeByMonth_EmpCode(code,month,year)).OrderByDescending(o => o.DATECHECK).ToList();
             if (data == null)
             {
                 return NotFound();

@@ -65,7 +65,7 @@ class _LeavePageState extends State<LeavePage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          const AppBarForm(title_: 'Nghỉ Phép',width_: 100),
+          const AppBarForm(title_: 'Nghỉ Phép',width_: 100,icon_: Icons.contact_support_outlined),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
@@ -586,7 +586,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const AppBarForm(title_: "Tạo Phép",width_: 100),
+          const AppBarForm(title_: "Tạo Phép",width_: 100,icon_: Icons.contact_support_outlined),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -853,7 +853,7 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          const AppBarForm(title_: "Chi Tiết Phép",width_: 100),
+          const AppBarForm(title_: "Chi Tiết Phép",width_: 100,icon_: Icons.contact_support_outlined),
           // const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

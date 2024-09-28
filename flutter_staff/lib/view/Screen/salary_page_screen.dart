@@ -124,7 +124,7 @@ class _SalaryPageState extends State<SalaryPage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          const AppBarForm(title_: "Bảng Lương",width_: 100),
+          const AppBarForm(title_: "Bảng Lương",width_: 100,icon_: Icons.contact_support_outlined),
           const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
