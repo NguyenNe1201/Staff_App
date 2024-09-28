@@ -12,8 +12,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 class ApiServices {
- final String baseUrl = 'https://localhost:443/api';
-  //final String baseUrl = 'https://192.168.90.112/api';
+ //final String baseUrl = 'https://localhost:443/api';
+  final String baseUrl = 'https://192.168.90.112/api';
   // final String baseUrl = 'https://gw.conectvn.com:4432/api';
   final dio = Dio();
 
@@ -173,8 +173,8 @@ class ApiServices {
     }
   }
 
-  //get data log list month = emp code
-  Future<List<LogListMonthModel>> fetchLogListMonth(String code) async {
+  //get data log list current month = emp code
+  Future<List<LogListMonthModel>> fetchLogListCurrentMonth(String code) async {
     try {
       var response = await dio.get('$baseUrl/TimeKeep/logListTime?code=$code');
       List<LogListMonthModel> lists = (response.data as List)
@@ -185,7 +185,18 @@ class ApiServices {
       throw Exception('Failed to load data');
     }
   }
-
+  //get data log list = emp code by month year
+  Future<List<LogListMonthModel>> fetchLogListEmpByMonth(String code,String month,String year) async {
+    try {
+      var response = await dio.get('$baseUrl/TimeKeep/logListTimeByMonth?code=$code&month=$month&year=$year');
+      List<LogListMonthModel> lists = (response.data as List)
+          .map((userJson) => LogListMonthModel.fromJson(userJson))
+          .toList();
+      return lists;
+    } catch (e) {
+      throw Exception('Failed to load data');
+    }
+  }
   //------------------------------- LEAVE ------------------------------
   // get select cal leave by employee id
   Future<CalLeaveModel?> fetchGetCalLeave(int emp_id) async {

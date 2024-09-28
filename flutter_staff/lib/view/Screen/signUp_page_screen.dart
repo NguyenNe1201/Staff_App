@@ -68,7 +68,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Column(
         //  crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const AppBarForm(title_: "Đăng Ký", width_: 100),
+          const AppBarForm(title_: "Đăng Ký", width_: 100,icon_: Icons.contact_support_outlined),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -489,7 +489,7 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(children: [
-        const AppBarForm(title_: "Nhập Mã Xác Minh", width_: 100),
+        const AppBarForm(title_: "Nhập Mã Xác Minh", width_: 100,icon_: Icons.contact_support_outlined),
         const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.all(25),

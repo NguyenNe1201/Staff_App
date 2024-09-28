@@ -11,6 +11,7 @@ import 'package:flutter_staff/view/Widget/datatable_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import '../../models/logListMonths.dart';
+import 'package:ionicons/ionicons.dart';
 
 // ------------------------ form chấm công thực tế -----------------------
 class LoglistPage extends StatefulWidget {
@@ -25,14 +26,41 @@ class _LoglistPageState extends State<LoglistPage> {
   final ApiServices apiHandler = ApiServices();
   List<LogListMonthModel> _lists = [];
   bool isLoading = false;
+
+  String? selectedMonth;
+  String? selectedYear;
+  final List<String> items_month = [
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+  ];
+  final List<String> items_year = [];
+  final int startYear = 2019;
+  final int currentYear = DateTime.now().year;
+
+  void list_year() {
+    for (int year = startYear; year <= currentYear; year++) {
+      items_year.add(year.toString());
+    }
+  }
+
   // lấy dữ liệu từ model
-  Future<void> getDataLogList(String code) async {
+  Future<void> getDataLogList(String code,String month,String year) async {
     setState(() {
       isLoading = true;
     });
     try {
       List<LogListMonthModel> loglists =
-          await apiHandler.fetchLogListMonth(code);
+          await apiHandler.fetchLogListEmpByMonth(code,month,year);
       setState(() {
         _lists = loglists;
         setState(() {
@@ -51,8 +79,119 @@ class _LoglistPageState extends State<LoglistPage> {
   @override
   void initState() {
     super.initState();
-    getDataLogList(widget.emp_code
-        .toString()); // Replace 'EMPLOYEE_CODE' with the actual employee code
+    list_year();
+  }
+
+  void _showCustomDialog() {
+    String? tempSelectedMonth = selectedMonth;
+    String? tempSelectedYear = selectedYear;
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text(
+            "Tìm Kiếm",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff6849ef),
+            ),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+
+                    child: DropdownButtonFormField<String>(
+                      menuMaxHeight: 200,
+                    
+                      decoration: InputDecoration(
+                        labelText: 'Tháng',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide(
+                            color: const Color(0xff6849ef).withOpacity(0.8),
+                            width: 0.5,
+                          ),
+                        ),
+                      ),
+                      value: tempSelectedMonth,
+                      items: items_month.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          tempSelectedMonth = newValue;
+                        });
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                      menuMaxHeight: 200,
+                      decoration: InputDecoration(
+                        labelText: 'Năm',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: BorderSide(
+                            color: const Color(0xff6849ef).withOpacity(0.8),
+                            width: 0.5,
+                          ),
+                        ),
+                      ),
+                      value: tempSelectedYear,
+                      items: items_year.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          tempSelectedYear = newValue;
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                // crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text("Hủy"),
+                  ),
+                  const SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        selectedMonth = tempSelectedMonth;
+                        selectedYear = tempSelectedYear;
+                      });
+                      getDataLogList(widget.emp_code.toString(),tempSelectedMonth.toString(),tempSelectedYear.toString());
+                      Navigator.pop(context);
+                    },
+                    child: const Text("Chọn"),
+                  ),
+                ],
+              )
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -61,10 +200,12 @@ class _LoglistPageState extends State<LoglistPage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-         const AppBarForm(
+          AppBarForm(
               title_: 'Chấm Công Thực Tế',
               title_1: "(Giờ Vào - Ra)",
-              width_: 110),
+              width_: 110,
+              icon_: Ionicons.search_sharp,
+              onTapLeftBtn: () {_showCustomDialog();}),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -75,7 +216,8 @@ class _LoglistPageState extends State<LoglistPage> {
                   child: isLoading
                       ? const Center(child: CircularProgressIndicator())
                       : _lists.isEmpty
-                          ? const Center(child: Text('No data found'))
+                          ? const Center(child: Text('Không có dữ liệu.',
+                            style: TextStyle(fontSize: 15)))
                           : DataTable(
                               headingRowHeight: 60,
                               columnSpacing: 20,
@@ -89,35 +231,33 @@ class _LoglistPageState extends State<LoglistPage> {
                                         name_title1: "GIỜ QUÉT",
                                         name_title2: "(SCAN TIME)")),
                                 DataColumn(
-
                                     label: buildTitleDataColumn(
                                         name_title1: "TÊN MÁY",
-                                        name_title2: "(MACHINE NAME)")),
-
+                                        name_title2: "(DEVICE NAME)")),
                               ],
+                              
                               rows: _lists.asMap().entries.map((entry) {
                                 int index = entry.key;
                                 var loglists = entry.value;
                                 return DataRow(
-
                                   cells: [
-
                                     DataCell(
-                                      buildContentDataCell(content: loglists.dATECHECK != null
+                                      buildContentDataCell(
+                                        content: loglists.dATECHECK != null
                                             ? DateFormat('dd/MM/yyyy').format(
                                                 DateTime.parse(
                                                     loglists.dATECHECK!))
-                                            : '-',),
-                                      
+                                            : '-',
+                                      ),
                                     ),
-                                    DataCell(
-                                      buildContentDataCell(content: DateFormat('HH:mm:ss').format(
-                                                DateTime.parse(
-                                                    loglists.tIMETEMP!))
-                                           ?? '-')
-                                      
-                                    ),
-                                    DataCell(buildContentDataCell(content: loglists.nM ?? '-')),
+                                    DataCell(buildContentDataCell(
+                                        content: (loglists.tIMECHECK ?? "-"))),
+                                    DataCell(Container(
+                                      alignment: Alignment.topCenter,
+                                      width: 100,
+                                      child: buildContentDataCell(
+                                          content: loglists.nM ?? '-'),
+                                    )),
                                   ],
                                 );
                               }).toList(),
@@ -143,15 +283,12 @@ class TimekeepPage extends StatefulWidget {
 
 class _TimekeepPageState extends State<TimekeepPage> {
   final ApiServices apiServices = ApiServices();
+  String? title2_appbar;
   List<TimeKeepModel> _Lists = [];
   bool isLoadingData = false;
   late TimekeepDataSource _timekeepDataSource;
   String? selectedMonth;
   String? selectedYear;
-  String? title2_appbar;
-  bool _isMonthDropdownOpened = false;
-  bool _isYearDropdownOpened = false;
-  bool _isButtonEnabled = false;
   final List<String> items_month = [
     '01',
     '02',
@@ -214,24 +351,13 @@ class _TimekeepPageState extends State<TimekeepPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                "Tìm Kiếm",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff6849ef),
-                ),
-              ),
-              IconButton(
-                icon: Icon(Icons.close),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
+          title: const Text(
+            "Tìm Kiếm",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff6849ef),
+            ),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -296,24 +422,38 @@ class _TimekeepPageState extends State<TimekeepPage> {
                 ],
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    selectedMonth = tempSelectedMonth;
-                    selectedYear = tempSelectedYear;
-                  });
-                  getDataTimeKeep(
-                      widget.emp_code, selectedMonth!, selectedYear!);
-                  Navigator.pop(context); // Đóng Dialog
-                },
-                child: const Text("Chọn"),
-              ),
+              Row(
+                // crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text("Hủy"),
+                  ),
+                  const SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        selectedMonth = tempSelectedMonth;
+                        selectedYear = tempSelectedYear;
+                      });
+                      getDataTimeKeep(
+                          widget.emp_code, selectedMonth!, selectedYear!);
+                      Navigator.pop(context); // Đóng Dialog
+                    },
+                    child: const Text("Chọn"),
+                  ),
+                ],
+              )
             ],
           ),
         );
       },
     );
   }
+
   String formatCycleText(String selectedMonth) {
     int selectedMonthInt = int.parse(selectedMonth);
     int previousMonthInt = selectedMonthInt - 1;
@@ -333,13 +473,20 @@ class _TimekeepPageState extends State<TimekeepPage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-           AppBarForm(title_: 'Bảng Công Tháng',title_1:title2_appbar, width_: 110),
+          AppBarForm(
+              title_: 'Bảng Công Tháng',
+              title_1: title2_appbar,
+              width_: 110,
+              icon_: Ionicons.search_sharp,
+              onTapLeftBtn: () {
+                _showCustomDialog();
+              }),
           Expanded(
             child: isLoadingData
                 ? const Center(child: CircularProgressIndicator())
                 : _Lists.isEmpty
                     ? const Center(
-                        child: Text('Không có dữ liệu',
+                        child: Text('Không có dữ liệu.',
                             style: TextStyle(fontSize: 15)))
                     : Padding(
                         padding: const EdgeInsets.only(bottom: 10),
@@ -416,12 +563,12 @@ class _TimekeepPageState extends State<TimekeepPage> {
           //         }),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        mini: true,
-        onPressed: _showCustomDialog,
-        tooltip: 'Search',
-        child: const Icon(Icons.search),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   mini: true,
+      //   onPressed: _showCustomDialog,
+      //   tooltip: 'Search',
+      //   child: const Icon(Icons.search),
+      // ),
     );
   }
 }

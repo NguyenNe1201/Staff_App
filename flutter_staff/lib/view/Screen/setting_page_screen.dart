@@ -49,7 +49,7 @@ class _SettingPageState extends State<SettingPage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-        const AppBarForm(title_: 'Cài Đặt',width_: 100),
+        const AppBarForm(title_: 'Cài Đặt',width_: 100,icon_: Icons.contact_support_outlined),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
