@@ -1,17 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staff/view/Screen/signUp_page_screen.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:intl/intl.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
-import 'package:flutter_staff/models/logins.dart';
 import 'package:flutter_staff/view/Screen/home_page_screen.dart';
-import 'dart:async';
-
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Widget/dialogNotification_widget.dart';
 
@@ -176,7 +172,26 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ForgotPassPage()),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(right: 10),
+                    alignment: Alignment.centerRight,
+                    child: const Text('Quên mât khẩu?',
+                        style: TextStyle(
+                            color: Color(0xff6849ef),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15)),
+                  ),
+                ),
+                const SizedBox(height: 10),
                 buildButton_Login("Đăng nhập", _phoneController.text,
                     _passwordController.text, isButtonEnabled),
                 const SizedBox(height: 20),
@@ -490,3 +505,93 @@ Widget buildFolderRow(String _title, IconData? _icon) {
 //     );
 //   }
 // }
+class ForgotPassPage extends StatefulWidget {
+  const ForgotPassPage({super.key});
+
+  @override
+  State<ForgotPassPage> createState() => _ForgotPassPageState();
+}
+
+class _ForgotPassPageState extends State<ForgotPassPage> {
+  final TextEditingController _phoneController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.grey[100],
+        body: Column(
+          children: [
+            const AppBarForm(
+                title_: "Quên Mật Khẩu",
+                width_: 100,
+                icon_: Icons.contact_support_outlined),
+            const SizedBox(height: 20),
+            Form(
+              key: _formKey,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: TextFormField(
+                  autofocus: true,
+                  controller: _phoneController,
+                  keyboardType: TextInputType.phone,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  style: const TextStyle(
+                    color: Color(0xff6849ef),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color(0xff886ff2),
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Color(0xff6849ef),
+                      ),
+                    ),
+                    // Cấu hình viền khi có lỗi
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Colors.pink,
+                      ),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Colors.pink,
+                      ),
+                    ),
+                    prefixIcon: const Icon(
+                      Iconsax.password_check,
+                      size: 28,
+                      color: Color(0xff6849ef),
+                    ),
+                    labelText: 'Số điện thoại',
+                    labelStyle: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey[800],
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'không được để trống';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+          ],
+        ));
+  }
+}

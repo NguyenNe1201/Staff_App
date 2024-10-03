@@ -1,14 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
-import 'package:flutter_staff/models/employee_views.dart';
+import 'package:flutter_staff/models/employees.dart';
 import 'package:flutter_staff/models/leaves.dart';
 import 'package:flutter_staff/view/Screen/timekeep_page_screen.dart';
 import 'package:flutter_staff/view/Screen/leave_page_screen.dart';
 import 'package:flutter_staff/view/Screen/salary_page_screen.dart';
 import 'package:flutter_staff/view/Widget/boxCountLeave_widget.dart';
 import 'package:flutter_staff/view/Screen/setting_page_screen.dart';
+import 'package:ionicons/ionicons.dart';
 
 class HomePage extends StatefulWidget {
   final String? emp_code;
@@ -165,71 +169,14 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   const SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center, 
-                    children: [
-                      CategoryCard(
-                        thumbnail: 'assets/images/check-in.png',
-                        name: 'Chấm công thực tế',
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoglistPage(
-                                emp_code: widget.emp_code.toString()
-                                
-                                ),
-                          ),
-                        ),
-                        availableScreenWidth_: availableScreenWidth,
-                        width_: 0.47,
-                        size: 13,
-                      ),
-                      const SizedBox(width: 15),
-                      CategoryCard(
-                        thumbnail: 'assets/images/timepiece.png',
-                        name: 'Bảng chấm công',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => TimekeepPage(
-                                  emp_code: widget.emp_code.toString()),
-                            ),
-                          );
-                        },
-                        availableScreenWidth_: availableScreenWidth,
-                        width_: 0.47,
-                        size: 14,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CategoryCard(
-                        thumbnail: 'assets/images/cv.png',
-                        name: 'Nghỉ phép',
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LeavePage(
-                                emp_code: widget.emp_code.toString(),
-                                emp_id: widget.emp_id!,
-                              ),
-                            ),
-                          );
-                        },
-                        availableScreenWidth_: availableScreenWidth,
-                        width_: 0.47,
-                        size: 14,
-                      ),
-                          const SizedBox(width: 15),
-                      CategoryCard(
-                        thumbnail: 'assets/images/calendar.png',
-                        name: 'Phiếu lương',
-                        onTap: () {
+                  Container(
+                    height: 100,
+                    child: Row(
+                     // scrollDirection: Axis.horizontal,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        buildCategoryRow(
+                            "Phiếu lương","",'assets/images/calendar.png', () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -237,13 +184,298 @@ class _HomePageState extends State<HomePage> {
                                   emp_code: widget.emp_code.toString()),
                             ),
                           );
-                        },
-                        availableScreenWidth_: availableScreenWidth,
-                        width_: 0.47,
-                        size: 14,
-                      ),
-                    ],
+                        }),
+                        const SizedBox(width: 15),
+                        buildCategoryRow(
+                            'Nghỉ phép',"" ,'assets/images/application.png', () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LeavePage(
+                                  emp_code: widget.emp_code.toString(),
+                                  emp_id: widget.emp_id!),
+                            ),
+                          );
+                        }),
+                        const SizedBox(width: 15),
+                        buildCategoryRow(
+                            'Giờ vào-ra', "",'assets/images/check-in.png', () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoglistPage(
+                                  emp_code: widget.emp_code.toString()),
+                            ),
+                          );
+                        }),
+                        const SizedBox(width: 15),
+                        buildCategoryRow(
+                            "Bảng công","tháng", 'assets/images/schedule.png',
+                            () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TimekeepPage(
+                                  emp_code: widget.emp_code.toString()),
+                            ),
+                          );
+                        })
+                      ],
+                    ),
                   ),
+                  const SizedBox(height: 20),
+                  Container(
+                    height: 300,
+                    child: Align(
+                        alignment: Alignment.center,
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(.05),
+                                    blurRadius: 4.0,
+                                    spreadRadius: .05,
+                                  )
+                                ],
+                              ),
+                              child: ClipRRect(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                child: Image.asset(
+                                  'assets/images/bg_home.jpg',
+                                  height: 200,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            // Text(
+                            //   'Giải quyết công việc',
+                            //   style: TextStyle(
+                            //     fontSize: 15,
+                            //     fontWeight: FontWeight.w700,
+                            //   ),
+                            // )
+                          ],
+                        )),
+                  )
+                  // Row(
+                  //   children: [
+                  //     Row(
+                  //       children: [
+                  //         Column(
+                  //           children: [
+                  //             Container(
+                  //               width: 50,
+                  //               height: 50,
+                  //               decoration: BoxDecoration(
+                  //                 color: Colors.white,
+                  //                 borderRadius:
+                  //                     BorderRadius.all(Radius.circular(10)),
+                  //                 boxShadow: [
+                  //                   BoxShadow(
+                  //                     color: Colors.black.withOpacity(.1),
+                  //                     blurRadius: 4.0,
+                  //                     spreadRadius: .05,
+                  //                   )
+                  //                 ],
+                  //               ),
+                  //               child: Icon(
+                  //                 Iconsax.finger_scan_copy,
+                  //                 size: 40,
+                  //                 color: Colors.white,
+                  //               ),
+                  //             ),
+                  //             SizedBox(height: 10),
+                  //             Text('Chấm Công'),
+                  //           ],
+                  //         )
+                  //       ],
+                  //     ),
+                  //     SizedBox(width: 10),
+                  //     Row(
+                  //       children: [
+                  //         Column(
+                  //           children: [
+                  //             Container(
+                  //               width: 50,
+                  //               height: 50,
+                  //               decoration: BoxDecoration(
+                  //                 color: Colors.white,
+                  //                 borderRadius:
+                  //                     BorderRadius.all(Radius.circular(10)),
+                  //                 boxShadow: [
+                  //                   BoxShadow(
+                  //                     color: Colors.black.withOpacity(.1),
+                  //                     blurRadius: 4.0,
+                  //                     spreadRadius: .05,
+                  //                   )
+                  //                 ],
+                  //               ),
+                  //               child: Icon(
+                  //                 Iconsax.clock_copy,
+                  //                 size: 40,
+                  //                 color: Colors.white,
+                  //               ),
+                  //             ),
+                  //             SizedBox(height: 10),
+                  //             Text('Giờ vào-ra'),
+                  //           ],
+                  //         )
+                  //       ],
+                  //     ),
+                  //     SizedBox(width: 10),
+                  //     Row(
+                  //       children: [
+                  //         Column(
+                  //           children: [
+                  //             Container(
+                  //               width: 50,
+                  //               height: 50,
+                  //               decoration: BoxDecoration(
+                  //                 color: Colors.white,
+                  //                 borderRadius:
+                  //                     BorderRadius.all(Radius.circular(10)),
+                  //                 boxShadow: [
+                  //                   BoxShadow(
+                  //                     color: Colors.black.withOpacity(.1),
+                  //                     blurRadius: 4.0,
+                  //                     spreadRadius: .05,
+                  //                   )
+                  //                 ],
+                  //               ),
+                  //               child:Align(
+                  //                 alignment: Alignment.center,
+                  //                 child: Image.asset(
+                  //                   'assets/images/calendar_slr.png',
+                  //                   height: 30,
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             SizedBox(height: 10),
+                  //             Text('Nghỉ Phép'),
+                  //           ],
+                  //         )
+                  //       ],
+                  //     ),
+                  //     SizedBox(width: 10),
+                  //     Row(
+                  //       children: [
+                  //         Column(
+                  //           children: [
+                  //             Container(
+                  //               width: 50,
+                  //               height: 50,
+                  //               decoration: BoxDecoration(
+                  //                 color: Colors.white,
+                  //                 borderRadius:
+                  //                     BorderRadius.all(Radius.circular(10)),
+                  //                 boxShadow: [
+                  //                   BoxShadow(
+                  //                     color: Colors.black.withOpacity(.1),
+                  //                     blurRadius: 4.0,
+                  //                     spreadRadius: .05,
+                  //                   )
+                  //                 ],
+                  //               ),
+                  //               child: Align(
+                  //                 alignment: Alignment.center,
+                  //                 child: Image.asset(
+                  //                   'assets/images/calendar_slr.png',
+                  //                   height: 30,
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //             SizedBox(height: 10),
+                  //             Text('Phiếu lương'),
+                  //           ],
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ],
+                  // )
+                  // ========  Category cũ ====================
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     CategoryCard(
+                  //       thumbnail: 'assets/images/check-in.png',
+                  //       name: 'Chấm công thực tế',
+                  //       onTap: () => Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //           builder: (context) => LoglistPage(
+                  //               emp_code: widget.emp_code.toString()
+
+                  //               ),
+                  //         ),
+                  //       ),
+                  //       availableScreenWidth_: availableScreenWidth,
+                  //       width_: 0.47,
+                  //       size: 13,
+                  //     ),
+                  //     const SizedBox(width: 15),
+                  //     CategoryCard(
+                  //       thumbnail: 'assets/images/timepiece.png',
+                  //       name: 'Bảng chấm công',
+                  //       onTap: () {
+                  //         Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //             builder: (context) => TimekeepPage(
+                  //                 emp_code: widget.emp_code.toString()),
+                  //           ),
+                  //         );
+                  //       },
+                  //       availableScreenWidth_: availableScreenWidth,
+                  //       width_: 0.47,
+                  //       size: 14,
+                  //     ),
+                  //   ],
+                  // ),
+                  // const SizedBox(height: 15),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     CategoryCard(
+                  //       thumbnail: 'assets/images/cv.png',
+                  //       name: 'Nghỉ phép',
+                  //       onTap: () {
+                  //         Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //             builder: (context) => LeavePage(
+                  //               emp_code: widget.emp_code.toString(),
+                  //               emp_id: widget.emp_id!,
+                  //             ),
+                  //           ),
+                  //         );
+                  //       },
+                  //       availableScreenWidth_: availableScreenWidth,
+                  //       width_: 0.47,
+                  //       size: 14,
+                  //     ),
+                  //         const SizedBox(width: 15),
+                  //     CategoryCard(
+                  //       thumbnail: 'assets/images/calendar.png',
+                  //       name: 'Phiếu lương',
+                  //       onTap: () {
+                  //         Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //             builder: (context) => SalaryPage(
+                  //                 emp_code: widget.emp_code.toString()),
+                  //           ),
+                  //         );
+                  //       },
+                  //       availableScreenWidth_: availableScreenWidth,
+                  //       width_: 0.47,
+                  //       size: 14,
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
             ],
@@ -283,6 +515,53 @@ class _HomePageState extends State<HomePage> {
         ],
         currentIndex: _selectedIndex, // Chỉ số tab hiện tại
         onTap: _onItemTapped,
+      ),
+    );
+  }
+
+  Widget buildCategoryRow(
+      String title1, String? title2, String thumbnail, VoidCallback onTap_) {
+    return GestureDetector(
+      onTap: onTap_,
+      child: Center(
+        child: Column(
+          children: [
+            // Container(
+            //   width: 70,
+            //   height: 70,
+            //   decoration: BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.all(Radius.circular(10)),
+            //     boxShadow: [
+            //       BoxShadow(
+            //         color: Colors.black.withOpacity(.1),
+            //         blurRadius: 4.0,
+            //         spreadRadius: .05,
+            //       )
+            //     ],
+            //   ),
+            //   child:
+            Align(
+              alignment: Alignment.center,
+              child: Image.asset(
+                thumbnail,
+                height: 50,
+              ),
+            ),
+            //  ),
+            const SizedBox(height: 10),
+            Text(title1,
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 13,
+                    color: Colors.grey.shade800)),
+            Text(title2 ?? "",
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 13,
+                    color: Colors.grey.shade800)),
+          ],
+        ),
       ),
     );
   }
@@ -330,13 +609,16 @@ class CategoryCard extends StatelessWidget {
   final String name;
   final VoidCallback onTap;
   final double width_;
-  final double availableScreenWidth_ ;
+  final double availableScreenWidth_;
   final double? size;
   const CategoryCard({
     Key? key,
     required this.thumbnail,
     required this.name,
-    required this.onTap, required this.width_, required this.availableScreenWidth_, required this.size,
+    required this.onTap,
+    required this.width_,
+    required this.availableScreenWidth_,
+    required this.size,
   }) : super(key: key);
 
   @override
@@ -345,7 +627,7 @@ class CategoryCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(10),
-        width:  availableScreenWidth_ * width_,
+        width: availableScreenWidth_ * width_,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -373,7 +655,7 @@ class CategoryCard extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Text(
                 name,
-                style: TextStyle(fontWeight: FontWeight.bold,fontSize: size),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: size),
               ),
             ),
           ],
@@ -382,4 +664,3 @@ class CategoryCard extends StatelessWidget {
     );
   }
 }
-

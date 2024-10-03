@@ -225,3 +225,68 @@ class KindLeaveModel {
     return data;
   }
 }
+// ======================== ================================
+class CountWaitLeaveModel {
+  int? eMPLOYEEID;
+  int? wAITINGLEAVET1;
+  int? wAITINGLEAVET2;
+  int? wAITINGLEAVET3;
+  int? wAITINGLEAVET4;
+  int? wAITINGLEAVET5;
+  int? wAITINGLEAVET6;
+  int? wAITINGLEAVET7;
+  int? wAITINGLEAVET8;
+  int? wAITINGLEAVET9;
+  int? wAITINGLEAVET10;
+  int? wAITINGLEAVET11;
+  int? wAITINGLEAVET12;
+
+  CountWaitLeaveModel(
+      {this.eMPLOYEEID,
+      this.wAITINGLEAVET1,
+      this.wAITINGLEAVET2,
+      this.wAITINGLEAVET3,
+      this.wAITINGLEAVET4,
+      this.wAITINGLEAVET5,
+      this.wAITINGLEAVET6,
+      this.wAITINGLEAVET7,
+      this.wAITINGLEAVET8,
+      this.wAITINGLEAVET9,
+      this.wAITINGLEAVET10,
+      this.wAITINGLEAVET11,
+      this.wAITINGLEAVET12});
+
+  CountWaitLeaveModel.fromJson(Map<String, dynamic> json) {
+    eMPLOYEEID = json['EMPLOYEE_ID'];
+    wAITINGLEAVET1 = json['WAITING_LEAVE_T1'];
+    wAITINGLEAVET2 = json['WAITING_LEAVE_T2'];
+    wAITINGLEAVET3 = json['WAITING_LEAVE_T3'];
+    wAITINGLEAVET4 = json['WAITING_LEAVE_T4'];
+    wAITINGLEAVET5 = json['WAITING_LEAVE_T5'];
+    wAITINGLEAVET6 = json['WAITING_LEAVE_T6'];
+    wAITINGLEAVET7 = json['WAITING_LEAVE_T7'];
+    wAITINGLEAVET8 = json['WAITING_LEAVE_T8'];
+    wAITINGLEAVET9 = json['WAITING_LEAVE_T9'];
+    wAITINGLEAVET10 = json['WAITING_LEAVE_T10'];
+    wAITINGLEAVET11 = json['WAITING_LEAVE_T11'];
+    wAITINGLEAVET12 = json['WAITING_LEAVE_T12'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['EMPLOYEE_ID'] = this.eMPLOYEEID;
+    data['WAITING_LEAVE_T1'] = this.wAITINGLEAVET1;
+    data['WAITING_LEAVE_T2'] = this.wAITINGLEAVET2;
+    data['WAITING_LEAVE_T3'] = this.wAITINGLEAVET3;
+    data['WAITING_LEAVE_T4'] = this.wAITINGLEAVET4;
+    data['WAITING_LEAVE_T5'] = this.wAITINGLEAVET5;
+    data['WAITING_LEAVE_T6'] = this.wAITINGLEAVET6;
+    data['WAITING_LEAVE_T7'] = this.wAITINGLEAVET7;
+    data['WAITING_LEAVE_T8'] = this.wAITINGLEAVET8;
+    data['WAITING_LEAVE_T9'] = this.wAITINGLEAVET9;
+    data['WAITING_LEAVE_T10'] = this.wAITINGLEAVET10;
+    data['WAITING_LEAVE_T11'] = this.wAITINGLEAVET11;
+    data['WAITING_LEAVE_T12'] = this.wAITINGLEAVET12;
+    return data;
+  }
+}

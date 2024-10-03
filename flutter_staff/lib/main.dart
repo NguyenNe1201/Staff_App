@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       title: "HRM",
       // home: const HomePage(emp_code: '164',emp_id: 64),
         home: LoginPage(),
-      //home: TeamFolderPage(),
+    
       routes: {},
     );
   }

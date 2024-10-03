@@ -26,4 +26,5 @@
         public string NAMELEAVE_VI { get; set; }
         public string NAMELEAVE_EN { get; set; }
     }
+
 }
