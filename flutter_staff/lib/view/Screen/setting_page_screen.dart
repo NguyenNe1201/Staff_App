@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staff/view/Widget/button_widget.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Screen/profile_page_screen.dart';
-import 'package:flutter_staff/models/employee_views.dart';
+import 'package:flutter_staff/models/employees.dart';
 
 class SettingPage extends StatefulWidget {
   final String? emp_code;

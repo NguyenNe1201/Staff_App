@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter_staff/models/employee_views.dart';
 import 'package:flutter_staff/models/leaves.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Widget/boxCountLeave_widget.dart';
@@ -30,6 +29,7 @@ class _LeavePageState extends State<LeavePage> {
   bool showAll = false;
   double availableScreenWidth = 0;
   CalLeaveModel? CalLeave_model;
+  CountWaitLeaveModel? CountWaitLeave_model;
   String year_current = DateFormat('yyyy').format(DateTime.now());
   void toggleShowAll() {
     setState(() {
@@ -40,9 +40,11 @@ class _LeavePageState extends State<LeavePage> {
   Future<void> getCalLeaveByEmpID(int empID) async {
     try {
       var cal_leave = await apiServices.fetchGetCalLeave(empID);
+      var countWaitLeave = await apiServices.fetchGetCountWaitingLeave(empID);
       if (cal_leave != null) {
         setState(() {
           CalLeave_model = cal_leave;
+          CountWaitLeave_model = countWaitLeave;
         });
       }
     } catch (e) {
@@ -65,10 +67,13 @@ class _LeavePageState extends State<LeavePage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          const AppBarForm(title_: 'Nghỉ Phép',width_: 100,icon_: Icons.contact_support_outlined),
+          const AppBarForm(
+              title_: 'Nghỉ Phép',
+              width_: 100,
+              icon_: Icons.contact_support_outlined),
           Expanded(
             child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               children: [
                 Column(
                   children: [
@@ -171,7 +176,10 @@ class _LeavePageState extends State<LeavePage> {
                     const SizedBox(height: 20),
 
                     buildBoxLeaveByMonth(
-                        'Tháng 1', CalLeave_model?.t1.toString() ?? "", () {
+                        'Tháng 1',
+                        CalLeave_model?.t1.toString() ?? "",
+                        CountWaitLeave_model?.wAITINGLEAVET1.toString() ?? "",
+                        () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -183,7 +191,10 @@ class _LeavePageState extends State<LeavePage> {
                       );
                     }),
                     buildBoxLeaveByMonth(
-                        'Tháng 2', CalLeave_model?.t2.toString() ?? "", () {
+                        'Tháng 2',
+                        CalLeave_model?.t2.toString() ?? "",
+                        CountWaitLeave_model?.wAITINGLEAVET2.toString() ?? "",
+                        () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -194,7 +205,10 @@ class _LeavePageState extends State<LeavePage> {
                       );
                     }),
                     buildBoxLeaveByMonth(
-                        'Tháng 3', CalLeave_model?.t3.toString() ?? "", () {
+                        'Tháng 3',
+                        CalLeave_model?.t3.toString() ?? "",
+                        CountWaitLeave_model?.wAITINGLEAVET3.toString() ?? "",
+                        () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -205,7 +219,10 @@ class _LeavePageState extends State<LeavePage> {
                       );
                     }),
                     buildBoxLeaveByMonth(
-                        'Tháng 4', CalLeave_model?.t4.toString() ?? "", () {
+                        'Tháng 4',
+                        CalLeave_model?.t4.toString() ?? "",
+                        CountWaitLeave_model?.wAITINGLEAVET4.toString() ?? "",
+                        () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -216,7 +233,10 @@ class _LeavePageState extends State<LeavePage> {
                       );
                     }),
                     buildBoxLeaveByMonth(
-                        'Tháng 5', CalLeave_model?.t5.toString() ?? "", () {
+                        'Tháng 5',
+                        CalLeave_model?.t5.toString() ?? "",
+                        CountWaitLeave_model?.wAITINGLEAVET5.toString() ?? "",
+                        () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -228,7 +248,10 @@ class _LeavePageState extends State<LeavePage> {
                     }),
                     if (showAll) ...[
                       buildBoxLeaveByMonth(
-                          'Tháng 6', CalLeave_model?.t6.toString() ?? "", () {
+                          'Tháng 6',
+                          CalLeave_model?.t6.toString() ?? "",
+                          CountWaitLeave_model?.wAITINGLEAVET6.toString() ?? "",
+                          () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -239,7 +262,10 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 7', CalLeave_model?.t7.toString() ?? "", () {
+                          'Tháng 7',
+                          CalLeave_model?.t7.toString() ?? "",
+                          CountWaitLeave_model?.wAITINGLEAVET7.toString() ?? "",
+                          () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -250,7 +276,10 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 8', CalLeave_model?.t8.toString() ?? "", () {
+                          'Tháng 8',
+                          CalLeave_model?.t8.toString() ?? "",
+                          CountWaitLeave_model?.wAITINGLEAVET8.toString() ?? "",
+                          () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -261,7 +290,10 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 9', CalLeave_model?.t9.toString() ?? "", () {
+                          'Tháng 9',
+                          CalLeave_model?.t9.toString() ?? "",
+                          CountWaitLeave_model?.wAITINGLEAVET9.toString() ?? "",
+                          () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -272,7 +304,10 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 10', CalLeave_model?.t10.toString() ?? "", () {
+                          'Tháng 10',
+                          CalLeave_model?.t10.toString() ?? "",
+                          CountWaitLeave_model?.wAITINGLEAVET10.toString() ??
+                              "", () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -283,7 +318,10 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 11', CalLeave_model?.t11.toString() ?? "", () {
+                          'Tháng 11',
+                          CalLeave_model?.t11.toString() ?? "",
+                          CountWaitLeave_model?.wAITINGLEAVET11.toString() ??
+                              "", () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -294,7 +332,10 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 12', CalLeave_model?.t12.toString() ?? "", () {
+                          'Tháng 12',
+                          CalLeave_model?.t12.toString() ?? "",
+                          CountWaitLeave_model?.wAITINGLEAVET12.toString() ??
+                              "", () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -348,7 +389,7 @@ class _LeavePageState extends State<LeavePage> {
   }
 
   Widget buildBoxLeaveByMonth(
-      String foldername, String _value, VoidCallback _onTap) {
+      String foldername, String s_leave, String w_leave, VoidCallback _onTap) {
     return GestureDetector(
       onTap: _onTap,
       child: Container(
@@ -384,7 +425,7 @@ class _LeavePageState extends State<LeavePage> {
                     ),
                   ),
                   const SizedBox(width: 20),
-                  if (_value !="0.0" && _value !="")
+                  if (s_leave != "0.0" && s_leave != "" && s_leave != "0")
                     Container(
                       height: 25,
                       width: 50,
@@ -394,7 +435,7 @@ class _LeavePageState extends State<LeavePage> {
                       ),
                       child: Center(
                         child: Text(
-                          _value,
+                          s_leave,
                           style: const TextStyle(
                               color: Color(0xff1fa750),
                               fontSize: 16,
@@ -402,25 +443,26 @@ class _LeavePageState extends State<LeavePage> {
                         ),
                       ),
                     ),
-                  //   const SizedBox(width: 10),
-                  // if(_value != "0.0" || _value != "0")
-                  // Container(
-                  //   height: 25,
-                  //   width: 50,
-                  //   decoration: BoxDecoration(
-                  //     color: const Color(0xfffde6d8),
-                  //     borderRadius: BorderRadius.circular(5),
-                  //   ),
-                  //   child: Center(
-                  //     child: Text(
-                  //       _value,
-                  //       style: const TextStyle(
-                  //           color: Color(0xffF5803E),
-                  //           fontSize: 16,
-                  //           fontWeight: FontWeight.w700),
-                  //     ),
-                  //   ),
-                  // ),
+                  if (s_leave != "0.0" && s_leave != "" && s_leave != "0")
+                    const SizedBox(width: 10),
+                  if (w_leave != "0" && w_leave != "")
+                    Container(
+                      height: 25,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: const Color(0xfffde6d8),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Center(
+                        child: Text(
+                          w_leave,
+                          style: const TextStyle(
+                              color: Color(0xffF5803E),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -586,64 +628,16 @@ class _NewLeavePageState extends State<NewLeavePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const AppBarForm(title_: "Tạo Phép",width_: 100,icon_: Icons.contact_support_outlined),
+          const AppBarForm(
+              title_: "Tạo Phép",
+              width_: 100,
+              icon_: Icons.contact_support_outlined),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Thời gian/Loại phép',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      //flex: 5,
-                      child: MyDropdown(
-                        title_: "Thời gian",
-                        item_list_: items_LeavePeriod,
-                        selectedValue_: selectedPeriod,
-                        onChanged_: (String? value) {
-                          setState(() {
-                            selectedPeriod = value;
-                          });
-                        },
-                        isDropdownOpened: _isPeriodDropdownOpened,
-                        onMenuStateChange: (bool isOpen) {
-                          setState(() {
-                            _isPeriodDropdownOpened = isOpen;
-                          });
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: MyDropdown(
-                        title_: "Loại phép",
-                        item_list_: kindLeaveNames,
-                        selectedValue_: selectedLeaveType,
-                        onChanged_: (String? value) {
-                          setState(() {
-                            selectedLeaveType = value;
-                            // Lấy ID tương ứng
-                            int index = kindLeaveNames.indexOf(value!);
-                            selectedKindLeaveID = kindLeaveID[index];
-                          });
-                        },
-                        isDropdownOpened: _isKindLeaveDropdownOpened,
-                        onMenuStateChange: (bool isOpen) {
-                          setState(() {
-                            _isKindLeaveDropdownOpened = isOpen;
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 15),
                 Row(
                   children: [
                     Expanded(
@@ -695,9 +689,58 @@ class _NewLeavePageState extends State<NewLeavePage> {
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 15,
+                const SizedBox(height: 15),
+                const Text(
+                  'Loại phép/Thời gian',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Expanded(
+                      child: MyDropdown(
+                        title_: "Loại phép",
+                        item_list_: kindLeaveNames,
+                        selectedValue_: selectedLeaveType,
+                        onChanged_: (String? value) {
+                          setState(() {
+                            selectedLeaveType = value;
+                            // Lấy ID tương ứng
+                            int index = kindLeaveNames.indexOf(value!);
+                            selectedKindLeaveID = kindLeaveID[index];
+                          });
+                        },
+                        isDropdownOpened: _isKindLeaveDropdownOpened,
+                        onMenuStateChange: (bool isOpen) {
+                          setState(() {
+                            _isKindLeaveDropdownOpened = isOpen;
+                          });
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      //flex: 5,
+                      child: MyDropdown(
+                        title_: "Thời gian",
+                        item_list_: items_LeavePeriod,
+                        selectedValue_: selectedPeriod,
+                        onChanged_: (String? value) {
+                          setState(() {
+                            selectedPeriod = value;
+                          });
+                        },
+                        isDropdownOpened: _isPeriodDropdownOpened,
+                        onMenuStateChange: (bool isOpen) {
+                          setState(() {
+                            _isPeriodDropdownOpened = isOpen;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
                 const Text(
                   'Lý do',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
@@ -712,7 +755,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
                         ? 4
                         : (selectedPeriod == "8h" ? 8 : 0);
                     if (hours == 0 || selectedKindLeaveID == null) {
-                     // print(selectedKindLeaveID.toString());
+                      // print(selectedKindLeaveID.toString());
                       const MyDialogNotification(
                               content: "Vui lòng chọn đầy đủ thông tin.",
                               title: 'Thông báo')
@@ -853,7 +896,10 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          const AppBarForm(title_: "Chi Tiết Phép",width_: 100,icon_: Icons.contact_support_outlined),
+          const AppBarForm(
+              title_: "Chi Tiết Phép",
+              width_: 100,
+              icon_: Icons.contact_support_outlined),
           // const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -890,7 +936,7 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
               : _lists.isEmpty
                   ? const Center(
                       child: Text(
-                      'No data found',
+                      'Không có dữ liệu',
                       style: TextStyle(fontSize: 20),
                     ))
                   : Expanded(

@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/models/timeKeeps.dart';
-import 'package:flutter_staff/view/Widget/dropdown_widget.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:flutter_staff/view/Widget/datatable_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import '../../models/logListMonths.dart';
 import 'package:ionicons/ionicons.dart';
+// ignore: depend_on_referenced_packages
+import 'package:syncfusion_flutter_core/theme.dart';
 
 // ------------------------ form chấm công thực tế -----------------------
 class LoglistPage extends StatefulWidget {
@@ -26,7 +27,8 @@ class _LoglistPageState extends State<LoglistPage> {
   final ApiServices apiHandler = ApiServices();
   List<LogListMonthModel> _lists = [];
   bool isLoading = false;
-
+  bool isStatusFilter = false;
+  late LoglistDataSource _loglistDataSource;
   String? selectedMonth;
   String? selectedYear;
   final List<String> items_month = [
@@ -54,22 +56,20 @@ class _LoglistPageState extends State<LoglistPage> {
   }
 
   // lấy dữ liệu từ model
-  Future<void> getDataLogList(String code,String month,String year) async {
+  Future<void> getDataLogList(String code, String month, String year) async {
     setState(() {
       isLoading = true;
     });
     try {
       List<LogListMonthModel> loglists =
-          await apiHandler.fetchLogListEmpByMonth(code,month,year);
+          await apiHandler.fetchLogListEmpByMonth(code, month, year);
       setState(() {
         _lists = loglists;
-        setState(() {
-          isLoading = false;
-        });
+        _loglistDataSource = LoglistDataSource(loglists);
+
+        isLoading = false;
       });
     } catch (e) {
-      // Xử lý lỗi nếu cần
-      print(e);
       setState(() {
         isLoading = false;
       });
@@ -80,6 +80,7 @@ class _LoglistPageState extends State<LoglistPage> {
   void initState() {
     super.initState();
     list_year();
+    _loglistDataSource = LoglistDataSource([]);
   }
 
   void _showCustomDialog() {
@@ -104,10 +105,8 @@ class _LoglistPageState extends State<LoglistPage> {
               Row(
                 children: [
                   Expanded(
-
                     child: DropdownButtonFormField<String>(
                       menuMaxHeight: 200,
-                    
                       decoration: InputDecoration(
                         labelText: 'Tháng',
                         border: OutlineInputBorder(
@@ -180,7 +179,10 @@ class _LoglistPageState extends State<LoglistPage> {
                         selectedMonth = tempSelectedMonth;
                         selectedYear = tempSelectedYear;
                       });
-                      getDataLogList(widget.emp_code.toString(),tempSelectedMonth.toString(),tempSelectedYear.toString());
+                      getDataLogList(
+                          widget.emp_code.toString(),
+                          tempSelectedMonth.toString(),
+                          tempSelectedYear.toString());
                       Navigator.pop(context);
                     },
                     child: const Text("Chọn"),
@@ -205,69 +207,129 @@ class _LoglistPageState extends State<LoglistPage> {
               title_1: "(Giờ Vào - Ra)",
               width_: 110,
               icon_: Ionicons.search_sharp,
-              onTapLeftBtn: () {_showCustomDialog();}),
+              onTapLeftBtn: () {
+                _showCustomDialog();
+              }),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: isLoading
-                      ? const Center(child: CircularProgressIndicator())
-                      : _lists.isEmpty
-                          ? const Center(child: Text('Không có dữ liệu.',
+            child: isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : _lists.isEmpty
+                    ? const Center(
+                        child: Text('Không có dữ liệu.',
                             style: TextStyle(fontSize: 15)))
-                          : DataTable(
-                              headingRowHeight: 60,
-                              columnSpacing: 20,
-                              columns: const <DataColumn>[
-                                DataColumn(
-                                    label: buildTitleDataColumn(
-                                        name_title1: "NGÀY",
-                                        name_title2: "(DATE)")),
-                                DataColumn(
-                                    label: buildTitleDataColumn(
-                                        name_title1: "GIỜ QUÉT",
-                                        name_title2: "(SCAN TIME)")),
-                                DataColumn(
-                                    label: buildTitleDataColumn(
-                                        name_title1: "TÊN MÁY",
-                                        name_title2: "(DEVICE NAME)")),
-                              ],
-                              
-                              rows: _lists.asMap().entries.map((entry) {
-                                int index = entry.key;
-                                var loglists = entry.value;
-                                return DataRow(
-                                  cells: [
-                                    DataCell(
-                                      buildContentDataCell(
-                                        content: loglists.dATECHECK != null
-                                            ? DateFormat('dd/MM/yyyy').format(
-                                                DateTime.parse(
-                                                    loglists.dATECHECK!))
-                                            : '-',
-                                      ),
-                                    ),
-                                    DataCell(buildContentDataCell(
-                                        content: (loglists.tIMECHECK ?? "-"))),
-                                    DataCell(Container(
-                                      alignment: Alignment.topCenter,
-                                      width: 100,
-                                      child: buildContentDataCell(
-                                          content: loglists.nM ?? '-'),
-                                    )),
-                                  ],
-                                );
-                              }).toList(),
-                            ),
-                ),
-              ),
-            ),
+                    : Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: SfDataGridTheme(
+                          data: SfDataGridThemeData(
+                            filterIconColor: Colors.orange.shade800,
+                            frozenPaneLineColor: Colors.grey.shade400,
+                            headerColor: Colors.transparent,
+                            sortIconColor: Colors.orange.shade800,
+                          ),
+                          child: SfDataGrid(
+                            source: _loglistDataSource,
+                            onFilterChanged: (details) => {
+                              setState(() {
+                                isStatusFilter = true;
+                              })
+                            },
+                            columnWidthMode: ColumnWidthMode.auto,
+                            gridLinesVisibility: GridLinesVisibility.both,
+                            headerGridLinesVisibility: GridLinesVisibility.both,
+                            selectionMode: SelectionMode.multiple,
+                            allowFiltering: false,
+                            allowSorting: true,
+                            columns: <GridColumn>[
+                              GridColumn(
+                                  columnName: 'ngay',
+                                  maximumWidth: 100,
+                                  label: const buildTitleDataColumn(
+                                      name_title1: "NGÀY",
+                                      name_title2: '(DATE)')),
+                              GridColumn(
+                                  minimumWidth: 100,
+                                  columnName: 'thoi_gian',
+                                  allowFiltering: false,
+                                  allowSorting: false,
+                                  label: const buildTitleDataColumn(
+                                      name_title1: "GIỜ QUÉT",
+                                      name_title2: '(SCAN TIME)')),
+                              GridColumn(
+                                  columnName: 'ten_may',
+                                  allowFiltering: false,
+                                  allowSorting: false,
+                                  label: const buildTitleDataColumn(
+                                      name_title1: "TÊN MÁY",
+                                      name_title2: '(DEVICE NAME)')),
+                            ],
+                            //   frozenColumnsCount: 1,
+                          ),
+                        ),
+                      ),
           ),
+          if (isStatusFilter)
+            MaterialButton(
+                padding: const EdgeInsets.only(bottom: 15),
+                child: Text('Xóa bộ lọc',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.orange.shade800)),
+                onPressed: () {
+                  _loglistDataSource.clearFilters();
+
+                  setState(() {
+                    isStatusFilter = false; // Ẩn nút sau khi xóa
+                  });
+                }),
         ],
       ),
+    );
+  }
+}
+
+class LoglistDataSource extends DataGridSource {
+  List<DataGridRow> _loglistRows = [];
+
+  LoglistDataSource(List<LogListMonthModel> loglists) {
+    _loglistRows = loglists.map<DataGridRow>((loglist) {
+      return DataGridRow(cells: [
+        DataGridCell<DateTime>(
+            columnName: 'ngay',
+            value: loglist.dATECHECK != null
+                ? DateTime.parse(loglist.dATECHECK!)
+                : DateTime(0)),
+        DataGridCell<String>(
+            columnName: 'thoi_gian',
+            value: loglist.tIMECHECK != null &&
+                    DateFormat('HH:mm:ss')
+                            .format(DateTime.parse(loglist.tIMETEMP!)) !=
+                        '00:00:00'
+                ? DateFormat('HH:mm:ss')
+                    .format(DateTime.parse(loglist.tIMETEMP!))
+                : '-'),
+        DataGridCell<String>(columnName: 'ten_may', value: loglist.nM ?? '-'),
+      ]);
+    }).toList();
+  }
+
+  @override
+  List<DataGridRow> get rows => _loglistRows;
+  // Phương thức cần triển khai cho DataGridSource
+  @override
+  DataGridRowAdapter buildRow(DataGridRow row) {
+    return DataGridRowAdapter(
+      cells: row.getCells().map<Widget>((dataGridCell) {
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+          alignment: Alignment.center,
+          child: Text(
+            dataGridCell.columnName == 'ngay'
+                ? DateFormat('dd/MM/yyyy').format(dataGridCell.value)
+                : dataGridCell.value.toString(),
+          ),
+        );
+      }).toList(),
     );
   }
 }
@@ -286,6 +348,7 @@ class _TimekeepPageState extends State<TimekeepPage> {
   String? title2_appbar;
   List<TimeKeepModel> _Lists = [];
   bool isLoadingData = false;
+  bool isFilterApplied = false;
   late TimekeepDataSource _timekeepDataSource;
   String? selectedMonth;
   String? selectedYear;
@@ -490,77 +553,107 @@ class _TimekeepPageState extends State<TimekeepPage> {
                             style: TextStyle(fontSize: 15)))
                     : Padding(
                         padding: const EdgeInsets.only(bottom: 10),
-                        child: SfDataGrid(
-                          //    columnWidthMode: ColumnWidthMode.fill,
-                          // gridLinesVisibility: GridLinesVisibility.horizontal,
-                          // headerGridLinesVisibility: GridLinesVisibility.horizontal,
-                          selectionMode: SelectionMode.multiple,
-                          columnWidthMode: ColumnWidthMode.auto,
-                          allowFiltering: true,
-                          source: _timekeepDataSource,
-                          columns: <GridColumn>[
-                            GridColumn(
-                                //filterIconPadding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                                filterPopupMenuOptions:
-                                    const FilterPopupMenuOptions(
-                                        filterMode: FilterMode.checkboxFilter),
-                                columnName: 'ngay',
-                                allowSorting: true,
-                                label: const buildTitleDataColumn(
-                                    name_title1: "NGÀY",
-                                    name_title2: '(DATE)')),
-                            GridColumn(
-                                columnName: 'thu',
-                                allowFiltering: false,
-                                label: const buildTitleDataColumn(
-                                    name_title1: "THỨ", name_title2: '(DAY)')),
-                            GridColumn(
-                                columnName: 'gio_vao',
-                                allowFiltering: false,
-                                label: const buildTitleDataColumn(
-                                    name_title1: "GIỜ VÀO",
-                                    name_title2: '(CHECK-IN)')),
-                            GridColumn(
-                                columnName: 'gio_ra',
-                                allowFiltering: false,
-                                minimumWidth: 100,
-                                label: const buildTitleDataColumn(
-                                    name_title1: "GIỜ RA",
-                                    name_title2: '(CHECK-OUT)')),
-                            GridColumn(
-                                columnName: 'so_gio',
-                                allowFiltering: false,
-                                label: const buildTitleDataColumn(
-                                    name_title1: "SỐ GIỜ",
-                                    name_title2: '(HOUR)')),
-                            GridColumn(
-                                columnName: 'tc_150',
-                                allowFiltering: false,
-                                label: const buildTitleDataColumn(
-                                    name_title1: "TC 150",
-                                    name_title2: 'OT 150')),
-                            GridColumn(
-                                columnName: 'ghi_chu',
-                                allowFiltering: false,
-                                label: const buildTitleDataColumn(
-                                    name_title1: "GHI CHÚ",
-                                    name_title2: 'REMARK')),
-                          ],
-                          frozenColumnsCount: 1, // Cố định cột đầu tiên
+                        child: SfDataGridTheme(
+                          data: SfDataGridThemeData(
+                              filterIconColor: Colors.orange.shade800,
+                              // filterIconHoverColor: Colors.purple,
+                              frozenPaneLineColor: Colors.grey.shade400,
+                              headerColor: Colors.transparent,
+                              sortIconColor: Colors.orange.shade800),
+                          child: SfDataGrid(
+                            //    columnWidthMode: ColumnWidthMode.fill,
+                            // gridLinesVisibility: GridLinesVisibility.horizontal,
+                            // headerGridLinesVisibility: GridLinesVisibility.horizontal,
+                            selectionMode: SelectionMode.multiple,
+                            columnWidthMode: ColumnWidthMode.auto,
+                            allowFiltering: true,
+                            allowSorting: true,
+
+                            source: _timekeepDataSource,
+
+                            onFilterChanged: (details) => {
+                              setState(() {
+                                isFilterApplied = true;
+                              })
+                            },
+                            columns: <GridColumn>[
+                              GridColumn(
+                                  autoFitPadding:
+                                      const EdgeInsets.only(left: 25),
+                                  filterPopupMenuOptions:
+                                      const FilterPopupMenuOptions(
+                                          filterMode:
+                                              FilterMode.checkboxFilter),
+                                  columnName: 'ngay',
+                                  maximumWidth: 120,
+                                  label: const buildTitleDataColumn(
+                                      name_title1: "NGÀY",
+                                      name_title2: '(DATE)')),
+                              GridColumn(
+                                  columnName: 'thu',
+                                  allowFiltering: false,
+                                  allowSorting: false,
+                                  label: const buildTitleDataColumn(
+                                      name_title1: "THỨ",
+                                      name_title2: '(DAY)')),
+                              GridColumn(
+                                  columnName: 'gio_vao',
+                                  allowFiltering: false,
+                                  allowSorting: false,
+                                  minimumWidth: 90,
+                                  label: const buildTitleDataColumn(
+                                      name_title1: "GIỜ VÀO",
+                                      name_title2: '(CHECK-IN)')),
+                              GridColumn(
+                                  columnName: 'gio_ra',
+                                  allowFiltering: false,
+                                  allowSorting: false,
+                                  minimumWidth: 100,
+                                  label: const buildTitleDataColumn(
+                                      name_title1: "GIỜ RA",
+                                      name_title2: '(CHECK-OUT)')),
+                              GridColumn(
+                                  columnName: 'so_gio',
+                                  allowFiltering: false,
+                                  allowSorting: false,
+                                  label: const buildTitleDataColumn(
+                                      name_title1: "SỐ GIỜ",
+                                      name_title2: '(HOUR)')),
+                              GridColumn(
+                                  columnName: 'tc_150',
+                                  allowFiltering: false,
+                                  allowSorting: false,
+                                  label: const buildTitleDataColumn(
+                                      name_title1: "TC 150",
+                                      name_title2: 'OT 150')),
+                              GridColumn(
+                                  columnName: 'ghi_chu',
+                                  allowFiltering: false,
+                                  allowSorting: false,
+                                  label: const buildTitleDataColumn(
+                                      name_title1: "GHI CHÚ",
+                                      name_title2: 'REMARK')),
+                            ],
+                            frozenColumnsCount: 1, // Cố định cột đầu tiên
+                          ),
                         ),
                       ),
           ),
-          // _Lists.isEmpty
-          //     ? const Center(child: null)
-          //     : MaterialButton(
-          //         child: Text('Xóa bộ lọc',
-          //             style: TextStyle(
-          //                 fontSize: 15,
-          //                 fontWeight: FontWeight.w700,
-          //                 color: Colors.orange.shade800)),
-          //         onPressed: () {
-          //           _timekeepDataSource.clearFilters();
-          //         }),
+          if (isFilterApplied)
+            MaterialButton(
+                padding: const EdgeInsets.only(bottom: 15),
+                child: Text('Xóa bộ lọc',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.orange.shade800)),
+                onPressed: () {
+                  _timekeepDataSource.clearFilters();
+
+                  setState(() {
+                    isFilterApplied = false; // Ẩn nút sau khi xóa
+                  });
+                }),
         ],
       ),
       // floatingActionButton: FloatingActionButton(
@@ -579,12 +672,11 @@ class TimekeepDataSource extends DataGridSource {
   TimekeepDataSource(List<TimeKeepModel> timekeeps) {
     _timekeepRows = timekeeps.map<DataGridRow>((timekeep) {
       return DataGridRow(cells: [
-        DataGridCell<String>(
+        DataGridCell<DateTime>(
             columnName: 'ngay',
             value: timekeep.dATEOFMONTH != null
-                ? DateFormat('dd/MM/yyyy')
-                    .format(DateTime.parse(timekeep.dATEOFMONTH!))
-                : '-'),
+                ? DateTime.parse(timekeep.dATEOFMONTH!)
+                : DateTime(0)),
         DataGridCell<String>(
             columnName: 'thu', value: timekeep.dATENAME ?? '-'),
         DataGridCell<String>(
@@ -630,12 +722,23 @@ class TimekeepDataSource extends DataGridSource {
   // Phương thức cần triển khai cho DataGridSource
   @override
   DataGridRowAdapter buildRow(DataGridRow row) {
+    var dayName =
+        row.getCells().firstWhere((cell) => cell.columnName == 'thu').value;
+    Color rowColor = (dayName == 'SUN')
+        ? Colors.grey.withOpacity(0.3) // Màu nền cho hàng 'SUN'
+        : Colors.transparent; // Màu nền mặc định
+
     return DataGridRowAdapter(
+      color: rowColor,
       cells: row.getCells().map<Widget>((dataGridCell) {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
           alignment: Alignment.center,
-          child: Text(dataGridCell.value.toString()),
+          child: Text(
+            dataGridCell.columnName == 'ngay'
+                ? DateFormat('dd/MM/yyyy').format(dataGridCell.value)
+                : dataGridCell.value.toString(),
+          ),
         );
       }).toList(),
     );

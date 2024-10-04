@@ -1,20 +1,18 @@
-import 'package:dio/io.dart';
-import 'package:flutter_staff/models/employee_views.dart';
+
+
 import 'package:flutter_staff/models/employees.dart';
 import 'package:flutter_staff/models/leaves.dart';
 import 'package:flutter_staff/models/logListMonths.dart';
 import 'package:flutter_staff/models/logins.dart';
 import 'package:flutter_staff/models/salarys.dart';
-
 import 'package:flutter_staff/models/timeKeeps.dart';
 import 'package:dio/dio.dart';
-import 'dart:io';
-import 'package:flutter/foundation.dart';
+
 
 class ApiServices {
- //final String baseUrl = 'https://localhost:443/api';
- // final String baseUrl = 'https://192.168.90.112/api';
-   final String baseUrl = 'https://gw.conectvn.com:4432/api';
+ final String baseUrl = 'https://localhost:443/api';
+ // final String baseUrl = 'https://192.168.90.129/api';
+// final String baseUrl = 'https://gw.conectvn.com:4432/api';
   final dio = Dio();
 
   // get employee
@@ -42,7 +40,6 @@ class ApiServices {
       throw Exception('Unexpected response format');
     }
   }
-
   //----------------------------- login ----------------------------
   // check time login app
   Future<bool> fetchCheckTimeLogin(String phone) async {
@@ -216,7 +213,24 @@ class ApiServices {
       return null;
     }
   }
-
+  // get count waiting leave by employee id
+  Future<CountWaitLeaveModel?> fetchGetCountWaitingLeave(int emp_id) async {
+    try {
+      var response = await dio.get('$baseUrl/Leave/Count_WaitLeave_EmpID?emp_id=$emp_id');
+     
+      if (response.data is List) {
+        return CountWaitLeaveModel.fromJson(response.data[0]);
+      }
+      if (response.statusCode == 200) {
+        return CountWaitLeaveModel.fromJson(response.data);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print('Exception: $e');
+      return null;
+    }
+  }
   // get select list leave by employee id
   Future<List<ListLeaveModel>> fetchGetListLeave(int emp_id) async {
     try {

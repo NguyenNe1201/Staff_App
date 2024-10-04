@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
-import 'package:flutter_staff/models/employee_views.dart';
+import 'package:flutter_staff/models/employees.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 
 class ProfilePage extends StatefulWidget {
