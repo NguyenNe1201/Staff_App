@@ -13,7 +13,7 @@ import 'package:flutter_staff/view/Screen/salary_page_screen.dart';
 import 'package:flutter_staff/view/Widget/boxCountLeave_widget.dart';
 import 'package:flutter_staff/view/Screen/setting_page_screen.dart';
 import 'package:ionicons/ionicons.dart';
-
+import 'package:flutter_staff/config/palette.dart'; 
 class HomePage extends StatefulWidget {
   final String? emp_code;
   final int? emp_id;
@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     availableScreenWidth = MediaQuery.of(context).size.width - 50;
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
           AppBarHomePage(fullName: FullNameView),

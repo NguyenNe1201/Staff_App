@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staff/config/palette.dart';
 import 'package:ionicons/ionicons.dart';
 
 class ForwardButton extends StatelessWidget {
@@ -40,13 +41,13 @@ class MyButton extends StatelessWidget {
           //  padding: const EdgeInsets.symmetric(horizontal: 10),
           height: 50,
           decoration: BoxDecoration(
-            color: Color(0xff6849ef),
+            color: Palette.btnColor,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(
             child: Text(
               title_,
-              style: TextStyle(
+              style:const TextStyle(
                 color: Colors.white,
                 fontSize: 17,
                 fontWeight: FontWeight.bold,

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_staff/config/palette.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -64,7 +65,7 @@ class _LeavePageState extends State<LeavePage> {
   Widget build(BuildContext context) {
     availableScreenWidth = MediaQuery.of(context).size.width - 50;
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
           const AppBarForm(
@@ -159,7 +160,7 @@ class _LeavePageState extends State<LeavePage> {
                             width: 40,
                             height: 40,
                             decoration: BoxDecoration(
-                              color: const Color(0xff886ff2),
+                              color: Palette.btnColor,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: const Icon(
@@ -352,7 +353,7 @@ class _LeavePageState extends State<LeavePage> {
                         margin: const EdgeInsets.symmetric(vertical: 10),
                         height: 58,
                         decoration: BoxDecoration(
-                          color: const Color(0xff886ff2).withOpacity(0.9),
+                          color: Palette.btnColor.withOpacity(0.9),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Row(
@@ -413,9 +414,9 @@ class _LeavePageState extends State<LeavePage> {
               flex: 7,
               child: Row(
                 children: [
-                  Icon(
+                 const Icon(
                     Icons.calendar_month_outlined,
-                    color: Colors.blue.shade700,
+                    color: Palette.btnColor,
                   ),
                   const SizedBox(width: 10),
                   Text(
@@ -624,181 +625,193 @@ class _NewLeavePageState extends State<NewLeavePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const AppBarForm(
-              title_: "Tạo Phép",
-              width_: 100,
-              icon_: Icons.contact_support_outlined),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Từ ngày',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w700),
-                          ),
-                          MyInputField(
-                            hint: _selectedFromDate,
-                            widget: IconButton(
-                              icon: const Icon(Icons.calendar_month_outlined),
-                              color: Colors.grey[600],
-                              onPressed: () {
-                                _getFromDate();
-                              },
+      resizeToAvoidBottomInset: true,
+      backgroundColor: Palette.backgroundColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: MediaQuery.of(context).size.height - MediaQuery.of(context).viewInsets.bottom,
+                ),
+            child: IntrinsicHeight(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const AppBarForm(
+                      title_: "Tạo Phép",
+                      width_: 100,
+                      icon_: Icons.contact_support_outlined),
+                  const SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Từ ngày',
+                                    style: TextStyle(
+                                        fontSize: 16, fontWeight: FontWeight.w700),
+                                  ),
+                                  MyInputField(
+                                    hint: _selectedFromDate,
+                                    widget: IconButton(
+                                      icon: const Icon(Icons.calendar_month_outlined),
+                                      color: Colors.grey[600],
+                                      onPressed: () {
+                                        _getFromDate();
+                                      },
+                                    ),
+                                    width_: null,
+                                  ),
+                                ],
+                              ),
                             ),
-                            width_: null,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Đến ngày',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w700),
-                          ),
-                          MyInputField(
-                            hint: _selectedToDate,
-                            widget: IconButton(
-                              icon: const Icon(Icons.calendar_month_outlined),
-                              color: Colors.grey[600],
-                              onPressed: () {
-                                _getToDate();
-                              },
+                            const SizedBox(width: 20),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Đến ngày',
+                                    style: TextStyle(
+                                        fontSize: 16, fontWeight: FontWeight.w700),
+                                  ),
+                                  MyInputField(
+                                    hint: _selectedToDate,
+                                    widget: IconButton(
+                                      icon: const Icon(Icons.calendar_month_outlined),
+                                      color: Colors.grey[600],
+                                      onPressed: () {
+                                        _getToDate();
+                                      },
+                                    ),
+                                    width_: null,
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(height: 15),
+                        const Text(
+                          'Loại phép/Thời gian',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: MyDropdown(
+                                title_: "Loại phép",
+                                item_list_: kindLeaveNames,
+                                selectedValue_: selectedLeaveType,
+                                onChanged_: (String? value) {
+                                  setState(() {
+                                    selectedLeaveType = value;
+                                    // Lấy ID tương ứng
+                                    int index = kindLeaveNames.indexOf(value!);
+                                    selectedKindLeaveID = kindLeaveID[index];
+                                  });
+                                },
+                                isDropdownOpened: _isKindLeaveDropdownOpened,
+                                onMenuStateChange: (bool isOpen) {
+                                  setState(() {
+                                    _isKindLeaveDropdownOpened = isOpen;
+                                  });
+                                },
+                              ),
                             ),
-                            width_: null,
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 15),
-                const Text(
-                  'Loại phép/Thời gian',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      child: MyDropdown(
-                        title_: "Loại phép",
-                        item_list_: kindLeaveNames,
-                        selectedValue_: selectedLeaveType,
-                        onChanged_: (String? value) {
-                          setState(() {
-                            selectedLeaveType = value;
-                            // Lấy ID tương ứng
-                            int index = kindLeaveNames.indexOf(value!);
-                            selectedKindLeaveID = kindLeaveID[index];
-                          });
-                        },
-                        isDropdownOpened: _isKindLeaveDropdownOpened,
-                        onMenuStateChange: (bool isOpen) {
-                          setState(() {
-                            _isKindLeaveDropdownOpened = isOpen;
-                          });
-                        },
-                      ),
+                            const SizedBox(width: 20),
+                            Expanded(
+                              //flex: 5,
+                              child: MyDropdown(
+                                title_: "Thời gian",
+                                item_list_: items_LeavePeriod,
+                                selectedValue_: selectedPeriod,
+                                onChanged_: (String? value) {
+                                  setState(() {
+                                    selectedPeriod = value;
+                                  });
+                                },
+                                isDropdownOpened: _isPeriodDropdownOpened,
+                                onMenuStateChange: (bool isOpen) {
+                                  setState(() {
+                                    _isPeriodDropdownOpened = isOpen;
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 15),
+                        const Text(
+                          'Lý do',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                        ),
+                        MyInputField(
+                            hint: "Nhập lý do chi tiết", controller: reasonController),
+                        const SizedBox(height: 20),
+                        MyButton(
+                          title_: 'Thêm phép',
+                          onTap_: () async {
+                            int? hours = selectedPeriod == "4h"
+                                ? 4
+                                : (selectedPeriod == "8h" ? 8 : 0);
+                            if (hours == 0 || selectedKindLeaveID == null) {
+                              // print(selectedKindLeaveID.toString());
+                              const MyDialogNotification(
+                                      content: "Vui lòng chọn đầy đủ thông tin.",
+                                      title: 'Thông báo')
+                                  .showMyDialog(context);
+                            } else {
+                              final result = await apiService.fetchAddLeave(
+                                  widget.empId!,
+                                  selectedKindLeaveID!,
+                                  hours,
+                                  _selectedFromDate,
+                                  _selectedToDate,
+                                  reasonController.text);
+                              if (result['status'] == true) {
+                                //  print("thêm thành công!");
+                                const MyDialogNotification(
+                                        content: "Thêm phép thành công.",
+                                        title: 'Thông báo')
+                                    .showMyDialog(context);
+                                setState(() {
+                                  _selectedToDate =
+                                      DateFormat('dd/MM/yyyy').format(DateTime.now());
+                                  _selectedFromDate =
+                                      DateFormat('dd/MM/yyyy').format(DateTime.now());
+                                  selectedPeriod = null;
+                                  selectedLeaveType = null;
+                                  selectedKindLeaveID = null;
+                                  reasonController.clear();
+                                });
+                              } else {
+                                // thêm không thành công
+                                MyDialogNotification(
+                                        content: result['message'].toString(),
+                                        title: 'Thông báo')
+                                    .showMyDialog(context);
+                                //  print("Thêm không th ành công: ${result['message']}");
+                              }
+                            }
+                          },
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      //flex: 5,
-                      child: MyDropdown(
-                        title_: "Thời gian",
-                        item_list_: items_LeavePeriod,
-                        selectedValue_: selectedPeriod,
-                        onChanged_: (String? value) {
-                          setState(() {
-                            selectedPeriod = value;
-                          });
-                        },
-                        isDropdownOpened: _isPeriodDropdownOpened,
-                        onMenuStateChange: (bool isOpen) {
-                          setState(() {
-                            _isPeriodDropdownOpened = isOpen;
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 15),
-                const Text(
-                  'Lý do',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                ),
-                MyInputField(
-                    hint: "Nhập lý do chi tiết", controller: reasonController),
-                const SizedBox(height: 20),
-                MyButton(
-                  title_: 'Thêm phép',
-                  onTap_: () async {
-                    int? hours = selectedPeriod == "4h"
-                        ? 4
-                        : (selectedPeriod == "8h" ? 8 : 0);
-                    if (hours == 0 || selectedKindLeaveID == null) {
-                      // print(selectedKindLeaveID.toString());
-                      const MyDialogNotification(
-                              content: "Vui lòng chọn đầy đủ thông tin.",
-                              title: 'Thông báo')
-                          .showMyDialog(context);
-                    } else {
-                      final result = await apiService.fetchAddLeave(
-                          widget.empId!,
-                          selectedKindLeaveID!,
-                          hours,
-                          _selectedFromDate,
-                          _selectedToDate,
-                          reasonController.text);
-                      if (result['status'] == true) {
-                        //  print("thêm thành công!");
-                        const MyDialogNotification(
-                                content: "Thêm phép thành công.",
-                                title: 'Thông báo')
-                            .showMyDialog(context);
-                        setState(() {
-                          _selectedToDate =
-                              DateFormat('dd/MM/yyyy').format(DateTime.now());
-                          _selectedFromDate =
-                              DateFormat('dd/MM/yyyy').format(DateTime.now());
-                          selectedPeriod = null;
-                          selectedLeaveType = null;
-                          selectedKindLeaveID = null;
-                          reasonController.clear();
-                        });
-                      } else {
-                        // thêm không thành công
-                        MyDialogNotification(
-                                content: result['message'].toString(),
-                                title: 'Thông báo')
-                            .showMyDialog(context);
-                        //  print("Thêm không th ành công: ${result['message']}");
-                      }
-                    }
-                  },
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -893,7 +906,7 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
           const AppBarForm(
@@ -909,7 +922,7 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
                   height: 42,
                   width: 42,
                   decoration: BoxDecoration(
-                    color: Color(0xff6849ef),
+                    color: Palette.btnColor,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: const Icon(Icons.calendar_month,

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staff/config/palette.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -23,7 +24,7 @@ class AppBarForm extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       alignment: Alignment.bottomCenter,
-      decoration: const BoxDecoration(color: Color(0xff886ff2)),
+      decoration: const BoxDecoration(color: Palette.appbarColor),
       height: width_,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,18 +101,24 @@ class AppBarHomePage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
       height: 100,
       width: double.infinity,
+      //color: Palette.appbarColor,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
         ),
+  
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           stops: [0.1, 0.5],
-          colors: [
-            Color(0xff886ff2),
-            Color(0xff6849ef),
+          colors: 
+          [
+            // Color(0xff886ff2),
+            // Color(0xff6849ef),
+            Palette.appbarColor,
+            Palette.btnColor,
+            
           ],
         ),
       ),
@@ -134,7 +141,7 @@ class AppBarHomePage extends StatelessWidget {
                 width: 40,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xff8a72f1),
+                  color: Palette.appbarColor,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_staff/config/palette.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/models/timeKeeps.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
@@ -199,7 +200,7 @@ class _LoglistPageState extends State<LoglistPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
           AppBarForm(
@@ -533,7 +534,7 @@ class _TimekeepPageState extends State<TimekeepPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
           AppBarForm(

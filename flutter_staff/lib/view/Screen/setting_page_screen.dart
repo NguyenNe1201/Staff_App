@@ -1,3 +1,4 @@
+import 'package:flutter_staff/config/palette.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/view/Screen/login_page_screen.dart';
 import 'package:ionicons/ionicons.dart';
@@ -46,7 +47,7 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
         const AppBarForm(title_: 'Cài Đặt',width_: 100,icon_: Icons.contact_support_outlined),
