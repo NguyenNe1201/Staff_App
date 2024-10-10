@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staff/config/palette.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/models/salarys.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
@@ -120,7 +121,7 @@ class _SalaryPageState extends State<SalaryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
           const AppBarForm(title_: "Bảng Lương",width_: 100,icon_: Icons.contact_support_outlined),
@@ -173,7 +174,7 @@ class _SalaryPageState extends State<SalaryPage> {
                 buildButtonSearch(
                     _isButtonEnabled,
                     Icons.search,
-                    const Color(0xff886ff2).withOpacity(0.9),
+                    Palette.btnColor.withOpacity(0.9),
                     selectedYear.toString() + selectedMonth.toString()),
               ],
             ),

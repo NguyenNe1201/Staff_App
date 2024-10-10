@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_staff/config/palette.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/models/logins.dart';
 import 'package:flutter_staff/view/Screen/login_page_screen.dart';
@@ -59,7 +60,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Palette.backgroundColor,
       body: Column(
         //  crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -300,7 +301,7 @@ class _SignUpPageState extends State<SignUpPage> {
           height: 50,
           decoration: BoxDecoration(
             color: (isBtn && !isLoadingSignUp)
-                ? Color(0xff6849ef)
+                ? Palette.btnColor
                 : Colors.grey.shade300,
             borderRadius: BorderRadius.circular(10),
           ),

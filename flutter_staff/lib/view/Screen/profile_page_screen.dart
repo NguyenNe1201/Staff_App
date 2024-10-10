@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staff/config/palette.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
@@ -42,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
           const AppBarForm(title_: 'Trang Cá Nhân',width_: 100,icon_: Icons.contact_support_outlined),
@@ -72,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: const Text(
                               'Thay đổi ảnh đại diện',
                               style: TextStyle(
-                                  color: Color.fromARGB(255, 171, 105, 209),
+                                  color: Palette.btnColor,
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold),
                             ),
