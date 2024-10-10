@@ -11,7 +11,7 @@ import 'package:dio/dio.dart';
 
 class ApiServices {
  final String baseUrl = 'https:/localhost:4432/api';
- //final String baseUrl = 'https://192.168.90.139/api';
+ //final String baseUrl = 'https://192.168.90.111/api';
 // final String baseUrl = 'https://gw.conectvn.com:4432/api';
   final dio = Dio();
 

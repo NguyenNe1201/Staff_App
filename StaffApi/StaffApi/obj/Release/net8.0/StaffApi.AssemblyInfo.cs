@@ -15,6 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f59e0522b638c4e23a97efd1f1f47eae5a37544")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5de6c84f5dff365b12eeed74f97e9142189369f2")]
 [assembly: System.Reflection.AssemblyProductAttribute("StaffApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StaffApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
