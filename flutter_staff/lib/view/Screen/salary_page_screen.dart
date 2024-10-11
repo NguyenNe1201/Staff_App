@@ -5,6 +5,7 @@ import 'package:flutter_staff/config/palette.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/models/salarys.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
+import 'package:flutter_staff/view/Widget/dropdown_widget.dart';
 import 'package:intl/intl.dart';
 
 class SalaryPage extends StatefulWidget {
@@ -50,8 +51,6 @@ class _SalaryPageState extends State<SalaryPage> {
     }
   }
 
-  
-
   Future<void> getDataSalary(String code, String value) async {
     setState(() {
       isLoadingData = true;
@@ -65,8 +64,8 @@ class _SalaryPageState extends State<SalaryPage> {
           isLoadingData = false;
         });
       });
-      if(info_salary !=null){
-          calculateSalaryTotal();
+      if (info_salary != null) {
+        calculateSalaryTotal();
       }
     } catch (e) {
       // Xử lý lỗi nếu cần
@@ -78,21 +77,20 @@ class _SalaryPageState extends State<SalaryPage> {
   }
 
   void calculateSalaryTotal() {
- 
-      // tổng thu nhập 1
-      int salaryTotal1 =
-          (infoSalary!.bASICSALARY ?? 0) + (infoSalary!.tOTALALL ?? 0);
-      //tổng thu nhập 2
-      int salaryTotal2 = ((infoSalary!.eSOCIALPAY ?? 0) +
-          (infoSalary!.eMEDICALPAY ?? 0) +
-          (infoSalary!.eJOBPAY ?? 0));
-      // salary final total
-      int SalaryTotal= salaryTotal1 - salaryTotal2 + (infoSalary!.uNIONPAY ?? 0);
-      setState(() {
-        Salary_total_1 = fomartVnd(salaryTotal1);
-        Salary_total_2 = fomartVnd(salaryTotal2);
-        Salary_total = fomartVnd(SalaryTotal);
-      });
+    // tổng thu nhập 1
+    int salaryTotal1 =
+        (infoSalary!.bASICSALARY ?? 0) + (infoSalary!.tOTALALL ?? 0);
+    //tổng thu nhập 2
+    int salaryTotal2 = ((infoSalary!.eSOCIALPAY ?? 0) +
+        (infoSalary!.eMEDICALPAY ?? 0) +
+        (infoSalary!.eJOBPAY ?? 0));
+    // salary final total
+    int SalaryTotal = salaryTotal1 - salaryTotal2 + (infoSalary!.uNIONPAY ?? 0);
+    setState(() {
+      Salary_total_1 = fomartVnd(salaryTotal1);
+      Salary_total_2 = fomartVnd(salaryTotal2);
+      Salary_total = fomartVnd(SalaryTotal);
+    });
   }
 
   String formatCycleText(String selectedMonth) {
@@ -113,62 +111,73 @@ class _SalaryPageState extends State<SalaryPage> {
     String formattedValue = formatter.format(value);
     return formattedValue;
   }
+
   @override
   void initState() {
     super.initState();
     list_year();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
-          const AppBarForm(title_: "Bảng Lương",width_: 100,icon_: Icons.contact_support_outlined),
+          const AppBarForm(
+              title_: "Bảng Lương",
+              width_: 100,
+              icon_: Icons.contact_support_outlined),
           const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                buildDropdown(
-                  'Tháng',
-                  items_month,
-                  120,
-                  selectedMonth,
-                  (String? value) {
-                    setState(() {
-                      selectedMonth = value;
-                      _isButtonEnabled =
-                          selectedMonth != null && selectedYear != null;
-                    });
-                  },
-                  _isMonthDropdownOpened, // Trạng thái mở/đóng cho tháng
-                  (bool isOpen) {
-                    setState(() {
-                      _isMonthDropdownOpened = isOpen;
-                    });
-                  },
+                Expanded(
+                  child: MyDropdown(
+                    title_: "Tháng",
+                    item_list_: items_month,
+                    selectedValue_: selectedMonth,
+                    onChanged_: (String? value) {
+                      setState(() {
+                        selectedMonth = value;
+                        _isButtonEnabled =
+                            selectedMonth != null && selectedYear != null;
+                      });
+                    },
+                    isDropdownOpened: _isMonthDropdownOpened,
+                    onMenuStateChange: (bool isOpen) {
+                      setState(() {
+                        _isMonthDropdownOpened = isOpen;
+                      });
+                    },
+                    width_: 100,
+                    height_: 40,
+                  ),
                 ),
                 const SizedBox(width: 10),
-                buildDropdown(
-                  'Năm',
-                  items_year,
-                  120,
-                  selectedYear,
-                  (String? value) {
-                    setState(() {
-                      selectedYear = value;
-                      _isButtonEnabled =
-                          selectedMonth != null && selectedYear != null;
-                    });
-                  },
-                  _isYearDropdownOpened, // Trạng thái mở/đóng cho năm
-                  (bool isOpen) {
-                    setState(() {
-                      _isYearDropdownOpened = isOpen;
-                    });
-                  },
+                Expanded(
+                  child: MyDropdown(
+                    title_: "Năm",
+                    item_list_: items_year,
+                    selectedValue_: selectedYear,
+                    onChanged_: (String? value) {
+                      setState(() {
+                        selectedYear = value;
+                        _isButtonEnabled =
+                            selectedMonth != null && selectedYear != null;
+                      });
+                    },
+                    isDropdownOpened: _isYearDropdownOpened,
+                    onMenuStateChange: (bool isOpen) {
+                      setState(() {
+                        _isYearDropdownOpened = isOpen;
+                      });
+                    },
+                    width_: 100,
+                    height_: 40,
+                  ),
                 ),
                 const SizedBox(width: 10),
                 buildButtonSearch(
@@ -267,7 +276,8 @@ class _SalaryPageState extends State<SalaryPage> {
                                       style: TextStyle(
                                           fontSize: 17,
                                           fontWeight: FontWeight.w700,
-                                          color: Color.fromARGB(255, 250, 243, 243)),
+                                          color: Color.fromARGB(
+                                              255, 250, 243, 243)),
                                     ),
                                     Text(
                                       Salary_total.isNotEmpty
@@ -347,109 +357,6 @@ class _SalaryPageState extends State<SalaryPage> {
             color: _isbtn ? _color : Colors.grey.shade300,
             borderRadius: BorderRadius.circular(10)),
         child: Icon(_icon, color: _isbtn ? Colors.white : Colors.grey.shade400),
-      ),
-    );
-  }
-
-  Widget buildDropdown(
-    String _title,
-    List<String> _item_list,
-    double? _width,
-    String? _selectedValue,
-    Function(String?) _onChanged,
-    bool isDropdownOpened, // Thêm biến này để kiểm soát trạng thái của dropdown
-    Function(bool)
-        onMenuStateChange, // Thêm biến này để cập nhật trạng thái dropdown
-  ) {
-    return Center(
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton2<String>(
-          isExpanded: true,
-          hint: Row(
-            children: [
-              const SizedBox(
-                width: 4,
-              ),
-              Expanded(
-                child: Text(
-                  _title,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
-          ),
-          items: _item_list
-              .map((String item) => DropdownMenuItem<String>(
-                    value: item,
-                    child: Text(
-                      item,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ))
-              .toList(),
-          value: _selectedValue,
-          onChanged: (value) {
-            _onChanged(value);
-            setState(() {
-              isDropdownOpened =
-                  false; // Đặt lại trạng thái khi thay đổi giá trị
-            });
-          },
-          onMenuStateChange: (isOpen) {
-            // Lắng nghe trạng thái menu để thay đổi icon
-            onMenuStateChange(isOpen); // Cập nhật trạng thái dropdown cụ thể
-          },
-          buttonStyleData: ButtonStyleData(
-            height: 40,
-            width: _width,
-            padding: const EdgeInsets.only(left: 14, right: 14),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                color: const Color(0xff6849ef).withOpacity(0.8),
-              ),
-              color: Colors.white,
-            ),
-            elevation: 2,
-          ),
-          iconStyleData: IconStyleData(
-            icon: Icon(
-              isDropdownOpened
-                  ? Icons.keyboard_arrow_up_outlined
-                  : Icons.keyboard_arrow_down_outlined,
-            ),
-            iconSize: 20,
-            // iconEnabledColor: Colors.black87,
-            // iconDisabledColor: Colors.grey,
-          ),
-          dropdownStyleData: DropdownStyleData(
-            maxHeight: 200,
-            width: 150,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
-            ),
-            // offset: const Offset(-20, 0),
-            // scrollbarTheme: ScrollbarThemeData(
-            //   radius: const Radius.circular(40),
-            //   thickness: MaterialStateProperty.all<double>(6),
-            //   thumbVisibility: MaterialStateProperty.all<bool>(true),
-            // ),
-          ),
-          menuItemStyleData: const MenuItemStyleData(
-            height: 40,
-            padding: EdgeInsets.only(left: 14, right: 14),
-          ),
-        ),
       ),
     );
   }

@@ -5,12 +5,14 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staff/view/Screen/signUp_page_screen.dart';
+import 'package:flutter_staff/view/Widget/button_widget.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/view/Screen/home_page_screen.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Widget/dialogNotification_widget.dart';
-import 'package:flutter_staff/config/palette.dart'; 
+import 'package:flutter_staff/config/palette.dart';
+
 // ---------------------------- form đăng nhập -------------------------
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -49,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true, 
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white30,
       body: Container(
         decoration: const BoxDecoration(
@@ -59,18 +61,18 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         child: SafeArea(
-          
           child: Padding(
             padding: const EdgeInsets.all(25),
             child: SingleChildScrollView(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                minHeight: MediaQuery.of(context).size.height - MediaQuery.of(context).viewInsets.bottom,
-              ),
+                  minHeight: MediaQuery.of(context).size.height -
+                      MediaQuery.of(context).viewInsets.bottom,
+                ),
                 child: IntrinsicHeight(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center, 
-                  mainAxisSize: MainAxisSize.max, 
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       const SizedBox(height: 40),
                       // Icon(Icons.person_outlined),
@@ -96,8 +98,8 @@ class _LoginPageState extends State<LoginPage> {
                       // ),
                       const SizedBox(height: 30),
                       Container(
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
                         color: Colors.white.withOpacity(0.8),
                         child: TextField(
                           autofocus: true,
@@ -141,8 +143,8 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const SizedBox(height: 15),
                       Container(
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
                         color: Colors.white.withOpacity(0.8),
                         child: TextField(
                           autofocus: true,
@@ -207,8 +209,8 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 20),
                       RichText(
                         text: TextSpan(
-                            style:
-                                TextStyle(fontSize: 16, color: Colors.grey.shade800),
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.grey.shade800),
                             children: <TextSpan>[
                               const TextSpan(text: 'Bạn chưa có tài khoản? '),
                               TextSpan(
@@ -223,7 +225,8 @@ class _LoginPageState extends State<LoginPage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => const SignUpPage()),
+                                          builder: (context) =>
+                                              const SignUpPage()),
                                     );
                                   },
                               ),
@@ -242,7 +245,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-           ),
+            ),
           ),
         ),
       ),
@@ -544,67 +547,354 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                child: TextFormField(
-                  autofocus: true,
-                  controller: _phoneController,
-                  keyboardType: TextInputType.phone,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly,
-                  ],
-                  style: const TextStyle(
-                    color: Color(0xff6849ef),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
-                        color: Color(0xff886ff2),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      autofocus: true,
+                      controller: _phoneController,
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      style: const TextStyle(
                         color: Color(0xff6849ef),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
                       ),
-                    ),
-                    // Cấu hình viền khi có lỗi
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
-                        color: Colors.pink,
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color(0xff886ff2),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Color(0xff6849ef),
+                          ),
+                        ),
+                        // Cấu hình viền khi có lỗi
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Colors.pink,
+                          ),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                            color: Colors.pink,
+                          ),
+                        ),
+                        prefixIcon: const Icon(
+                          Iconsax.password_check,
+                          size: 28,
+                          color: Color(0xff6849ef),
+                        ),
+                        labelText: 'Số điện thoại',
+                        labelStyle: TextStyle(
+                          fontSize: 15,
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'không được để trống';
+                        }
+                        return null;
+                      },
                     ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
-                        color: Colors.pink,
-                      ),
+                    const SizedBox(height: 20),
+                    MyButton(
+                      title_: 'Tiếp Tục',
+                      onTap_: () async {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => ForgotPasswordOTP(
+                           
+                          ),
+                        ));
+                      },
                     ),
-                    prefixIcon: const Icon(
-                      Iconsax.password_check,
-                      size: 28,
-                      color: Color(0xff6849ef),
-                    ),
-                    labelText: 'Số điện thoại',
-                    labelStyle: TextStyle(
-                      fontSize: 15,
-                      color: Colors.grey[800],
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'không được để trống';
-                    }
-                    return null;
-                  },
+                  ],
                 ),
               ),
             ),
             const SizedBox(height: 20),
           ],
         ));
+  }
+}
+class ForgotPasswordOTP extends StatefulWidget {
+  const ForgotPasswordOTP({super.key});
+
+  @override
+  State<ForgotPasswordOTP> createState() => _ForgotPasswordOTPState();
+}
+
+class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Palette.backgroundColor,
+      body: Column(children: [
+       const AppBarForm(title_: "Xác Nhận OTP", width_: 100,
+              icon_: Icons.contact_support_outlined),
+                  const SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.all(25),
+          child: Column(
+            children: [
+              Center(
+                child: Column(
+                  children: [
+                    const Text(
+                      "Mã xác thực OTP đã được gửi qua:",
+                      style: TextStyle(fontSize: 16, color: Colors.black54),
+                    ),
+                    Text(
+                      //widget.otpData.gmail ?? 
+                      '',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 15),
+              // input OTP code
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    height: 68,
+                    width: 64,
+                    child: TextField(
+                      //controller: _otpController1,
+                      onChanged: (value) {
+                        if (value.length == 1) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                      },
+                      style: Theme.of(context).textTheme.headlineMedium,
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(1),
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                      decoration: InputDecoration(
+                          hintText: "",
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  // edit color, width
+                                  color: Colors.grey.shade400,
+                                  width: 2)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  // edit color, width
+                                  color: Colors.grey.shade800,
+                                  width: 2))),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 68,
+                    width: 64,
+                    child: TextField(
+                  //   controller: _otpController2,
+                      onChanged: (value) {
+                        if (value.length == 1) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                      },
+                      style: Theme.of(context).textTheme.headlineMedium,
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(1),
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                      decoration: InputDecoration(
+                          hintText: "",
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  // edit color, width
+                                  color: Colors.grey.shade400,
+                                  width: 2)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  // edit color, width
+                                  color: Colors.grey.shade800,
+                                  width: 2))),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 68,
+                    width: 64,
+                    child: TextField(
+                   //   controller: _otpController3,
+                      onChanged: (value) {
+                        if (value.length == 1) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                      },
+                      style: Theme.of(context).textTheme.headlineMedium,
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(1),
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                      decoration: InputDecoration(
+                          hintText: "",
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  // edit color, width
+                                  color: Colors.grey.shade400,
+                                  width: 2)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  // edit color, width
+                                  color: Colors.grey.shade800,
+                                  width: 2))),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 68,
+                    width: 64,
+                    child: TextField(
+                  //    controller: _otpController4,
+                      onChanged: (value) {
+                        if (value.length == 1) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                      },
+                      style: Theme.of(context).textTheme.headlineMedium,
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(1),
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                      decoration: InputDecoration(
+                          hintText: "",
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  // edit color, width
+                                  color: Colors.grey.shade400,
+                                  width: 2)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                  // edit color, width
+                                  color: Colors.grey.shade800,
+                                  width: 2))),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              RichText(
+                text: TextSpan(
+                    style: TextStyle(fontSize: 16, color: Colors.grey.shade800),
+                    children: <TextSpan>[
+                      const TextSpan(
+                          text: 'Mã xác thực OTP có hiệu lực trong '),
+                      TextSpan(
+                          text: //'$_start'
+                          "120",
+                          style: const TextStyle(color: Colors.red)),
+                      const TextSpan(text: ' giây. \n'),
+                      const TextSpan(
+                          text: 'Kiểm tra thông báo thư điện tử để nhận mã.'),
+                    ]),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 15),
+              // Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    height: 50,
+                    width: 140,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                          color: const Color(0xff6849ef),
+                          // _isButtonEnabled
+                          //     ? const Color(0xff6849ef)
+                          //     : Colors.grey.shade300,
+                          width: 2),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextButton(
+                      onPressed: (){},
+                      //_isButtonEnabled ? _resendOTP : null,
+                      child: Text(
+                        "Gửi lại",
+                        style: TextStyle(
+                          color: const Color(0xff6849ef),
+                          //  _isButtonEnabled
+                          //     ? const Color(0xff6849ef)
+                          //     : Colors.grey.shade400,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 50,
+                    width: 140,
+                    decoration: BoxDecoration(
+                      color:
+                      //  (_isButtonEnabled && !_isBtnConfirm)
+                      //     ? Colors.grey.shade300
+                      //     : 
+                          const Color(0xff6849ef),
+                      //  border: Border.all(color: Colors.orange.shade800, width: 2),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: TextButton(
+                      onPressed: (){},
+                      // (_isButtonEnabled && !_isBtnConfirm)
+                      //     ? null
+                      //     : _verifyOTP,
+                      child: Text(
+                        "Xác nhận",
+                        style: TextStyle(
+                          color: 
+                          // (_isButtonEnabled && !_isBtnConfirm)
+                          //     ? Colors.grey.shade400
+                          //     : 
+                              Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+     
+      ],),
+    );
   }
 }

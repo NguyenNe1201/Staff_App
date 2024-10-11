@@ -46,5 +46,24 @@ namespace StaffApi.Controllers
                 return Ok(new { Emp_code = data.EMP_CODE,Emp_id =data.EMPLOYEE_ID,Gmail = data.EMAIL, Phone = number_phone ,Otp =Code_OTP});
             }
         }
+        //
+        [HttpGet("sendOtpForgotPass")]
+        public async Task<ActionResult> sendOTP_ForgotPass(string number_phone)
+        {
+            var data = (await _employeeDo.GetInfoAllEmployee()).Where(w => w.PHONE_NUMBER == number_phone).FirstOrDefault();
+            if (data == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                DateTime date_getotp = DateTime.Now;
+                //gửi mã otp qua gmail
+                common = new RandomOTP_Common();
+                Code_OTP = common.MakeRandomOTP(4);
+                await _emailService.SendEmail_OTP(data.EMAIL, Code_OTP);
+                return Ok(new { Emp_code = data.EMP_CODE, Emp_id = data.EMPLOYEE_ID, Gmail = data.EMAIL, Phone = number_phone, Otp = Code_OTP });
+            }
+        }
     }
 }
