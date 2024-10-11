@@ -12,9 +12,9 @@ namespace StaffApi.DO
         {
             return await _dbHelper.ExecuteReaderAsync<Cal_Leave_Entities>("SEL_CAL_LEAVE_TAB", new string[] { "CONDITION" }, new object[] { condition });
         }
-        public async Task<IEnumerable<Count_WaitingLeave_Entities>> SEL_COUNT_WAITING_LEAVE(int emp_id)
+        public async Task<IEnumerable<Count_WaitLeave_Entities>> SEL_COUNT_WAITING_LEAVE(int emp_id)
         {
-            return await _dbHelper.ExecuteReaderAsync<Count_WaitingLeave_Entities>("SEL_COUNT_WAITING_LEAVE", new string[] { "EMPLOYEE_ID" }, new object[] { emp_id });
+            return await _dbHelper.ExecuteReaderAsync<Count_WaitLeave_Entities>("SEL_COUNT_WAITING_LEAVE", new string[] { "EMPLOYEE_ID" }, new object[] { emp_id });
         }
         public async Task<IEnumerable<KindLeave_Entities>> GetAllKindLeave()
         {

@@ -116,6 +116,22 @@
   },
   {
     "ContainingType": "StaffApi.Controllers.LeaveController",
+    "Method": "GetCountWaitLeave_EmpID",
+    "RelativePath": "api/Leave/Count_WaitLeave_EmpID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "emp_id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StaffApi.Controllers.LeaveController",
     "Method": "GetAllKindLeave",
     "RelativePath": "api/Leave/GetAllKindLeave",
     "HttpMethod": "GET",

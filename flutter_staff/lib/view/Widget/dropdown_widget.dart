@@ -10,14 +10,17 @@ class MyDropdown extends StatefulWidget {
   bool isDropdownOpened; // kiểm soát trạng thái của dropdown
   final Function(bool) onMenuStateChange;
   final double? width_;
-   MyDropdown(
+  final double? height_;
+  MyDropdown(
       {super.key,
       required this.title_,
       required this.item_list_,
       this.selectedValue_,
       required this.onChanged_,
       required this.isDropdownOpened,
-      required this.onMenuStateChange, this.width_});
+      required this.onMenuStateChange,
+      this.width_,
+      this.height_});
 
   @override
   State<MyDropdown> createState() => _MyDropdownState();
@@ -65,14 +68,16 @@ class _MyDropdownState extends State<MyDropdown> {
         onChanged: (value) {
           widget.onChanged_(value);
           setState(() {
-            widget.isDropdownOpened = false; // Đặt lại trạng thái khi thay đổi giá trị
+            widget.isDropdownOpened =
+                false; // Đặt lại trạng thái khi thay đổi giá trị
           });
         },
         onMenuStateChange: (isOpen) {
-          widget.onMenuStateChange(isOpen); // Cập nhật trạng thái dropdown cụ thể
+          widget
+              .onMenuStateChange(isOpen); // Cập nhật trạng thái dropdown cụ thể
         },
         buttonStyleData: ButtonStyleData(
-          height: 45,
+          height: widget.height_,
           width: widget.width_,
           padding: const EdgeInsets.only(left: 14, right: 14),
           decoration: BoxDecoration(
@@ -107,7 +112,7 @@ class _MyDropdownState extends State<MyDropdown> {
           //   thumbVisibility: MaterialStateProperty.all<bool>(true),
           // ),
         ),
-        menuItemStyleData: const MenuItemStyleData(
+        menuItemStyleData: MenuItemStyleData(
           height: 40,
           padding: EdgeInsets.only(left: 14, right: 14),
         ),

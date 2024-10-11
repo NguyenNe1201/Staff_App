@@ -26,7 +26,7 @@ namespace StaffApi.Common
             string FromEmail = info_sms.FromEmailAddressSMS;
             string EmailPassword = info_sms.FromEmailPasswordSMS;
 
-            var DisplayName = "Mã OTP Đăng Nhập App";
+            var DisplayName = "Mã OTP Xác Thực";
             var smtpHost = "mail.conectvn.com";
             var smtpport = "465";
 
