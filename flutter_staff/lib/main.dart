@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'Mulish'),
       debugShowCheckedModeBanner: false,
       title: "HRM",
-       home: const HomePage(emp_code: '164',emp_id: 64),
-      //  home: LoginPage(),
+      // home: const HomePage(emp_code: '164',emp_id: 64),
+       home: LoginPage(),
     
       routes: {},
     );

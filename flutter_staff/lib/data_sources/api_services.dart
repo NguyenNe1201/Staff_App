@@ -10,9 +10,9 @@ import 'package:dio/dio.dart';
 
 
 class ApiServices {
- final String baseUrl = 'https:/localhost:4432/api';
+// final String baseUrl = 'https:/localhost:4432/api';
  //final String baseUrl = 'https://192.168.90.111/api';
-// final String baseUrl = 'https://gw.conectvn.com:4432/api';
+ final String baseUrl = 'https://gw.conectvn.com:4432/api';
   final dio = Dio();
 
   // get employee
@@ -88,10 +88,10 @@ class ApiServices {
   }
 
   // send email otp
-  Future<RequestOTP?> fetchSendOtp(String phone) async {
+  Future<RequestOTP?> fetchSendOtpSignUpUser(String phone) async {
     try {
       var response = await dio.post(
-        '$baseUrl/Email/SendEmail',
+        '$baseUrl/Email/SendOtpSignUpUser',
         queryParameters: {
           'number_phone': phone,
         },
@@ -107,7 +107,26 @@ class ApiServices {
       return null;
     }
   }
-
+  // send otp email of forgotPassword Page
+  Future<RequestOTP?> fetchSendOtpForgotPass(String phone) async {
+    try {
+      var response = await dio.get(
+        '$baseUrl/Email/sendOtpForgotPass',
+        queryParameters: {
+          'number_phone': phone,
+        },
+      );
+      if (response.statusCode == 200) {
+        return RequestOTP.fromJson(response.data);
+      } else {
+        print('Failed to send OTP');
+        return null;
+      }
+    } catch (e) {
+      print('Exception: $e');
+      return null;
+    }
+  }
   // update status login = otp
   Future<bool> fetchUpStatusLogin(
       String emp_code, String phone, String otp) async {

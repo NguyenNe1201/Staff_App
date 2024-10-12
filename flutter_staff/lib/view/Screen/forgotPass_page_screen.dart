@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staff/config/palette.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/models/logins.dart';
+import 'package:flutter_staff/view/Screen/login_page_screen.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Widget/button_widget.dart';
 import 'package:flutter_staff/view/Widget/dialogNotification_widget.dart';
@@ -22,6 +23,8 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
   final ApiServices apiService = ApiServices();
   final TextEditingController _phoneController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool isLoadingForgotPass = false;
+  Future<void> _btnHandleForgotPass() async {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,23 +103,38 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
                     const SizedBox(height: 20),
                     MyButton(
                       title_: 'Tiếp Tục',
-                      onTap_: () async {
-                        final otpData = await apiService
-                            .fetchSendOtpForgotPass(_phoneController.text);
-                        if (otpData != null) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                ForgotPasswordOTP(
-                              otpData: otpData,
-                            ),
-                          ));
-                        } else {
-                          const MyDialogNotification(
-                                  title: "Thông báo",
-                                  content: "Lỗi. Vui lòng tạo lại!")
-                              .showMyDialog(context);
-                        }
-                      },
+                      onTap_: (!isLoadingForgotPass)
+                          ? () async {
+                              if (_formKey.currentState!.validate()) {
+                                setState(() {
+                                  isLoadingForgotPass = true;
+                                });
+                                try {
+                                  final otpData =
+                                      await apiService.fetchSendOtpForgotPass(
+                                          _phoneController.text);
+                                  if (otpData != null) {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          ForgotPasswordOTP(
+                                        otpData: otpData,
+                                      ),
+                                    ));
+                                  } else {
+                                    const MyDialogNotification(
+                                            title: "Thông báo",
+                                            content: "Lỗi. Vui lòng nhập lại.")
+                                        .showMyDialog(context);
+                                  }
+                                } finally {
+                                  setState(() {
+                                    isLoadingForgotPass = false;
+                                  });
+                                }
+                              }
+                            }
+                          : null,
                     ),
                   ],
                 ),
@@ -205,8 +223,8 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
       } else if (enteredOtp == _currentOtpData.otp) {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
-              builder: (BuildContext context) => ResetPasswordPage(
-                  empCode: _currentOtpData.emp_code.toString()),
+              builder: (BuildContext context) =>
+                  ResetPasswordPage(empID: widget.otpData.emp_id!),
             ),
             (Route<dynamic> route) => false);
       } else {
@@ -492,8 +510,8 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
 }
 
 class ResetPasswordPage extends StatefulWidget {
-  final String empCode;
-  const ResetPasswordPage({super.key, required this.empCode});
+  final int empID;
+  const ResetPasswordPage({super.key, required this.empID});
 
   @override
   State<ResetPasswordPage> createState() => _ResetPasswordPageState();
@@ -505,7 +523,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
       TextEditingController();
 
   bool isButtonEnabled = false;
-  bool isLoadingSignUp = false;
+  bool isLoadingForgotPass = false;
   final ApiServices apiService = ApiServices();
   @override
   void initState() {
@@ -655,9 +673,31 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   ),
                   const SizedBox(height: 20),
                   // my button xác nhận
-                  MyButton(title_: "Xác nhận", onTap_: () {
-                    
-                  })
+                  MyButton(
+                      title_: "Xác nhận",
+                      onTap_: () async {
+                        if (_formKey.currentState!.validate()) {
+                          final result = await apiService.fetchSignUpAddAccount(
+                              widget.empID, _passwordController.text);
+                          if (result == true) {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const LoginPage(),
+                                ),
+                                (Route<dynamic> route) => false);
+                            const MyDialogNotification(
+                                    title: "Thông báo",
+                                    content: "Thay đổi mật khẩu thành công.")
+                                .showMyDialog(context);
+                          } else {
+                            const MyDialogNotification(
+                                    title: "Thông báo",
+                                    content: "Thay đổi mật khẩu thất bại.")
+                                .showMyDialog(context);
+                          }
+                        }
+                      })
                 ],
               ),
             ),

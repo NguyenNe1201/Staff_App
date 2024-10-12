@@ -27,7 +27,7 @@ namespace StaffApi.Controllers
             _employeeDo = new Employee_DO(serviceProvider);
             _loginDo = new Login_DO(serviceProvider);
         }
-        [HttpPost("SendEmail")]
+        [HttpPost("SendOtpSignUpUser")]
         public async Task<ActionResult> sendEmail(string number_phone)
         {
             var data = (await _employeeDo.GetInfoAllEmployee()).Where(w => w.PHONE_NUMBER == number_phone).FirstOrDefault();

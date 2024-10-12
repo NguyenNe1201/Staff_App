@@ -76,7 +76,7 @@
               "RelativeDocumentMoniker": "StaffApi\\Services\\SendEmail_Service.cs",
               "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Services\\SendEmail_Service.cs",
               "RelativeToolTip": "StaffApi\\Services\\SendEmail_Service.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAewDMAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwC0AAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-11T08:43:33.109Z",
               "EditorCaption": ""
@@ -89,7 +89,7 @@
               "RelativeDocumentMoniker": "StaffApi\\Controllers\\EmailController.cs",
               "ToolTip": "D:\\Github\\Staff_App\\StaffApi\\StaffApi\\Controllers\\EmailController.cs",
               "RelativeToolTip": "StaffApi\\Controllers\\EmailController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAIwD8AAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAIwDoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-11T08:00:14.373Z",
               "EditorCaption": ""
@@ -104,8 +104,7 @@
               "RelativeToolTip": "StaffApi\\Controllers\\SignUpController.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAQwCUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T06:06:50.177Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T06:06:50.177Z"
             },
             {
               "$type": "Document",
@@ -117,8 +116,7 @@
               "RelativeToolTip": "StaffApi\\Controllers\\LeaveController.cs",
               "ViewState": "AgIAADcAAAAAAAAAAAAkwEgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T01:58:16.789Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T01:58:16.789Z"
             },
             {
               "$type": "Document",
@@ -130,8 +128,7 @@
               "RelativeToolTip": "StaffApi\\Controllers\\LoginController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T01:58:15.683Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T01:58:15.683Z"
             },
             {
               "$type": "Document",
@@ -143,8 +140,7 @@
               "RelativeToolTip": "StaffApi\\DO\\Employee_DO.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAA3wCIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T08:20:34.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T08:20:34.646Z"
             },
             {
               "$type": "Document",
