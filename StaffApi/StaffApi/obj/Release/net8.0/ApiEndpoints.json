@@ -1,9 +1,9 @@
 [
   {
     "ContainingType": "StaffApi.Controllers.EmailController",
-    "Method": "sendEmail",
-    "RelativePath": "api/Email/SendEmail",
-    "HttpMethod": "POST",
+    "Method": "sendOTP_ForgotPass",
+    "RelativePath": "api/Email/sendOtpForgotPass",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -17,9 +17,9 @@
   },
   {
     "ContainingType": "StaffApi.Controllers.EmailController",
-    "Method": "sendOTP_ForgotPass",
-    "RelativePath": "api/Email/sendOtpForgotPass",
-    "HttpMethod": "GET",
+    "Method": "sendEmail",
+    "RelativePath": "api/Email/SendOtpSignUpUser",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [

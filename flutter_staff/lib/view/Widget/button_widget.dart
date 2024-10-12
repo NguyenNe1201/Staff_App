@@ -26,7 +26,7 @@ class ForwardButton extends StatelessWidget {
 
 class MyButton extends StatelessWidget {
   final String title_;
-  final Function() onTap_;
+  final Function()? onTap_;
   const MyButton({super.key, required this.title_, required this.onTap_});
 
   @override

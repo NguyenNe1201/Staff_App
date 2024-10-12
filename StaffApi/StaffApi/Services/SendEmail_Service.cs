@@ -31,7 +31,7 @@ namespace StaffApi.Common
             var smtpport = "465";
 
             var Email = new MimeMessage();
-            Email.From.Add(new MailboxAddress("send", FromEmail));
+            Email.From.Add(new MailboxAddress("Conect", FromEmail));
             Email.To.Add(new MailboxAddress("", toEmail));
             Email.Subject = DisplayName;
 

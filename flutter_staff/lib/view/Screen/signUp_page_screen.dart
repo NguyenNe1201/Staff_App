@@ -257,7 +257,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         await apiService.fetchSignUpCheckAccount(phoneNumber);
                     if (checkAccountByPhone) {
                       final otpData =
-                          await apiService.fetchSendOtp(phoneNumber);
+                          await apiService.fetchSendOtpSignUpUser(phoneNumber);
                       if (otpData != null) {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (BuildContext context) => ConfirmOTP(
@@ -435,7 +435,7 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
 
   Future<void> _resendOTP() async {
     if (_isButtonEnabled) {
-      var otpData = await apiService.fetchSendOtp(_phoneController_hidden);
+      var otpData = await apiService.fetchSendOtpSignUpUser(_phoneController_hidden);
       if (otpData != null) {
         setState(() {
           _currentOtpData = otpData;
