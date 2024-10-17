@@ -7,9 +7,7 @@ import 'package:flutter_staff/view/Screen/salary_page_screen.dart';
 import 'package:flutter_staff/view/Widget/dropdown_widget.dart';
 import 'package:flutter_staff/view/Screen/profile_page_screen.dart';
 import 'package:flutter_staff/view/Screen/setting_page_screen.dart';
-import 'package:flutter_staff/view/template/home_chatbox.dart';
 import 'package:flutter_staff/view/Screen/home_page_screen.dart';
-import 'package:flutter_staff/view/template/team_folder.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -35,8 +33,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "HRM",
       // home: const HomePage(emp_code: '164',emp_id: 64),
-       home: LoginPage(),
-    
+      home: LoginPage(),
       routes: {},
     );
   }

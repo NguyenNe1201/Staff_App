@@ -96,7 +96,7 @@ namespace StaffApi.Controllers
                 }
 
             }
-            return Ok(new { succcess = "" });
+            return Ok(new { succcess = "" });   
         }
         [HttpPost("Insert")]
         public async Task<ActionResult> Insert_Leave(int emp_id, int kindLeave_id, int period, string startDate, string endDate, string? detailReason)

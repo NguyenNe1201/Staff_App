@@ -61,181 +61,192 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.backgroundColor,
-      body: Column(
-        //  crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const AppBarForm(
-              title_: "Đăng Ký",
-              width_: 100,
-              icon_: Icons.contact_support_outlined),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Form(
-              key: _formKey,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: ConstrainedBox(
+             constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height - MediaQuery.of(context).viewInsets.bottom,
+                    ),
+            child: IntrinsicHeight(
               child: Column(
+                //  crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    // color: Colors.white.withOpacity(0.8),
-                    child: TextFormField(
-                      autofocus: true,
-                      controller: _phoneController,
-                      keyboardType: TextInputType.phone,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      style: const TextStyle(
-                        color: Color(0xff6849ef),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
-                      decoration: InputDecoration(
-                        // border: InputBorder.none,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Color(0xff886ff2),
-                          ), // Màu khi không focus
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Color(0xff6849ef),
-                          ),
-                        ),
-                        prefixIcon: const Icon(
-                          Icons.phone,
-                          size: 26,
-                          color: Color(0xff6849ef),
-                        ),
-                        labelText: 'Số điện thoại',
-                        labelStyle: TextStyle(
-                          fontSize: 15,
-                          color: Colors.grey[800],
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    //  color: Colors.white.withOpacity(0.8),
-                    child: TextField(
-                      autofocus: true,
-                      controller: _passwordController,
-                      keyboardType: TextInputType.visiblePassword,
-                      obscureText: true, // hidden text
-                      style: const TextStyle(
-                        color: Color(0xff6849ef),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
-                      decoration: InputDecoration(
-                        // border: InputBorder.none,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Color(0xff886ff2),
-                          ), // Màu khi không focus
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Color(0xff6849ef),
-                          ),
-                        ),
-                        prefixIcon: const Icon(
-                          Iconsax.password_check,
-                          size: 26,
-                          color: Color(0xff6849ef),
-                        ),
-                        labelText: 'Mật khẩu',
-                        labelStyle: TextStyle(
-                          fontSize: 15,
-                          color: Colors.grey[800],
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    //   color: Colors.white.withOpacity(0.8),
-                    child: TextFormField(
-                      autofocus: true,
-                      controller: _passwordConfirmController,
-                      keyboardType: TextInputType.visiblePassword,
-                      obscureText: true, // hidden text
-                      style: const TextStyle(
-                        color: Color(0xff6849ef),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Color(0xff886ff2),
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Color(0xff6849ef),
-                          ),
-                        ),
-                        // Cấu hình viền khi có lỗi
-                        errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Colors.pink,
-                          ),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: Colors.pink,
-                          ),
-                        ),
-                        prefixIcon: const Icon(
-                          Iconsax.password_check,
-                          size: 28,
-                          color: Color(0xff6849ef),
-                        ),
-                        labelText: 'Xác nhận mật khẩu',
-                        labelStyle: TextStyle(
-                          fontSize: 15,
-                          color: Colors.grey[800],
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value != _passwordController.text) {
-                          return 'Mật khẩu không khớp';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
+                  const AppBarForm(
+                      title_: "Đăng Ký",
+                      width_: 100,
+                      icon_: Icons.contact_support_outlined),
                   const SizedBox(height: 20),
-                  buildButton_SignUp(
-                      "Đăng ký",
-                      _phoneController.text,
-                      _userNameController.text,
-                      _passwordController.text,
-                      _passwordConfirmController.text,
-                      isButtonEnabled),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          Container(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                            // color: Colors.white.withOpacity(0.8),
+                            child: TextFormField(
+                              autofocus: true,
+                              controller: _phoneController,
+                              keyboardType: TextInputType.phone,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              style: const TextStyle(
+                                color: Color(0xff6849ef),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                              decoration: InputDecoration(
+                                // border: InputBorder.none,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff886ff2),
+                                  ), // Màu khi không focus
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff6849ef),
+                                  ),
+                                ),
+                                prefixIcon: const Icon(
+                                  Icons.phone,
+                                  size: 26,
+                                  color: Color(0xff6849ef),
+                                ),
+                                labelText: 'Số điện thoại',
+                                labelStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey[800],
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                            //  color: Colors.white.withOpacity(0.8),
+                            child: TextField(
+                              autofocus: true,
+                              controller: _passwordController,
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: true, // hidden text
+                              style: const TextStyle(
+                                color: Color(0xff6849ef),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                              decoration: InputDecoration(
+                                // border: InputBorder.none,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff886ff2),
+                                  ), // Màu khi không focus
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff6849ef),
+                                  ),
+                                ),
+                                prefixIcon: const Icon(
+                                  Iconsax.password_check,
+                                  size: 26,
+                                  color: Color(0xff6849ef),
+                                ),
+                                labelText: 'Mật khẩu',
+                                labelStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey[800],
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Container(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                            //   color: Colors.white.withOpacity(0.8),
+                            child: TextFormField(
+                              autofocus: true,
+                              controller: _passwordConfirmController,
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: true, // hidden text
+                              style: const TextStyle(
+                                color: Color(0xff6849ef),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                              decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff886ff2),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff6849ef),
+                                  ),
+                                ),
+                                // Cấu hình viền khi có lỗi
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.pink,
+                                  ),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Colors.pink,
+                                  ),
+                                ),
+                                prefixIcon: const Icon(
+                                  Iconsax.password_check,
+                                  size: 28,
+                                  color: Color(0xff6849ef),
+                                ),
+                                labelText: 'Xác nhận mật khẩu',
+                                labelStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey[800],
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value != _passwordController.text) {
+                                  return 'Mật khẩu không khớp';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          buildButton_SignUp(
+                              "Đăng ký",
+                              _phoneController.text,
+                              _userNameController.text,
+                              _passwordController.text,
+                              _passwordConfirmController.text,
+                              isButtonEnabled),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
   }
