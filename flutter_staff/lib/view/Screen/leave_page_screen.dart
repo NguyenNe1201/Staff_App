@@ -14,6 +14,7 @@ import 'package:flutter_staff/view/Widget/button_widget.dart';
 import 'package:flutter_staff/view/Widget/dialogNotification_widget.dart';
 import 'package:flutter_staff/view/Widget/dropdown_widget.dart';
 import 'package:flutter_staff/view/Widget/inputField_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ------------------------------- form nghỉ phép ------------------------------
 class LeavePage extends StatefulWidget {
@@ -68,8 +69,8 @@ class _LeavePageState extends State<LeavePage> {
       backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
-          const AppBarForm(
-              title_: 'Nghỉ Phép',
+          AppBarForm(
+              title_: AppLocalizations.of(context)!.onLeave,
               width_: 100,
               icon_: Icons.contact_support_outlined),
           Expanded(
@@ -85,7 +86,7 @@ class _LeavePageState extends State<LeavePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Phép năm - $year_current",
+                          "${AppLocalizations.of(context)!.annualLeave} - $year_current",
                           style: const TextStyle(
                             color: Colors.black87,
                             fontSize: 18,
@@ -102,7 +103,7 @@ class _LeavePageState extends State<LeavePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         buildBoxCountLeave(
-                          title_: 'Tổng',
+                          title_: AppLocalizations.of(context)!.total,
                           number_:
                               CalLeave_model?.aNUALLEAVEDAY.toString() ?? "0",
                           colors_: const Color(0xfff62d51).withOpacity(0.8),
@@ -111,14 +112,14 @@ class _LeavePageState extends State<LeavePage> {
                         ),
                         const SizedBox(width: 10),
                         buildBoxCountLeave(
-                            title_: 'Sử dụng',
+                            title_: AppLocalizations.of(context)!.used,
                             number_: CalLeave_model?.tONGCONG.toString() ?? "0",
                             colors_: const Color(0xff55ce63).withOpacity(0.8),
                             availableScreenWidth_: availableScreenWidth,
                             with_: .31),
                         const SizedBox(width: 10),
                         buildBoxCountLeave(
-                            title_: "Còn lại",
+                            title_: AppLocalizations.of(context)!.remain,
                             number_: CalLeave_model?.rEMAIN.toString() ?? "0",
                             colors_: Colors.orange.shade800.withOpacity(0.8),
                             availableScreenWidth_: availableScreenWidth,
@@ -129,8 +130,8 @@ class _LeavePageState extends State<LeavePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          'Chi tiết',
+                         Text(
+                          AppLocalizations.of(context)!.detail,
                           style: TextStyle(
                               color: Colors.black87,
                               fontSize: 18,
@@ -369,7 +370,9 @@ class _LeavePageState extends State<LeavePage> {
                             ),
                             const SizedBox(width: 10),
                             Text(
-                              showAll == true ? 'Rút gọn' : 'Nhiều hơn',
+                              showAll == true
+                                  ? AppLocalizations.of(context)!.short
+                                  : AppLocalizations.of(context)!.more,
                               style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -414,7 +417,7 @@ class _LeavePageState extends State<LeavePage> {
               flex: 7,
               child: Row(
                 children: [
-                 const Icon(
+                  const Icon(
                     Icons.calendar_month_outlined,
                     color: Palette.btnColor,
                   ),
@@ -513,19 +516,19 @@ class _LeavePageState extends State<LeavePage> {
           color: const Color(0xff46C946),
           borderRadius: BorderRadius.circular(15),
         ),
-        child: const Row(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.add_box,
               color: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Text(
-              "Thêm mới",
-              style: TextStyle(
+              AppLocalizations.of(context)!.add,
+              style: const TextStyle(
                   fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.w700),
@@ -610,8 +613,8 @@ class _NewLeavePageState extends State<NewLeavePage> {
     if (_pickerToDate != null) {
       if (_pickerToDate
           .isBefore(DateFormat('dd/MM/yyyy').parse(_selectedFromDate))) {
-        const MyDialogNotification(
-                title: 'Thông báo',
+        MyDialogNotification(
+                title: AppLocalizations.of(context)!.notification,
                 content: "Ngày kết thúc không được nhỏ hơn ngày bắt đầu.")
             .showMyDialog(context);
       } else {
@@ -630,15 +633,16 @@ class _NewLeavePageState extends State<NewLeavePage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: MediaQuery.of(context).size.height - MediaQuery.of(context).viewInsets.bottom,
-                ),
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).viewInsets.bottom,
+            ),
             child: IntrinsicHeight(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const AppBarForm(
-                      title_: "Tạo Phép",
+                      title_: AppLocalizations.of(context)!.addLeave,
                       width_: 100,
                       icon_: Icons.contact_support_outlined),
                   const SizedBox(height: 20),
@@ -653,15 +657,17 @@ class _NewLeavePageState extends State<NewLeavePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
-                                    'Từ ngày',
-                                    style: TextStyle(
-                                        fontSize: 16, fontWeight: FontWeight.w700),
+                                  Text(
+                                    AppLocalizations.of(context)!.fromDate,
+                                    style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700),
                                   ),
                                   MyInputField(
                                     hint: _selectedFromDate,
                                     widget: IconButton(
-                                      icon: const Icon(Icons.calendar_month_outlined),
+                                      icon: const Icon(
+                                          Icons.calendar_month_outlined),
                                       color: Colors.grey[600],
                                       onPressed: () {
                                         _getFromDate();
@@ -677,15 +683,17 @@ class _NewLeavePageState extends State<NewLeavePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
-                                    'Đến ngày',
-                                    style: TextStyle(
-                                        fontSize: 16, fontWeight: FontWeight.w700),
+                                  Text(
+                                    AppLocalizations.of(context)!.toDate,
+                                    style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700),
                                   ),
                                   MyInputField(
                                     hint: _selectedToDate,
                                     widget: IconButton(
-                                      icon: const Icon(Icons.calendar_month_outlined),
+                                      icon: const Icon(
+                                          Icons.calendar_month_outlined),
                                       color: Colors.grey[600],
                                       onPressed: () {
                                         _getToDate();
@@ -701,14 +709,15 @@ class _NewLeavePageState extends State<NewLeavePage> {
                         const SizedBox(height: 15),
                         const Text(
                           'Loại phép/Thời gian',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w700),
                         ),
                         const SizedBox(height: 10),
                         Row(
                           children: [
                             Expanded(
                               child: MyDropdown(
-                                title_: "Loại phép",
+                                title_: AppLocalizations.of(context)!.typeOfLeave,
                                 item_list_: kindLeaveNames,
                                 selectedValue_: selectedLeaveType,
                                 onChanged_: (String? value) {
@@ -731,7 +740,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
                             Expanded(
                               //flex: 5,
                               child: MyDropdown(
-                                title_: "Thời gian",
+                                title_: AppLocalizations.of(context)!.time,
                                 item_list_: items_LeavePeriod,
                                 selectedValue_: selectedPeriod,
                                 onChanged_: (String? value) {
@@ -751,23 +760,27 @@ class _NewLeavePageState extends State<NewLeavePage> {
                         ),
                         const SizedBox(height: 15),
                         const Text(
-                          'Lý do',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                           AppLocalizations.of(context)!.reason,
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w700),
                         ),
                         MyInputField(
-                            hint: "Nhập lý do chi tiết", controller: reasonController),
+                            hint: "Nhập lý do chi tiết",
+                            controller: reasonController),
                         const SizedBox(height: 20),
                         MyButton(
-                          title_: 'Thêm phép',
+                          title_: AppLocalizations.of(context)!.addLeave,
                           onTap_: () async {
                             int? hours = selectedPeriod == "4h"
                                 ? 4
                                 : (selectedPeriod == "8h" ? 8 : 0);
                             if (hours == 0 || selectedKindLeaveID == null) {
                               // print(selectedKindLeaveID.toString());
-                              const MyDialogNotification(
-                                      content: "Vui lòng chọn đầy đủ thông tin.",
-                                      title: 'Thông báo')
+                              MyDialogNotification(
+                                      content:
+                                          "Vui lòng chọn đầy đủ thông tin.",
+                                      title: AppLocalizations.of(context)!
+                                          .notification)
                                   .showMyDialog(context);
                             } else {
                               final result = await apiService.fetchAddLeave(
@@ -779,15 +792,15 @@ class _NewLeavePageState extends State<NewLeavePage> {
                                   reasonController.text);
                               if (result['status'] == true) {
                                 //  print("thêm thành công!");
-                                const MyDialogNotification(
+                               MyDialogNotification(
                                         content: "Thêm phép thành công.",
-                                        title: 'Thông báo')
+                                        title:  AppLocalizations.of(context)!.notification)
                                     .showMyDialog(context);
                                 setState(() {
-                                  _selectedToDate =
-                                      DateFormat('dd/MM/yyyy').format(DateTime.now());
-                                  _selectedFromDate =
-                                      DateFormat('dd/MM/yyyy').format(DateTime.now());
+                                  _selectedToDate = DateFormat('dd/MM/yyyy')
+                                      .format(DateTime.now());
+                                  _selectedFromDate = DateFormat('dd/MM/yyyy')
+                                      .format(DateTime.now());
                                   selectedPeriod = null;
                                   selectedLeaveType = null;
                                   selectedKindLeaveID = null;
@@ -797,7 +810,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
                                 // thêm không thành công
                                 MyDialogNotification(
                                         content: result['message'].toString(),
-                                        title: 'Thông báo')
+                                        title:  AppLocalizations.of(context)!.notification)
                                     .showMyDialog(context);
                                 //  print("Thêm không th ành công: ${result['message']}");
                               }

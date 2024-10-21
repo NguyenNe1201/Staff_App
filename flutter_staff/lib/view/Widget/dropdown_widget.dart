@@ -112,9 +112,144 @@ class _MyDropdownState extends State<MyDropdown> {
           //   thumbVisibility: MaterialStateProperty.all<bool>(true),
           // ),
         ),
-        menuItemStyleData: MenuItemStyleData(
+        menuItemStyleData: const MenuItemStyleData(
           height: 40,
           padding: EdgeInsets.only(left: 14, right: 14),
+        ),
+      ),
+    );
+  }
+}
+
+class DropdownLanguage extends StatefulWidget {
+  final String? selectedValue_;
+  final Function(String?) onChanged_;
+  bool isDropdownOpened; // kiểm soát trạng thái của dropdown
+  final Function(bool) onMenuStateChange;
+
+  final double? width_;
+  final double? height_;
+  DropdownLanguage({
+    super.key,
+    this.selectedValue_,
+    required this.onChanged_,
+    required this.isDropdownOpened,
+    required this.onMenuStateChange,
+    this.width_,
+    this.height_,
+  });
+
+  @override
+  State<DropdownLanguage> createState() => _DropdownLanguageState();
+}
+
+class _DropdownLanguageState extends State<DropdownLanguage> {
+  final List<String> itemsLanguage = ['Tiếng việt', 'English'];
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonHideUnderline(
+      child: DropdownButton2<String>(
+        isExpanded: true,
+        value: widget.selectedValue_, // Đảm bảo rằng giá trị này nhận từ cha
+        hint: Row(
+          children: [
+            // const SizedBox(width: 4),
+            Expanded(
+              child: Row(
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      widget.selectedValue_ == "English"
+                          ? 'assets/images/us.png'
+                          : 'assets/images/vietnam.png', // Hiển thị ảnh tương ứng
+                      height: 18,
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  Text(
+                    widget.selectedValue_ ??
+                        "Tiếng việt", // Hiển thị giá trị đã chọn
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey[700],
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        items: itemsLanguage
+            .map((String item) => DropdownMenuItem<String>(
+                  value: item,
+                  child: Row(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Image.asset(
+                          item == "English"
+                              ? 'assets/images/us.png'
+                              : 'assets/images/vietnam.png', // Hiển thị ảnh tương ứng
+                          height: 18,
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        item,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[700],
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ))
+            .toList(),
+        onChanged: (value) {
+          widget.onChanged_(value); // Gọi hàm onChanged khi giá trị thay đổi
+          setState(() {
+            widget.isDropdownOpened = false;
+          });
+        },
+        onMenuStateChange: (isOpen) {
+          widget.onMenuStateChange(isOpen);
+        },
+        buttonStyleData: ButtonStyleData(
+          height: 40,
+          width: widget.selectedValue_ == "English" ? 110 : 120,
+          padding: const EdgeInsets.only(left: 5, right: 5),
+          decoration: BoxDecoration(
+            //  borderRadius: BorderRadius.circular(10),
+            border: Border(
+              bottom: BorderSide(
+                color: const Color(0xff6849ef).withOpacity(0.5),
+                width: 1.0,
+              ),
+            ),
+            color: Colors.white.withOpacity(0.2),
+          ),
+        ),
+        iconStyleData: IconStyleData(
+          icon: Icon(
+            widget.isDropdownOpened
+                ? Icons.keyboard_arrow_up_outlined
+                : Icons.keyboard_arrow_down_outlined,
+          ),
+          iconSize: 20,
+        ),
+        dropdownStyleData: const DropdownStyleData(
+          maxHeight: 200,
+          width: 120,
+        ),
+        menuItemStyleData: const MenuItemStyleData(
+          height: 40,
+          padding: EdgeInsets.only(left: 10, right: 5),
         ),
       ),
     );
