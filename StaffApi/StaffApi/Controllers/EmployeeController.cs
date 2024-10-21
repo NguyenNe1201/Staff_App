@@ -24,6 +24,7 @@ namespace StaffApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            // get list info employee
             var data = await _employeeService.GetInfoAllEmployee();
             if (data == null || !data.Any())
             {   

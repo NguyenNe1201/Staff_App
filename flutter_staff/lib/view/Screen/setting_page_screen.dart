@@ -8,7 +8,7 @@ import 'package:flutter_staff/view/Widget/button_widget.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Screen/profile_page_screen.dart';
 import 'package:flutter_staff/models/employees.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SettingPage extends StatefulWidget {
   final String? emp_code;
   final int? emp_id;
@@ -50,22 +50,22 @@ class _SettingPageState extends State<SettingPage> {
       backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
-        const AppBarForm(title_: 'Cài Đặt',width_: 100,icon_: Icons.contact_support_outlined),
+        AppBarForm(title_: AppLocalizations.of(context)!.setting,width_: 100,icon_: Icons.contact_support_outlined),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               children: [
                 // SizedBox(height: 40),
-                const Row(
+               Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.person,
                       color: Color(0xff886ff2),
                     ),
-                    SizedBox(width: 10),
+                   const SizedBox(width: 10),
                     Text(
-                      "Tài khoản",
-                      style: TextStyle(
+                     AppLocalizations.of(context)!.account,
+                      style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87),
@@ -123,16 +123,16 @@ class _SettingPageState extends State<SettingPage> {
                   ),
                 ),
                 const SizedBox(height: 40),
-                const Row(
+                 Row(
                   children: [
-                    Icon(
+                   const Icon(
                       Icons.settings,
                       color: Color(0xff886ff2),
                     ),
-                    SizedBox(width: 10),
+                   const SizedBox(width: 10),
                     Text(
-                      "Cài đặt",
-                      style: TextStyle(
+                      AppLocalizations.of(context)!.setting,
+                      style:const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87),
@@ -142,16 +142,16 @@ class _SettingPageState extends State<SettingPage> {
                 const Divider(height: 20, thickness: 0.5),
                 const SizedBox(height: 20),
                 SettingItem(
-                  title: "Ngôn ngữ",
+                  title: AppLocalizations.of(context)!.language,
                   icon: Ionicons.earth,
                   bgColor: Colors.orange.shade100,
                   iconColor: Colors.orange,
-                  value: "Tiếng việt",
+                  value: AppLocalizations.of(context)!.english_vietnam,
                   onTap: () {},
                 ),
                 const SizedBox(height: 20),
                 SettingItem(
-                  title: "Thông báo",
+                  title: AppLocalizations.of(context)!.notification,
                   icon: Ionicons.notifications,
                   bgColor: Colors.blue.shade100,
                   iconColor: Colors.blue,
@@ -159,7 +159,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 const SizedBox(height: 20),
                 SettingSwitch(
-                  title: "Chế độ tối",
+                  title: AppLocalizations.of(context)!.darkMode,
                   icon: Ionicons.earth,
                   bgColor: Colors.purple.shade100,
                   iconColor: Colors.purple,
@@ -172,7 +172,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 const SizedBox(height: 20),
                 SettingItem(
-                  title: "Hỗ trợ",
+                  title: AppLocalizations.of(context)!.help,
                   icon: Ionicons.nuclear,
                   bgColor: Colors.red.shade100,
                   iconColor: Colors.red,
@@ -195,9 +195,9 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                           (Route<dynamic> route) => false);
                     },
-                    child: const Text(
-                      "Đăng Xuất",
-                      style: TextStyle(
+                    child: Text(
+                     AppLocalizations.of(context)!.logOut,
+                      style:const TextStyle(
                           fontSize: 17,
                           letterSpacing: 2.2,
                           color: Colors.black87),

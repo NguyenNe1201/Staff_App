@@ -6,13 +6,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staff/view/Screen/signUp_page_screen.dart';
 import 'package:flutter_staff/view/Widget/button_widget.dart';
+import 'package:flutter_staff/view/Widget/dropdown_widget.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/view/Screen/home_page_screen.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Widget/dialogNotification_widget.dart';
 import 'package:flutter_staff/config/palette.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'forgotPass_page_screen.dart';
 
 // ---------------------------- form đăng nhập -------------------------
@@ -28,6 +29,8 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
   bool isButtonEnabled = false;
   bool isLoadingLogin = false;
+  bool _isLanguageDropdownOpened = false;
+  String? selectedLanguage;
   final ApiServices apiService = ApiServices();
   @override
   void initState() {
@@ -76,16 +79,37 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      const SizedBox(height: 40),
-                      // Icon(Icons.person_outlined),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          DropdownLanguage(
+                            selectedValue_:
+                                selectedLanguage, // Sử dụng giá trị được chọn từ lớp cha
+                            onChanged_: (String? value) {
+                              setState(() {
+                                selectedLanguage =
+                                    value; // Cập nhật giá trị mới
+                              });
+                            },
+                            isDropdownOpened: _isLanguageDropdownOpened,
+                            onMenuStateChange: (bool isOpen) {
+                              setState(() {
+                                _isLanguageDropdownOpened = isOpen;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
                       Center(
                         child: Image(
                           image: Image.asset('assets/images/logo.png').image,
                         ),
                       ),
                       const SizedBox(height: 30),
-                      const Text(
-                        "Đăng Nhập",
+                       Text(
+                       AppLocalizations.of(context)!.login,
                         style: TextStyle(
                           fontSize: 27,
                           fontWeight: FontWeight.bold,
@@ -102,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                       Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 5),
-                        color: Colors.white.withOpacity(0.8),
+                        // color: Colors.white.withOpacity(0.7),
                         child: TextField(
                           autofocus: true,
                           controller: _phoneController,
@@ -147,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                       Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 5),
-                        color: Colors.white.withOpacity(0.8),
+                        //     color: Colors.white.withOpacity(0.7),
                         child: TextField(
                           autofocus: true,
                           controller: _passwordController,

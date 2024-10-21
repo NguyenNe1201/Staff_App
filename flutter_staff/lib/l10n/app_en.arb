@@ -1,0 +1,150 @@
+{
+  "helloWorld": "Hello",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+  "annualLeave": "Annual leave",
+  "@annualLeave": {
+    "description": "The annual leave in the company"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Login page"
+  },
+  "forgotPassword": "Forgot password",
+  "@forgotPassword": {
+    "description": "Forgot password page"
+  },
+  "phoneNumber": "Phone number",
+  "@phoneNumber": {
+    "description": "Phone number page"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Password page"
+  },
+  "signUp": "Sign up",
+  "@signUp": {
+    "description": "Sign up page"
+  },
+  "notification": "Notification",
+  "@notification": {
+    "description": "Notification"
+  },
+  "salarySlip": "Salary slip",
+  "@salarySlip": {
+    "description": "Salary slip of home page"
+  },
+  "onLeave": "On leave",
+  "@onLeave": {
+    "description": "On leave of home page"
+  },
+  "all": "All",
+  "@all": {
+    "description": "all of home page"
+  },
+  "category": "Category",
+  "@category": {
+    "description": "category of home page"
+  },
+  "checkInOut": "Check in-out",
+  "@checkInOut": {
+    "description": "checkin - out of home page"
+  },
+   "timesheet": "Timesheet",
+  "@timesheet": {
+    "description": "timesheet of home page"
+  },
+  "month":"month",
+  "@month": {
+    "description": "month"
+  },
+  "home":"Home",
+  "@home": {
+    "description": "home page"
+  },
+  "setting":"Setting",
+  "@month": {
+    "description": "setting"
+  },
+  "account":"Account",
+  "@account": {
+    "description": "account"
+  },
+  "language":"Language",
+  "@language": {
+    "description": "language"
+  },
+  "englishVietnam":"English",
+  "@englishVietnam": {
+    "description": "english vietnam"
+  },
+  "help":"Help",
+  "@help": {
+    "description": "Help"
+  },
+  "darkMode":"Dark mode",
+  "@darkMode": {
+    "description": "Dark Mode"
+  },
+  "logOut":"Log Out",
+  "@logOut": {
+    "description": "Log Out"
+  },
+  "detail":"Detail",
+  "@detail": {
+    "description": "detail"
+  },
+  "remain":"Remain",
+  "@remain": {
+    "description": "remain"
+  },
+  "total":"Total",
+  "@total": {
+    "description": "Total"
+  },
+  "used":"Used",
+  "@used": {
+    "description": "used"
+  },
+  "more":"More",
+  "@more": {
+    "description": "more"
+  },
+  "add":"Add",
+  "@add": {
+    "description": "add"
+  },
+  "addLeave":"Add leave",
+  "@addLeave": {
+    "description": "add leave"
+  },
+  "fromDate":"From date",
+  "@fromDate": {
+    "description": "from date"
+  },
+  "toDate":"To date",
+  "@toDate": {
+    "description": "to date"
+  },
+  "time":"Time",
+  "@time": {
+    "description": "ttime"
+  },
+  "reason":"Reason",
+  "@reason": {
+    "description": "reason"
+  },
+  "typeOfLeave":"Type of leave",
+  "@typeOfLeave": {
+    "description": "type Of Leave"
+  },
+  "short":"Short",
+  "@short": {
+    "description": "Short"
+  },
+  "profile":"Profile",
+  "@profile": {
+    "description": "profile"
+  }
+}

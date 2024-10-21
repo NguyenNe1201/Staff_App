@@ -14,6 +14,7 @@ import 'package:flutter_staff/view/Widget/boxCountLeave_widget.dart';
 import 'package:flutter_staff/view/Screen/setting_page_screen.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter_staff/config/palette.dart'; 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HomePage extends StatefulWidget {
   final String? emp_code;
   final int? emp_id;
@@ -87,10 +88,11 @@ class _HomePageState extends State<HomePage> {
     getDataEmpCode(widget.emp_code.toString());
     getCalLeave_EmpID(widget.emp_id!);
   }
-
+  
   @override
   Widget build(BuildContext context) {
     availableScreenWidth = MediaQuery.of(context).size.width - 50;
+    String annualLeave = AppLocalizations.of(context)!.annualLeave;
     return Scaffold(
       backgroundColor: Palette.backgroundColor,
       body: Column(
@@ -106,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Phép Năm - $year_current",
+                        "$annualLeave - $year_current",
                         style: const TextStyle(
                           color: Colors.black87,
                           fontSize: 18,
@@ -176,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         buildCategoryRow(
-                            "Phiếu lương","",'assets/images/calendar.png', () {
+                            AppLocalizations.of(context)!.salarySlip,"",'assets/images/calendar.png', () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(

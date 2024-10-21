@@ -22,10 +22,12 @@ namespace StaffApi.Common
         {
             // get dữ liệu infomaiton email sms từ csdl  
             var info_sms = (await _smsDo.GetEmailSMS()).FirstOrDefault();
+
             // get email, pass để tiến hành gửi mã otp qua gmail
             string FromEmail = info_sms.FromEmailAddressSMS;
             string EmailPassword = info_sms.FromEmailPasswordSMS;
 
+            // nội dung title email
             var DisplayName = "Mã OTP Xác Thực";
             var smtpHost = "mail.conectvn.com";
             var smtpport = "465";
@@ -34,7 +36,6 @@ namespace StaffApi.Common
             Email.From.Add(new MailboxAddress("Conect", FromEmail));
             Email.To.Add(new MailboxAddress("", toEmail));
             Email.Subject = DisplayName;
-
 
             // Thiết kế nội dung email dưới dạng HTML
             var bodyBuilder = new BodyBuilder();
@@ -49,6 +50,7 @@ namespace StaffApi.Common
                                         </body>
                                     </html>";
             Email.Body = bodyBuilder.ToMessageBody();
+
             using (var smtp = new MailKit.Net.Smtp.SmtpClient())
             {
                 smtp.ServerCertificateValidationCallback = (l, j, c, m) => true;

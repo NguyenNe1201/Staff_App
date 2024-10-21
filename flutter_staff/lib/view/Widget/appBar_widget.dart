@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staff/config/palette.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:ionicons/ionicons.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 //AppBar for all page
 class AppBarForm extends StatelessWidget {
   final String title_;
@@ -94,9 +94,10 @@ class AppBarHomePage extends StatelessWidget {
     Key? key,
     required this.fullName,
   }) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
+    String helloWorld = AppLocalizations.of(context)!.helloWorld;
     return Container(
       padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
       height: 100,
@@ -129,7 +130,8 @@ class AppBarHomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Xin Chào, \n $fullName",
+                "$helloWorld, \n $fullName",
+                
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
