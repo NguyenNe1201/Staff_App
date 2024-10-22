@@ -13,8 +13,9 @@ import 'package:flutter_staff/view/Screen/salary_page_screen.dart';
 import 'package:flutter_staff/view/Widget/boxCountLeave_widget.dart';
 import 'package:flutter_staff/view/Screen/setting_page_screen.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:flutter_staff/config/palette.dart'; 
+import 'package:flutter_staff/config/palette.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class HomePage extends StatefulWidget {
   final String? emp_code;
   final int? emp_id;
@@ -88,7 +89,7 @@ class _HomePageState extends State<HomePage> {
     getDataEmpCode(widget.emp_code.toString());
     getCalLeave_EmpID(widget.emp_id!);
   }
-  
+
   @override
   Widget build(BuildContext context) {
     availableScreenWidth = MediaQuery.of(context).size.width - 50;
@@ -124,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       buildBoxCountLeave(
-                          title_: 'Tổng',
+                          title_: AppLocalizations.of(context)!.total,
                           number_:
                               Cal_leave_model?.aNUALLEAVEDAY.toString() ?? '0',
                           colors_: const Color(0xfff62d51).withOpacity(0.8),
@@ -132,14 +133,14 @@ class _HomePageState extends State<HomePage> {
                           with_: .31),
                       const SizedBox(width: 10),
                       buildBoxCountLeave(
-                          title_: 'Sử dụng',
+                          title_: AppLocalizations.of(context)!.used,
                           number_: Cal_leave_model?.tONGCONG.toString() ?? "0",
                           colors_: const Color(0xff55ce63).withOpacity(0.8),
                           availableScreenWidth_: availableScreenWidth,
                           with_: .31),
                       const SizedBox(width: 10),
                       buildBoxCountLeave(
-                          title_: "Còn lại",
+                          title_: AppLocalizations.of(context)!.remain,
                           number_: Cal_leave_model?.rEMAIN.toString() ?? "0",
                           colors_: Colors.orange.shade800.withOpacity(0.8),
                           availableScreenWidth_: availableScreenWidth,
@@ -150,9 +151,9 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        "Danh Mục",
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.category,
+                        style: const TextStyle(
                           color: Colors.black87,
                           fontWeight: FontWeight.bold,
                           fontSize: 17,
@@ -161,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                       TextButton(
                         onPressed: () {},
                         child: Text(
-                          "Tất Cả",
+                          AppLocalizations.of(context)!.all,
                           style: TextStyle(
                             color: Colors.blue.shade300,
                             fontSize: 16,
@@ -174,11 +175,13 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 100,
                     child: Row(
-                     // scrollDirection: Axis.horizontal,
+                      // scrollDirection: Axis.horizontal,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         buildCategoryRow(
-                            AppLocalizations.of(context)!.salarySlip,"",'assets/images/calendar.png', () {
+                            AppLocalizations.of(context)!.salarySlip,
+                            "",
+                            'assets/images/calendar.png', () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -188,8 +191,8 @@ class _HomePageState extends State<HomePage> {
                           );
                         }),
                         const SizedBox(width: 15),
-                        buildCategoryRow(
-                            'Nghỉ phép',"" ,'assets/images/application.png', () {
+                        buildCategoryRow(AppLocalizations.of(context)!.onLeave,
+                            "", 'assets/images/application.png', () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -201,7 +204,9 @@ class _HomePageState extends State<HomePage> {
                         }),
                         const SizedBox(width: 15),
                         buildCategoryRow(
-                            'Giờ vào-ra', "",'assets/images/check-in.png', () {
+                            AppLocalizations.of(context)!.checkInOut,
+                            "",
+                            'assets/images/check-in.png', () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -212,8 +217,9 @@ class _HomePageState extends State<HomePage> {
                         }),
                         const SizedBox(width: 15),
                         buildCategoryRow(
-                            "Bảng công","tháng", 'assets/images/schedule.png',
-                            () {
+                            AppLocalizations.of(context)!.timesheet,
+                            AppLocalizations.of(context)!.month,
+                            'assets/images/schedule.png', () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -500,7 +506,7 @@ class _HomePageState extends State<HomePage> {
               Icons.home,
               size: 24,
             ),
-            label: "Trang chủ",
+            label: AppLocalizations.of(context)!.home,
           ),
           BottomNavigationBarItem(
             activeIcon: Icon(
@@ -512,7 +518,7 @@ class _HomePageState extends State<HomePage> {
               Icons.settings,
               size: 24,
             ),
-            label: "Cài đặt",
+            label: AppLocalizations.of(context)!.setting,
           ),
         ],
         currentIndex: _selectedIndex, // Chỉ số tab hiện tại

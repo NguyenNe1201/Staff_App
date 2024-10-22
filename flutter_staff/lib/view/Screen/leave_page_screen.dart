@@ -132,7 +132,7 @@ class _LeavePageState extends State<LeavePage> {
                       children: [
                          Text(
                           AppLocalizations.of(context)!.detail,
-                          style: TextStyle(
+                          style:const TextStyle(
                               color: Colors.black87,
                               fontSize: 18,
                               fontWeight: FontWeight.w700),
@@ -178,7 +178,7 @@ class _LeavePageState extends State<LeavePage> {
                     const SizedBox(height: 20),
 
                     buildBoxLeaveByMonth(
-                        'Tháng 1',
+                        AppLocalizations.of(context)!.january,
                         CalLeave_model?.t1.toString() ?? "",
                         CountWaitLeave_model?.wAITINGLEAVET1.toString() ?? "",
                         () {
@@ -193,7 +193,7 @@ class _LeavePageState extends State<LeavePage> {
                       );
                     }),
                     buildBoxLeaveByMonth(
-                        'Tháng 2',
+                       AppLocalizations.of(context)!.february,
                         CalLeave_model?.t2.toString() ?? "",
                         CountWaitLeave_model?.wAITINGLEAVET2.toString() ?? "",
                         () {
@@ -207,7 +207,7 @@ class _LeavePageState extends State<LeavePage> {
                       );
                     }),
                     buildBoxLeaveByMonth(
-                        'Tháng 3',
+                        AppLocalizations.of(context)!.march,
                         CalLeave_model?.t3.toString() ?? "",
                         CountWaitLeave_model?.wAITINGLEAVET3.toString() ?? "",
                         () {
@@ -221,7 +221,7 @@ class _LeavePageState extends State<LeavePage> {
                       );
                     }),
                     buildBoxLeaveByMonth(
-                        'Tháng 4',
+                        AppLocalizations.of(context)!.april,
                         CalLeave_model?.t4.toString() ?? "",
                         CountWaitLeave_model?.wAITINGLEAVET4.toString() ?? "",
                         () {
@@ -235,7 +235,7 @@ class _LeavePageState extends State<LeavePage> {
                       );
                     }),
                     buildBoxLeaveByMonth(
-                        'Tháng 5',
+                        AppLocalizations.of(context)!.may,
                         CalLeave_model?.t5.toString() ?? "",
                         CountWaitLeave_model?.wAITINGLEAVET5.toString() ?? "",
                         () {
@@ -250,7 +250,7 @@ class _LeavePageState extends State<LeavePage> {
                     }),
                     if (showAll) ...[
                       buildBoxLeaveByMonth(
-                          'Tháng 6',
+                          AppLocalizations.of(context)!.june,
                           CalLeave_model?.t6.toString() ?? "",
                           CountWaitLeave_model?.wAITINGLEAVET6.toString() ?? "",
                           () {
@@ -264,7 +264,7 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 7',
+                          AppLocalizations.of(context)!.july,
                           CalLeave_model?.t7.toString() ?? "",
                           CountWaitLeave_model?.wAITINGLEAVET7.toString() ?? "",
                           () {
@@ -278,7 +278,7 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 8',
+                          AppLocalizations.of(context)!.august,
                           CalLeave_model?.t8.toString() ?? "",
                           CountWaitLeave_model?.wAITINGLEAVET8.toString() ?? "",
                           () {
@@ -292,7 +292,7 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 9',
+                          AppLocalizations.of(context)!.september,
                           CalLeave_model?.t9.toString() ?? "",
                           CountWaitLeave_model?.wAITINGLEAVET9.toString() ?? "",
                           () {
@@ -306,7 +306,7 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 10',
+                          AppLocalizations.of(context)!.october,
                           CalLeave_model?.t10.toString() ?? "",
                           CountWaitLeave_model?.wAITINGLEAVET10.toString() ??
                               "", () {
@@ -320,7 +320,7 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 11',
+                         AppLocalizations.of(context)!.november,
                           CalLeave_model?.t11.toString() ?? "",
                           CountWaitLeave_model?.wAITINGLEAVET11.toString() ??
                               "", () {
@@ -334,7 +334,7 @@ class _LeavePageState extends State<LeavePage> {
                         );
                       }),
                       buildBoxLeaveByMonth(
-                          'Tháng 12',
+                          AppLocalizations.of(context)!.december,
                           CalLeave_model?.t12.toString() ?? "",
                           CountWaitLeave_model?.wAITINGLEAVET12.toString() ??
                               "", () {
@@ -641,7 +641,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const AppBarForm(
+                 AppBarForm(
                       title_: AppLocalizations.of(context)!.addLeave,
                       width_: 100,
                       icon_: Icons.contact_support_outlined),
@@ -707,9 +707,9 @@ class _NewLeavePageState extends State<NewLeavePage> {
                           ],
                         ),
                         const SizedBox(height: 15),
-                        const Text(
-                          'Loại phép/Thời gian',
-                          style: TextStyle(
+                         Text(
+                          '${AppLocalizations.of(context)!.typeOfLeave}/${AppLocalizations.of(context)!.time}',
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w700),
                         ),
                         const SizedBox(height: 10),
@@ -759,13 +759,13 @@ class _NewLeavePageState extends State<NewLeavePage> {
                           ],
                         ),
                         const SizedBox(height: 15),
-                        const Text(
+                         Text(
                            AppLocalizations.of(context)!.reason,
-                          style: TextStyle(
+                          style:const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w700),
                         ),
                         MyInputField(
-                            hint: "Nhập lý do chi tiết",
+                            hint: AppLocalizations.of(context)!.enterDetailReasons,
                             controller: reasonController),
                         const SizedBox(height: 20),
                         MyButton(
@@ -778,7 +778,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
                               // print(selectedKindLeaveID.toString());
                               MyDialogNotification(
                                       content:
-                                          "Vui lòng chọn đầy đủ thông tin.",
+                                          AppLocalizations.of(context)!.pleaseSelectTheFullItem,
                                       title: AppLocalizations.of(context)!
                                           .notification)
                                   .showMyDialog(context);
@@ -793,7 +793,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
                               if (result['status'] == true) {
                                 //  print("thêm thành công!");
                                MyDialogNotification(
-                                        content: "Thêm phép thành công.",
+                                        content: AppLocalizations.of(context)!.addNewLeaveSuccess,
                                         title:  AppLocalizations.of(context)!.notification)
                                     .showMyDialog(context);
                                 setState(() {
@@ -922,8 +922,8 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
       backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
-          const AppBarForm(
-              title_: "Chi Tiết Phép",
+          AppBarForm(
+              title_: AppLocalizations.of(context)!.leaveDetails,
               width_: 100,
               icon_: Icons.contact_support_outlined),
           // const SizedBox(height: 20),
@@ -960,9 +960,9 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
           isLoading
               ? const Center(child: CircularProgressIndicator())
               : _lists.isEmpty
-                  ? const Center(
+                  ?  Center(
                       child: Text(
-                      'Không có dữ liệu',
+                      AppLocalizations.of(context)!.noData,
                       style: TextStyle(fontSize: 20),
                     ))
                   : Expanded(
@@ -974,8 +974,8 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
                               .format(DateTime.parse(leave.lEAVESTARTDATE!));
                           return buildBoxLeaveDetailsMonth(
                             leave.hOURS == 8
-                                ? "Đơn Xin Cả Ngày"
-                                : "Đơn Xin Nữa Ngày",
+                                ? AppLocalizations.of(context)!.fullDayApplication
+                                :AppLocalizations.of(context)!.halfDayApplication,
                             startDate,
                             leave.nAMELEAVEVI ?? "",
                             leave.sTATUSL == 1

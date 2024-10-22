@@ -7,7 +7,7 @@ import 'package:flutter_staff/models/salarys.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Widget/dropdown_widget.dart';
 import 'package:intl/intl.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SalaryPage extends StatefulWidget {
   final String emp_code;
   const SalaryPage({super.key, required this.emp_code});
@@ -103,7 +103,7 @@ class _SalaryPageState extends State<SalaryPage> {
         previousMonthInt < 10 ? '0$previousMonthInt' : '$previousMonthInt';
     String formattedCurrentMonth =
         selectedMonthInt < 10 ? '0$selectedMonthInt' : '$selectedMonthInt';
-    return '(CHU KÌ 26/$formattedPreviousMonth - 25/$formattedCurrentMonth)';
+    return '(${AppLocalizations.of(context)!.cycle} 26/$formattedPreviousMonth - 25/$formattedCurrentMonth)';
   }
 
   String fomartVnd(int? value) {
@@ -124,8 +124,8 @@ class _SalaryPageState extends State<SalaryPage> {
       backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
-          const AppBarForm(
-              title_: "Bảng Lương",
+          AppBarForm(
+              title_: AppLocalizations.of(context)!.salarySlip,
               width_: 100,
               icon_: Icons.contact_support_outlined),
           const SizedBox(height: 10),
@@ -136,7 +136,7 @@ class _SalaryPageState extends State<SalaryPage> {
               children: [
                 Expanded(
                   child: MyDropdown(
-                    title_: "Tháng",
+                    title_: AppLocalizations.of(context)!.mMonth,
                     item_list_: items_month,
                     selectedValue_: selectedMonth,
                     onChanged_: (String? value) {
@@ -159,7 +159,7 @@ class _SalaryPageState extends State<SalaryPage> {
                 const SizedBox(width: 10),
                 Expanded(
                   child: MyDropdown(
-                    title_: "Năm",
+                    title_: AppLocalizations.of(context)!.year,
                     item_list_: items_year,
                     selectedValue_: selectedYear,
                     onChanged_: (String? value) {
@@ -192,7 +192,7 @@ class _SalaryPageState extends State<SalaryPage> {
           isLoadingData
               ? const Center(child: CircularProgressIndicator())
               : infoSalary == null
-                  ? const Center(child: Text('Không có dữ liệu.'))
+                  ? Center(child: Text(AppLocalizations.of(context)!.noData))
                   : Expanded(
                       child: ListView(
                         padding: const EdgeInsets.symmetric(
@@ -204,7 +204,7 @@ class _SalaryPageState extends State<SalaryPage> {
                                 child: Column(
                                   children: [
                                     Text(
-                                      'THU NHẬP THÁNG ${selectedMonth}/${selectedYear}',
+                                      '${AppLocalizations.of(context)!.inComeFor} ${selectedMonth}/${selectedYear}'.toUpperCase(),
                                       style: TextStyle(
                                           color: Colors.green.shade700,
                                           fontSize: 20,
@@ -224,41 +224,41 @@ class _SalaryPageState extends State<SalaryPage> {
                                 ),
                               ),
                               const SizedBox(height: 10),
-                              buildTBodySalary("Số Ngày Công (tiêu chuẩn)",
+                              buildTBodySalary("${AppLocalizations.of(context)!.numberOfWorkingDays} (${AppLocalizations.of(context)!.standard})",
                                   infoSalary!.dAYWORK.toString()),
-                              buildTBodySalary("Tổng Số Ngày Công",
+                              buildTBodySalary(AppLocalizations.of(context)!.totalManDays,
                                   infoSalary!.tOTALDAY.toString()),
                               const Divider(thickness: 0.3),
-                              buildTBodySalary("Lương Cơ Bản",
+                              buildTBodySalary(AppLocalizations.of(context)!.bassicSalary,
                                   fomartVnd(infoSalary!.bASICSALARY)),
-                              buildTBodySalary("Phụ Cấp Theo HĐLĐ",
+                              buildTBodySalary(AppLocalizations.of(context)!.contractualAllowances,
                                   fomartVnd(infoSalary!.tOTALALL)),
-                              buildTBodySalary("Phụ Cấp Khác", fomartVnd((0))),
+                              buildTBodySalary(AppLocalizations.of(context)!.otherAllowances, fomartVnd((0))),
                               buildTBodySalary(
-                                  "Tăng ca 150 (nếu có)", fomartVnd((0))),
+                                  "${AppLocalizations.of(context)!.oT} 150 (${AppLocalizations.of(context)!.ifAny})", fomartVnd((0))),
                               buildTBodySalary(
-                                  "Tăng ca 210 (nếu có)", fomartVnd(0)),
+                                  "${AppLocalizations.of(context)!.oT} 210 (${AppLocalizations.of(context)!.ifAny})", fomartVnd(0)),
                               buildTBodySalary(
-                                  "Tăng ca 200 (nếu có)", fomartVnd(0)),
+                                  "${AppLocalizations.of(context)!.oT} 200 (${AppLocalizations.of(context)!.ifAny})", fomartVnd(0)),
                               buildTbodyTotal(
-                                  'Tổng Thu Nhập (I)',
+                                  '${AppLocalizations.of(context)!.grossIncome} (I)',
                                   Salary_total_1.isNotEmpty
                                       ? "$Salary_total_1 đ"
                                       : ""),
                               const Divider(thickness: 0.3),
-                              buildTBodySalary("Bảo Hiểm Xã Hội (8%)",
+                              buildTBodySalary("${AppLocalizations.of(context)!.socialInsurance} (8%)",
                                   fomartVnd(infoSalary!.eSOCIALPAY)),
-                              buildTBodySalary("Bảo Hiểm Y Tế (1.5%)",
+                              buildTBodySalary("${AppLocalizations.of(context)!.healthInsurance} (1.5%)",
                                   fomartVnd(infoSalary!.eMEDICALPAY)),
-                              buildTBodySalary("Bảo Hiểm Thất Nghiệp (1%)",
+                              buildTBodySalary("${AppLocalizations.of(context)!.unemploymentInsurance} (1%)",
                                   fomartVnd(infoSalary!.eJOBPAY)),
                               buildTbodyTotal(
-                                  'Tổng Các Khoản Phải Nộp (II)',
+                                  '${AppLocalizations.of(context)!.totalAmountDue} (II)',
                                   Salary_total_2.isNotEmpty
                                       ? "$Salary_total_2đ"
                                       : ""),
                               const Divider(thickness: 0.3),
-                              buildTbodyTotal('Phí Công Đoàn (III)',
+                              buildTbodyTotal('${AppLocalizations.of(context)!.unionFees} (III)',
                                   fomartVnd(infoSalary!.uNIONPAY)),
                               const SizedBox(height: 5),
                               Container(
@@ -271,10 +271,10 @@ class _SalaryPageState extends State<SalaryPage> {
                                     child: Column(
                                   //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const Text(
-                                      'Thực Lãnh/Net Income (I)-(II)-(III)',
-                                      style: TextStyle(
-                                          fontSize: 17,
+                                     Text(
+                                      '${AppLocalizations.of(context)!.netIcome} (I)-(II)-(III)'.toUpperCase(),
+                                      style:const TextStyle(
+                                          fontSize: 18,
                                           fontWeight: FontWeight.w700,
                                           color: Color.fromARGB(
                                               255, 250, 243, 243)),

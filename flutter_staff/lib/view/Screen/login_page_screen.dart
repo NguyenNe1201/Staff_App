@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staff/l10n/cubits/languages_cubit.dart';
 import 'package:flutter_staff/view/Screen/signUp_page_screen.dart';
 import 'package:flutter_staff/view/Widget/button_widget.dart';
 import 'package:flutter_staff/view/Widget/dropdown_widget.dart';
@@ -37,8 +39,14 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
     _phoneController.addListener(_checkFormValidity);
     _passwordController.addListener(_checkFormValidity);
+  //  context.read<LanguagesCubit>().load(context);
   }
-
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Chuyển logic load ngôn ngữ sang đây
+    context.read<LanguagesCubit>().load(context);
+  }
   void _checkFormValidity() {
     setState(() {
       isButtonEnabled = _phoneController.text.isNotEmpty &&
@@ -76,12 +84,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: IntrinsicHeight(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
                     children: [
-                      const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           DropdownLanguage(
                             selectedValue_:
@@ -91,6 +97,15 @@ class _LoginPageState extends State<LoginPage> {
                                 selectedLanguage =
                                     value; // Cập nhật giá trị mới
                               });
+                              if (selectedLanguage == 'English') {
+                                context
+                                    .read<LanguagesCubit>()
+                                    .change(const Locale('en', ''));
+                              } else {
+                                context
+                                    .read<LanguagesCubit>()
+                                    .change(const Locale('vi', ''));
+                              }
                             },
                             isDropdownOpened: _isLanguageDropdownOpened,
                             onMenuStateChange: (bool isOpen) {
@@ -102,171 +117,188 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Center(
-                        child: Image(
-                          image: Image.asset('assets/images/logo.png').image,
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-                       Text(
-                       AppLocalizations.of(context)!.login,
-                        style: TextStyle(
-                          fontSize: 27,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      // Text(
-                      //   'Sign in to continue',
-                      //   style: TextStyle(
-                      //       color: Colors.grey.shade800,
-                      //       fontWeight: FontWeight.w500,
-                      //       fontSize: 17),
-                      // ),
-                      const SizedBox(height: 30),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
-                        // color: Colors.white.withOpacity(0.7),
-                        child: TextField(
-                          autofocus: true,
-                          controller: _phoneController,
-                          keyboardType: TextInputType.phone,
-                          inputFormatters: <TextInputFormatter>[
-                            FilteringTextInputFormatter.digitsOnly,
-                          ],
-                          style: const TextStyle(
-                            color: Color(0xff6849ef),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                          decoration: InputDecoration(
-                            // border: InputBorder.none,
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: Color(0xff886ff2),
-                              ), // Màu khi không focus
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: Color(0xff6849ef),
-                              ),
-                            ),
-                            prefixIcon: const Icon(
-                              Icons.phone,
-                              size: 28,
-                              color: Color(0xff6849ef),
-                            ),
-                            labelText: 'Số điện thoại',
-                            labelStyle: TextStyle(
-                              fontSize: 15,
-                              color: Colors.grey[800],
-                              fontWeight: FontWeight.w600,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          //  const SizedBox(height: 20),
+                          Center(
+                            child: Image(
+                              image:
+                                  Image.asset('assets/images/logo.png').image,
                             ),
                           ),
-                        ),
-                      ),
-                      const SizedBox(height: 15),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
-                        //     color: Colors.white.withOpacity(0.7),
-                        child: TextField(
-                          autofocus: true,
-                          controller: _passwordController,
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: true, // hidden text
-                          style: const TextStyle(
-                            color: Color(0xff6849ef),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                          ),
-                          decoration: InputDecoration(
-                            // border: InputBorder.none,
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: Color(0xff886ff2),
-                              ), // Màu khi không focus
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: Color(0xff6849ef),
-                              ),
-                            ),
-                            prefixIcon: const Icon(
-                              Iconsax.password_check,
-                              size: 28,
-                              color: Color(0xff6849ef),
-                            ),
-                            labelText: 'Mật khẩu',
-                            labelStyle: TextStyle(
-                              fontSize: 15,
-                              color: Colors.grey[800],
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ForgotPassPage()),
-                          );
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.only(right: 10),
-                          alignment: Alignment.centerRight,
-                          child: const Text('Quên mât khẩu?',
-                              style: TextStyle(
-                                  color: Color(0xff6849ef),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 15)),
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      buildButton_Login("Đăng nhập", _phoneController.text,
-                          _passwordController.text, isButtonEnabled),
-                      const SizedBox(height: 20),
-                      RichText(
-                        text: TextSpan(
+                          const SizedBox(height: 30),
+                          Text(
+                            AppLocalizations.of(context)!.login,
                             style: TextStyle(
-                                fontSize: 16, color: Colors.grey.shade800),
-                            children: <TextSpan>[
-                              const TextSpan(text: 'Bạn chưa có tài khoản? '),
-                              TextSpan(
-                                text: 'Đăng ký',
-                                style: const TextStyle(
-                                  color: Color(0xff6849ef),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 17,
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const SignUpPage()),
-                                    );
-                                  },
+                              fontSize: 27,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          // Text(
+                          //   'Sign in to continue',
+                          //   style: TextStyle(
+                          //       color: Colors.grey.shade800,
+                          //       fontWeight: FontWeight.w500,
+                          //       fontSize: 17),
+                          // ),
+                          const SizedBox(height: 30),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            // color: Colors.white.withOpacity(0.7),
+                            child: TextField(
+                              autofocus: true,
+                              controller: _phoneController,
+                              keyboardType: TextInputType.phone,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              style: const TextStyle(
+                                color: Color(0xff6849ef),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
                               ),
-                            ]),
-                        textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                // border: InputBorder.none,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff886ff2),
+                                  ), // Màu khi không focus
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff6849ef),
+                                  ),
+                                ),
+                                prefixIcon: const Icon(
+                                  Icons.phone,
+                                  size: 28,
+                                  color: Color(0xff6849ef),
+                                ),
+                                labelText:
+                                    AppLocalizations.of(context)!.phoneNumber,
+                                labelStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey[800],
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 15),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            //     color: Colors.white.withOpacity(0.7),
+                            child: TextField(
+                              autofocus: true,
+                              controller: _passwordController,
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: true, // hidden text
+                              style: const TextStyle(
+                                color: Color(0xff6849ef),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                              decoration: InputDecoration(
+                                // border: InputBorder.none,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff886ff2),
+                                  ), // Màu khi không focus
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff6849ef),
+                                  ),
+                                ),
+                                prefixIcon: const Icon(
+                                  Iconsax.password_check,
+                                  size: 28,
+                                  color: Color(0xff6849ef),
+                                ),
+                                labelText:
+                                    AppLocalizations.of(context)!.password,
+                                labelStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey[800],
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ForgotPassPage()),
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.only(right: 10),
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                  '${AppLocalizations.of(context)!.forgotPassword}?',
+                                  style: const TextStyle(
+                                      color: Color(0xff6849ef),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 15)),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          buildButton_Login(
+                              AppLocalizations.of(context)!.login,
+                              _phoneController.text,
+                              _passwordController.text,
+                              isButtonEnabled),
+                          const SizedBox(height: 20),
+                          RichText(
+                            text: TextSpan(
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.grey.shade800),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text:
+                                          '${AppLocalizations.of(context)!.noAccount}? '),
+                                  TextSpan(
+                                    text: AppLocalizations.of(context)!.signUp,
+                                    style: const TextStyle(
+                                      color: Color(0xff6849ef),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 17,
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const SignUpPage()),
+                                        );
+                                      },
+                                  ),
+                                ]),
+                            textAlign: TextAlign.center,
+                          ),
+                          // const SizedBox(height: 30),
+                          // Center(
+                          //   child: Text(
+                          //     "Hoặc",
+                          //     style: TextStyle(color: Colors.grey.shade800, fontSize: 17),
+                          //   ),
+                          // ),
+                          // buildFolderRow('Tiếp tục với Gmail', Icons.email),
+                        ],
                       ),
-                      // const SizedBox(height: 30),
-                      // Center(
-                      //   child: Text(
-                      //     "Hoặc",
-                      //     style: TextStyle(color: Colors.grey.shade800, fontSize: 17),
-                      //   ),
-                      // ),
-                      // buildFolderRow('Tiếp tục với Gmail', Icons.email),
                     ],
                   ),
                 ),
@@ -294,8 +326,8 @@ class _LoginPageState extends State<LoginPage> {
                       phoneNumber, password);
 
                   if (checkAccountUser == null) {
-                    const MyDialogNotification(
-                            title: "Thông báo",
+                    MyDialogNotification(
+                            title: AppLocalizations.of(context)!.notification,
                             content: "Mật khẩu không đúng. Vui lòng nhập lại!")
                         .showMyDialog(context);
                   } else {
@@ -309,8 +341,8 @@ class _LoginPageState extends State<LoginPage> {
                         (Route<dynamic> route) => false);
                   }
                 } else if (checkPhoneUser == false) {
-                  const MyDialogNotification(
-                          title: "Thông báo",
+                  MyDialogNotification(
+                          title: AppLocalizations.of(context)!.notification,
                           content:
                               "Số điện thoại này không tồn tại. Vui lòng đăng ký tài khoản!")
                       .showMyDialog(context);

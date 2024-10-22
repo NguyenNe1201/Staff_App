@@ -33,53 +33,51 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return BlocProvider(
-    //   create: (context) => LanguagesCubit(context),
-    //   child: BlocBuilder<LanguagesCubit, Locale?>(
-    //     builder: (context, locale) {
-    //       return MaterialApp(
-    //         theme: ThemeData(fontFamily: 'Mulish'),
-    //         debugShowCheckedModeBanner: false,
-    //         title: "HRM",
-    //         localizationsDelegates: const [
-    //           AppLocalizations.delegate,
-    //           GlobalMaterialLocalizations.delegate,
-    //           GlobalWidgetsLocalizations.delegate,
-    //           GlobalCupertinoLocalizations.delegate,
-    //         ],
-    //         supportedLocales: const [
-    //           Locale('en', ''), // Tiếng Anh
-    //           Locale('vi', ''), // Tiếng Việt
-    //         ],
-    //           locale: const Locale('vi'),  // Ngôn ngữ mặc định
-    //       //  locale: locale,
-    //         home: const HomePage(emp_code: '164', emp_id: 64),
-    //         // home: LoginPage(),
-    //         routes: {},
-    //       );
-
-    //     },
-    //   ),
-    // );
-    return MaterialApp(
-      theme: ThemeData(fontFamily: 'Mulish'),
-      debugShowCheckedModeBanner: false,
-      title: "HRM",
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en', ''), // Tiếng Anh
-        Locale('vi', ''), // Tiếng Việt
-      ],
-      locale: const Locale('vi'),
-      // home: const HomePage(emp_code: '164',emp_id: 64),
-      home: LoginPage(),
-
-      routes: {},
+    return BlocProvider(
+      create: (_) => LanguagesCubit(),
+      child: BlocBuilder<LanguagesCubit, Locale?>(
+        builder: (context, locale) {
+          return MaterialApp(
+            theme: ThemeData(fontFamily: 'Mulish'),
+            debugShowCheckedModeBanner: false,
+            title: "HRM",
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en', ''),
+              Locale('vi', ''),
+            ],
+            locale: locale ?? Locale('vi'), // Ngôn ngữ mặc định nếu null
+          //  home: const HomePage(emp_code: '164', emp_id: 64),
+            home:const LoginPage(),
+            routes: {},
+          );
+        },
+      ),
     );
+    // return MaterialApp(
+    //   theme: ThemeData(fontFamily: 'Mulish'),
+    //   debugShowCheckedModeBanner: false,
+    //   title: "HRM",
+    //   localizationsDelegates: const [
+    //     AppLocalizations.delegate,
+    //     GlobalMaterialLocalizations.delegate,
+    //     GlobalWidgetsLocalizations.delegate,
+    //     GlobalCupertinoLocalizations.delegate,
+    //   ],
+    //   supportedLocales: const [
+    //     Locale('en', ''), // Tiếng Anh
+    //     Locale('vi', ''), // Tiếng Việt
+    //   ],
+    //   locale: const Locale('en'),
+    //   // home: const HomePage(emp_code: '164',emp_id: 64),
+    //   home: LoginPage(),
+
+    //   routes: {},
+    // );
   }
 }

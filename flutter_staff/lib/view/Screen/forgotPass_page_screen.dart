@@ -11,6 +11,7 @@ import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Widget/button_widget.dart';
 import 'package:flutter_staff/view/Widget/dialogNotification_widget.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ForgotPassPage extends StatefulWidget {
   const ForgotPassPage({super.key});
@@ -31,8 +32,8 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
         backgroundColor: Palette.backgroundColor,
         body: Column(
           children: [
-            const AppBarForm(
-                title_: "Quên Mật Khẩu",
+             AppBarForm(
+                title_: AppLocalizations.of(context)!.forgotPassword,
                 width_: 100,
                 icon_: Icons.contact_support_outlined),
             const SizedBox(height: 20),
@@ -86,7 +87,7 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
                           size: 28,
                           color: Color(0xff6849ef),
                         ),
-                        labelText: 'Số điện thoại',
+                        labelText: AppLocalizations.of(context)!.phoneNumber,
                         labelStyle: TextStyle(
                           fontSize: 15,
                           color: Colors.grey[800],
@@ -102,7 +103,7 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
                     ),
                     const SizedBox(height: 20),
                     MyButton(
-                      title_: 'Tiếp Tục',
+                      title_: AppLocalizations.of(context)!.conTinue,
                       onTap_: (!isLoadingForgotPass)
                           ? () async {
                               if (_formKey.currentState!.validate()) {
@@ -122,8 +123,9 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
                                       ),
                                     ));
                                   } else {
-                                    const MyDialogNotification(
-                                            title: "Thông báo",
+                                    MyDialogNotification(
+                                            title: AppLocalizations.of(context)!
+                                                .notification,
                                             content: "Lỗi. Vui lòng nhập lại.")
                                         .showMyDialog(context);
                                   }
@@ -217,8 +219,9 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
           _otpController3.text +
           _otpController4.text;
       if (enteredOtp == "") {
-        const MyDialogNotification(
-                title: "Thông báo", content: "Không được để trống!")
+        MyDialogNotification(
+                title: AppLocalizations.of(context)!.notification,
+                content: "Không được để trống!")
             .showMyDialog(context);
       } else if (enteredOtp == _currentOtpData.otp) {
         Navigator.of(context).pushAndRemoveUntil(
@@ -228,8 +231,9 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
             ),
             (Route<dynamic> route) => false);
       } else {
-        const MyDialogNotification(
-                title: "Thông báo", content: "OTP không hợp lệ!")
+        MyDialogNotification(
+                title: AppLocalizations.of(context)!.notification,
+                content: "OTP không hợp lệ!")
             .showMyDialog(context);
       }
     } finally {
@@ -248,14 +252,14 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
           _currentOtpData = otpData;
           _startTimer();
         });
-        const MyDialogNotification(
-                title: "Thông báo",
+        MyDialogNotification(
+                title: AppLocalizations.of(context)!.notification,
                 content:
                     "Mã OTP đã được gửi lại. Vui lòng kiểm tra thư điện tử!")
             .showMyDialog(context);
       } else {
-        const MyDialogNotification(
-                title: "Thông báo",
+        MyDialogNotification(
+                title: AppLocalizations.of(context)!.notification,
                 content: "Gửi lại mã OTP thất bại. Vui lòng thử lại!")
             .showMyDialog(context);
       }
@@ -269,11 +273,11 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: ConstrainedBox(
-             constraints: BoxConstraints(
-                  minHeight: MediaQuery.of(context).size.height - MediaQuery.of(context).viewInsets.bottom,
-                ),
-            child: IntrinsicHeight
-            (
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: IntrinsicHeight(
               child: Column(
                 children: [
                   const AppBarForm(
@@ -290,7 +294,8 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                             children: [
                               const Text(
                                 "Mã xác thực OTP đã được gửi qua:",
-                                style: TextStyle(fontSize: 16, color: Colors.black54),
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black54),
                               ),
                               Text(
                                 widget.otpData.gmail ?? '',
@@ -318,7 +323,8 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                                     FocusScope.of(context).nextFocus();
                                   }
                                 },
-                                style: Theme.of(context).textTheme.headlineMedium,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                                 keyboardType: TextInputType.number,
                                 textAlign: TextAlign.center,
                                 inputFormatters: [
@@ -351,7 +357,8 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                                     FocusScope.of(context).nextFocus();
                                   }
                                 },
-                                style: Theme.of(context).textTheme.headlineMedium,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                                 keyboardType: TextInputType.number,
                                 textAlign: TextAlign.center,
                                 inputFormatters: [
@@ -363,11 +370,13 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         borderSide: BorderSide(
-                                            color: Colors.grey.shade400, width: 2)),
+                                            color: Colors.grey.shade400,
+                                            width: 2)),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         borderSide: BorderSide(
-                                            color: Colors.grey.shade800, width: 2))),
+                                            color: Colors.grey.shade800,
+                                            width: 2))),
                               ),
                             ),
                             SizedBox(
@@ -380,7 +389,8 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                                     FocusScope.of(context).nextFocus();
                                   }
                                 },
-                                style: Theme.of(context).textTheme.headlineMedium,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                                 keyboardType: TextInputType.number,
                                 textAlign: TextAlign.center,
                                 inputFormatters: [
@@ -392,11 +402,13 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         borderSide: BorderSide(
-                                            color: Colors.grey.shade400, width: 2)),
+                                            color: Colors.grey.shade400,
+                                            width: 2)),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         borderSide: BorderSide(
-                                            color: Colors.grey.shade800, width: 2))),
+                                            color: Colors.grey.shade800,
+                                            width: 2))),
                               ),
                             ),
                             SizedBox(
@@ -409,7 +421,8 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                                     FocusScope.of(context).nextFocus();
                                   }
                                 },
-                                style: Theme.of(context).textTheme.headlineMedium,
+                                style:
+                                    Theme.of(context).textTheme.headlineMedium,
                                 keyboardType: TextInputType.number,
                                 textAlign: TextAlign.center,
                                 inputFormatters: [
@@ -421,11 +434,13 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         borderSide: BorderSide(
-                                            color: Colors.grey.shade400, width: 2)),
+                                            color: Colors.grey.shade400,
+                                            width: 2)),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         borderSide: BorderSide(
-                                            color: Colors.grey.shade800, width: 2))),
+                                            color: Colors.grey.shade800,
+                                            width: 2))),
                               ),
                             ),
                           ],
@@ -435,8 +450,8 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                         ),
                         RichText(
                           text: TextSpan(
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.grey.shade800),
+                              style: TextStyle(
+                                  fontSize: 16, color: Colors.grey.shade800),
                               children: <TextSpan>[
                                 const TextSpan(
                                     text: 'Mã xác thực OTP có hiệu lực trong '),
@@ -445,7 +460,8 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                                     style: const TextStyle(color: Colors.red)),
                                 const TextSpan(text: ' giây. \n'),
                                 const TextSpan(
-                                    text: 'Kiểm tra thông báo thư điện tử để nhận mã.'),
+                                    text:
+                                        'Kiểm tra thông báo thư điện tử để nhận mã.'),
                               ]),
                           textAlign: TextAlign.center,
                         ),
@@ -469,7 +485,7 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                               child: TextButton(
                                 onPressed: _isButtonEnabled ? _resendOTP : null,
                                 child: Text(
-                                  "Gửi lại",
+                                  AppLocalizations.of(context)!.resend,
                                   style: TextStyle(
                                     color: _isButtonEnabled
                                         ? const Color(0xff6849ef)
@@ -495,7 +511,7 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                                     ? null
                                     : _verifyOTP,
                                 child: Text(
-                                  "Xác nhận",
+                                  AppLocalizations.of(context)!.confirm,
                                   style: TextStyle(
                                     color: (_isButtonEnabled && !_isBtnConfirm)
                                         ? Colors.grey.shade400
@@ -668,7 +684,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                           size: 28,
                           color: Color(0xff6849ef),
                         ),
-                        labelText: 'Xác nhận mật khẩu',
+                        labelText: AppLocalizations.of(context)!.confirmPassword,
                         labelStyle: TextStyle(
                           fontSize: 15,
                           color: Colors.grey[800],
@@ -677,7 +693,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       ),
                       validator: (value) {
                         if (value != _passwordController.text) {
-                          return 'Mật khẩu không khớp';
+                          return AppLocalizations.of(context)!.passwordMismatch;
                         }
                         return null;
                       },
@@ -686,7 +702,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   const SizedBox(height: 20),
                   // my button xác nhận
                   MyButton(
-                      title_: "Xác nhận",
+                      title_: AppLocalizations.of(context)!.confirm,
                       onTap_: () async {
                         if (_formKey.currentState!.validate()) {
                           final result = await apiService.fetchSignUpAddAccount(
@@ -698,13 +714,15 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                                       const LoginPage(),
                                 ),
                                 (Route<dynamic> route) => false);
-                            const MyDialogNotification(
-                                    title: "Thông báo",
+                            MyDialogNotification(
+                                    title: AppLocalizations.of(context)!
+                                        .notification,
                                     content: "Thay đổi mật khẩu thành công.")
                                 .showMyDialog(context);
                           } else {
-                            const MyDialogNotification(
-                                    title: "Thông báo",
+                            MyDialogNotification(
+                                    title: AppLocalizations.of(context)!
+                                        .notification,
                                     content: "Thay đổi mật khẩu thất bại.")
                                 .showMyDialog(context);
                           }

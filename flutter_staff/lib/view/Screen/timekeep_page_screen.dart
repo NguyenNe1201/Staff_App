@@ -14,7 +14,7 @@ import '../../models/logListMonths.dart';
 import 'package:ionicons/ionicons.dart';
 // ignore: depend_on_referenced_packages
 import 'package:syncfusion_flutter_core/theme.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // ------------------------ form chấm công thực tế -----------------------
 class LoglistPage extends StatefulWidget {
   final String emp_code;
@@ -92,9 +92,9 @@ class _LoglistPageState extends State<LoglistPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text(
-            "Tìm Kiếm",
-            style: TextStyle(
+          title:  Text(
+            AppLocalizations.of(context)!.search,
+            style:const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Color(0xff6849ef),
@@ -109,7 +109,7 @@ class _LoglistPageState extends State<LoglistPage> {
                     child: DropdownButtonFormField<String>(
                       menuMaxHeight: 200,
                       decoration: InputDecoration(
-                        labelText: 'Tháng',
+                        labelText: AppLocalizations.of(context)!.mMonth,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
                           borderSide: BorderSide(
@@ -137,7 +137,7 @@ class _LoglistPageState extends State<LoglistPage> {
                     child: DropdownButtonFormField<String>(
                       menuMaxHeight: 200,
                       decoration: InputDecoration(
-                        labelText: 'Năm',
+                        labelText: AppLocalizations.of(context)!.year,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
                           borderSide: BorderSide(
@@ -171,7 +171,7 @@ class _LoglistPageState extends State<LoglistPage> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: const Text("Hủy"),
+                    child: Text(AppLocalizations.of(context)!.cancel),
                   ),
                   const SizedBox(width: 10),
                   ElevatedButton(
@@ -186,7 +186,7 @@ class _LoglistPageState extends State<LoglistPage> {
                           tempSelectedYear.toString());
                       Navigator.pop(context);
                     },
-                    child: const Text("Chọn"),
+                    child: Text(AppLocalizations.of(context)!.select),
                   ),
                 ],
               )
@@ -205,7 +205,7 @@ class _LoglistPageState extends State<LoglistPage> {
         children: [
           AppBarForm(
               title_: 'Chấm Công Thực Tế',
-              title_1: "(Giờ Vào - Ra)",
+              title_1: "(${AppLocalizations.of(context)!.checkInOut})",
               width_: 110,
               icon_: Ionicons.search_sharp,
               onTapLeftBtn: () {
@@ -215,8 +215,8 @@ class _LoglistPageState extends State<LoglistPage> {
             child: isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : _lists.isEmpty
-                    ? const Center(
-                        child: Text('Không có dữ liệu.',
+                    ? Center(
+                        child: Text(AppLocalizations.of(context)!.noData,
                             style: TextStyle(fontSize: 15)))
                     : Padding(
                         padding: const EdgeInsets.only(bottom: 10),
@@ -415,9 +415,9 @@ class _TimekeepPageState extends State<TimekeepPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text(
-            "Tìm Kiếm",
-            style: TextStyle(
+          title: Text(
+            AppLocalizations.of(context)!.search,
+            style:const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Color(0xff6849ef),
@@ -432,7 +432,7 @@ class _TimekeepPageState extends State<TimekeepPage> {
                     child: DropdownButtonFormField<String>(
                       menuMaxHeight: 200,
                       decoration: InputDecoration(
-                        labelText: 'Tháng',
+                        labelText: AppLocalizations.of(context)!.mMonth,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
                           borderSide: BorderSide(
@@ -460,7 +460,7 @@ class _TimekeepPageState extends State<TimekeepPage> {
                     child: DropdownButtonFormField<String>(
                       menuMaxHeight: 200,
                       decoration: InputDecoration(
-                        labelText: 'Năm',
+                        labelText: AppLocalizations.of(context)!.year,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(14),
                           borderSide: BorderSide(
@@ -494,7 +494,7 @@ class _TimekeepPageState extends State<TimekeepPage> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: const Text("Hủy"),
+                    child: Text(AppLocalizations.of(context)!.cancel),
                   ),
                   const SizedBox(width: 10),
                   ElevatedButton(
@@ -507,7 +507,7 @@ class _TimekeepPageState extends State<TimekeepPage> {
                           widget.emp_code, selectedMonth!, selectedYear!);
                       Navigator.pop(context); // Đóng Dialog
                     },
-                    child: const Text("Chọn"),
+                    child: Text(AppLocalizations.of(context)!.select),
                   ),
                 ],
               )
@@ -528,7 +528,7 @@ class _TimekeepPageState extends State<TimekeepPage> {
         previousMonthInt < 10 ? '0$previousMonthInt' : '$previousMonthInt';
     String formattedCurrentMonth =
         selectedMonthInt < 10 ? '0$selectedMonthInt' : '$selectedMonthInt';
-    return '(Chu Kì 26/$formattedPreviousMonth - 25/$formattedCurrentMonth)';
+    return '(${AppLocalizations.of(context)!.cycle} 26/$formattedPreviousMonth - 25/$formattedCurrentMonth)';
   }
 
   @override
@@ -538,7 +538,7 @@ class _TimekeepPageState extends State<TimekeepPage> {
       body: Column(
         children: [
           AppBarForm(
-              title_: 'Bảng Công Tháng',
+              title_: '${AppLocalizations.of(context)!.timesheet} ${AppLocalizations.of(context)!.month}',
               title_1: title2_appbar,
               width_: 110,
               icon_: Ionicons.search_sharp,
@@ -549,8 +549,8 @@ class _TimekeepPageState extends State<TimekeepPage> {
             child: isLoadingData
                 ? const Center(child: CircularProgressIndicator())
                 : _Lists.isEmpty
-                    ? const Center(
-                        child: Text('Không có dữ liệu.',
+                    ? Center(
+                        child: Text(AppLocalizations.of(context)!.noData,
                             style: TextStyle(fontSize: 15)))
                     : Padding(
                         padding: const EdgeInsets.only(bottom: 10),
@@ -569,9 +569,7 @@ class _TimekeepPageState extends State<TimekeepPage> {
                             columnWidthMode: ColumnWidthMode.auto,
                             allowFiltering: true,
                             allowSorting: true,
-
                             source: _timekeepDataSource,
-
                             onFilterChanged: (details) => {
                               setState(() {
                                 isFilterApplied = true;

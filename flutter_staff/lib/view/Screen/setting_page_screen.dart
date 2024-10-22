@@ -146,7 +146,7 @@ class _SettingPageState extends State<SettingPage> {
                   icon: Ionicons.earth,
                   bgColor: Colors.orange.shade100,
                   iconColor: Colors.orange,
-                  value: AppLocalizations.of(context)!.english_vietnam,
+                  value: AppLocalizations.of(context)!.englishVietnam,
                   onTap: () {},
                 ),
                 const SizedBox(height: 20),
@@ -293,7 +293,7 @@ class SettingSwitch extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            value ? "Bật" : "Tắt",
+            value ? AppLocalizations.of(context)!.on : AppLocalizations.of(context)!.off,
             style: const TextStyle(
               fontSize: 16,
               color: Colors.grey,

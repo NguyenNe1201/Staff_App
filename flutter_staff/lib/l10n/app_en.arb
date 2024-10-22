@@ -23,6 +23,14 @@
   "@password": {
     "description": "Password page"
   },
+  "confirmPassword": "Confirm password",
+  "@confirmPassword": {
+    "description": "Confirm password page"
+  },
+  "passwordMismatch": "Password mismatch",
+  "@passwordMismatch": {
+    "description": "Password mismatch page"
+  },
   "signUp": "Sign up",
   "@signUp": {
     "description": "Sign up page"
@@ -59,12 +67,20 @@
   "@month": {
     "description": "month"
   },
+  "mMonth":"Month",
+  "@mMonth": {
+    "description": "month"
+  },
+  "year":"Year",
+  "@year": {
+    "description": "Year"
+  },
   "home":"Home",
   "@home": {
     "description": "home page"
   },
   "setting":"Setting",
-  "@month": {
+  "@setting": {
     "description": "setting"
   },
   "account":"Account",
@@ -135,6 +151,10 @@
   "@reason": {
     "description": "reason"
   },
+  "enterDetailReasons":"Enter detail reasons",
+  "@enterDetailReasons": {
+    "description": "enterDetailReasons"
+  },
   "typeOfLeave":"Type of leave",
   "@typeOfLeave": {
     "description": "type Of Leave"
@@ -146,5 +166,213 @@
   "profile":"Profile",
   "@profile": {
     "description": "profile"
+  },
+  "cycle":"CYCLE",
+  "@cycle": {
+    "description": "Cycle"
+  },
+  "inComeFor":"Income for",
+  "@inComeFor": {
+    "description": "inComeFor"
+  },
+  "noData":"No data",
+  "@noData": {
+    "description": "noData"
+  },
+  "netIcome":"Net icome",
+  "@netIcome": {
+    "description": "netIcome"
+  },
+  "ifAny":"if any",
+  "@ifAny": {
+    "description": "if any"
+  },
+  "oT":"OT",
+  "@oT": {
+    "description": "ot"
+  },
+  "healthInsurance":"Health Insurance",
+  "@healthInsurance": {
+    "description": "Health Insurance"
+  },
+  "socialInsurance":"Social Insurance",
+  "@socialInsurance": {
+    "description": "Social insurance"
+  },
+  "unemploymentInsurance":"Unemployment Insurance",
+  "@unemploymentInsurance": {
+    "description": "unemployment insurance"
+  },
+  "unionFees":"Unio Fees",
+  "@unionFees": {
+    "description": "union Fees"
+  },
+  "grossIncome":"Gross Income",
+  "@grossIncome": {
+    "description": "Gross income"
+  },
+  "totalAmountDue":"Total Amount Due",
+  "@totalAmountDue": {
+    "description": "total Amount Due"
+  },
+  "numberOfWorkingDays":"Number Of Working Days",
+  "@numberOfWorkingDays": {
+    "description": "Number of working days"
+  },
+  "standard":"standard",
+  "@standard": {
+    "description": "standard"
+  },
+  "totalManDays":"Total Man-days",
+  "@totalManDays": {
+    "description": "totalManDays"
+  },
+  "bassicSalary":"Bassic Salary",
+  "@bassicSalary": {
+    "description": "bassic Salary"
+  },
+  "contractualAllowances":"Contractual Allowances",
+  "@contractualAllowances": {
+    "description": "contractualAllowances"
+  },
+  "otherAllowances":"Other Allowances",
+  "@otherAllowances": {
+    "description": "Other allowances"
+  },
+  "january":"January",
+  "@january": {
+    "description": "january"
+  },
+  "february":"February",
+  "@february": {
+    "description": "february"
+  },
+  "march":"March",
+  "@march": {
+    "March": "March"
+  },
+  "april":"April",
+  "@april": {
+    "description": "april"
+  },
+  "may":"m=May",
+  "@otherAllowances": {
+    "may": "may"
+  },
+  "june":"June",
+  "@june": {
+    "description": "june"
+  },
+  "july":"July",
+  "@july": {
+    "description": "july"
+  },
+  "august":"August",
+  "@august": {
+    "description": "august"
+  },
+  "september":"September",
+  "@september": {
+    "description": "september"
+  },
+  "october":"October",
+  "@october": {
+    "description": "october"
+  },
+  "november":"November",
+  "@november": {
+    "description": "november"
+  },
+  "december":"December",
+  "@december": {
+    "description": "december"
+  },
+  "addNewLeaveSuccess":"Add new leave Successful",
+  "@addNewLeaveSuccess": {
+    "description": "addNewLeaveSuccess"
+  },
+  "pleaseSelectTheFullItem":"Please select the full item",
+  "@pleaseSelectTheFullItem": {
+    "description": "Please select the full item"
+  },
+  "leaveDetails":"Leave details",
+  "@leaveDetails": {
+    "description": "Leave Details"
+  },
+  "halfDayApplication":"Half Day Application",
+  "@halfDayApplication": {
+    "description": "halfDayApplication"
+  },
+  "fullDayApplication":"Full Day Application",
+  "@fullDayApplication": {
+    "description": "halfDayApplication"
+  },
+  "staffInfo":"Staff information",
+  "@staffInfo": {
+    "description": "Staff information"
+  },
+  "fullName":"Fullname",
+  "@fullName": {
+    "description": "Full name"
+  },
+  "empCode":"Employee Code",
+  "@empCode": {
+    "description": "employee Code"
+  },
+  "phone":"Phone",
+  "@phone": {
+    "description": "phone"
+  },
+  "sex":"Sex",
+  "@sex": {
+    "description": "sex"
+  },
+  "dateOfBirth":"Date of birth",
+  "@dateOfBirth": {
+    "description": "Date Of Birth"
+  },
+  "cancel":"Cancel",
+  "@cancel": {
+    "description": "Cancel"
+  },
+  "select":"Select",
+  "@select": {
+    "description": "select"
+  },
+  "search":"Search",
+  "@search": {
+    "description": "search"
+  },
+  "verificationCode":"Verification code",
+  "@verificationCode": {
+    "description": "verification Code"
+  },
+  "confirm":"Confirm",
+  "@confirm": {
+    "description": "confirm"
+  },
+  "resend":"Resend",
+  "@resend": {
+    "description": "resend"
+  },
+  "conTinue":"Continue",
+  "@conTinue": {
+    "description": "continue"
+  },
+  "noAccount":"No account",
+  "@noAccount": {
+    "description": "no Account"
+  },
+  "off":"Off",
+  "@off": {
+    "description": "Off"
+  },
+  "on":"On",
+  "@on": {
+    "description": "on"
+  },
+  "updateAvatar":"Update avatar",
+  "@updateAvatar": {
+    "description": "avatar"
   }
 }

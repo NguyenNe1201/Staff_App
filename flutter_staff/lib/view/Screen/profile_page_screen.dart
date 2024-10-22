@@ -6,7 +6,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/models/employees.dart';
 import 'package:flutter_staff/view/Widget/appBar_widget.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ProfilePage extends StatefulWidget {
   final String? emp_code;
   final int? emp_id;
@@ -46,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
-          const AppBarForm(title_: 'Trang Cá Nhân',width_: 100,icon_: Icons.contact_support_outlined),
+           AppBarForm(title_: AppLocalizations.of(context)!.profile,width_: 100,icon_: Icons.contact_support_outlined),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -70,9 +70,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           const SizedBox(height: 10),
                           TextButton(
                             onPressed: () {},
-                            child: const Text(
-                              'Thay đổi ảnh đại diện',
-                              style: TextStyle(
+                            child:  Text(
+                              AppLocalizations.of(context)!.updateAvatar,
+                              style:const TextStyle(
                                   color: Palette.btnColor,
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold),
@@ -90,9 +90,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      "Thông tin nhân viên",
-                      style: TextStyle(
+                    Text(
+                    AppLocalizations.of(context)!.staffInfo,
+                      style: const TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
                           color: Colors.black87),
@@ -101,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                     TProfileMenu(
                       onPressed: () {},
-                      title: 'Họ tên',
+                      title: AppLocalizations.of(context)!.fullName,
                       value: _employeeViewModel?.fULLNAME ?? "",
                     ),
                     TProfileMenu(
@@ -118,9 +118,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      "Thôn tin nhân viên",
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.staffInfo,
+                      style:const TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
                           color: Colors.black87),
@@ -129,7 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                     TProfileMenu(
                       onPressed: () {},
-                      title: 'Mã NV',
+                      title: AppLocalizations.of(context)!.empCode,
                       value: _employeeViewModel?.eMPCODE ?? "",
                     ),
                     TProfileMenu(
@@ -139,17 +139,17 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     TProfileMenu(
                       onPressed: () {},
-                      title: 'SDT',
+                      title: AppLocalizations.of(context)!.phone,
                       value: _employeeViewModel?.pHONENUMBER ?? "",
                     ),
                     TProfileMenu(
                       onPressed: () {},
-                      title: 'Giới tính',
+                      title: AppLocalizations.of(context)!.sex,
                       value:_employeeViewModel?.sEX ?? "",
                     ),
                     TProfileMenu(
                       onPressed: () {},
-                      title: 'Ngày sinh',
+                      title: AppLocalizations.of(context)!.dateOfBirth,
                       value: birdthdayEmp,
                     ),
                   ],
