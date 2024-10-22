@@ -10,7 +10,7 @@ import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Widget/dialogNotification_widget.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // -------------------------- form đăng ký tài khoản --------------------
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -71,8 +71,8 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Column(
                 //  crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const AppBarForm(
-                      title_: "Đăng Ký",
+                  AppBarForm(
+                      title_: AppLocalizations.of(context)!.signUp,
                       width_: 100,
                       icon_: Icons.contact_support_outlined),
                   const SizedBox(height: 20),
@@ -117,7 +117,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   size: 26,
                                   color: Color(0xff6849ef),
                                 ),
-                                labelText: 'Số điện thoại',
+                                labelText: AppLocalizations.of(context)!.phoneNumber,
                                 labelStyle: TextStyle(
                                   fontSize: 15,
                                   color: Colors.grey[800],
@@ -160,7 +160,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   size: 26,
                                   color: Color(0xff6849ef),
                                 ),
-                                labelText: 'Mật khẩu',
+                                labelText: AppLocalizations.of(context)!.password,
                                 labelStyle: TextStyle(
                                   fontSize: 15,
                                   color: Colors.grey[800],
@@ -215,7 +215,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   size: 28,
                                   color: Color(0xff6849ef),
                                 ),
-                                labelText: 'Xác nhận mật khẩu',
+                                labelText: AppLocalizations.of(context)!.confirmPassword,
                                 labelStyle: TextStyle(
                                   fontSize: 15,
                                   color: Colors.grey[800],
@@ -224,7 +224,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                               validator: (value) {
                                 if (value != _passwordController.text) {
-                                  return 'Mật khẩu không khớp';
+                                  return AppLocalizations.of(context)!.passwordMismatch;
                                 }
                                 return null;
                               },
@@ -232,7 +232,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           const SizedBox(height: 20),
                           buildButton_SignUp(
-                              "Đăng ký",
+                              AppLocalizations.of(context)!.signUp,
                               _phoneController.text,
                               _userNameController.text,
                               _passwordController.text,
@@ -277,20 +277,20 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ));
                       } else {
-                        const MyDialogNotification(
-                                title: "Thông báo",
+                       MyDialogNotification(
+                                title: AppLocalizations.of(context)!.notification,
                                 content: "Lỗi. Vui lòng tạo lại!")
                             .showMyDialog(context);
                       }
                     } else {
-                      const MyDialogNotification(
-                              title: "Thông báo",
+                     MyDialogNotification(
+                              title:  AppLocalizations.of(context)!.notification,
                               content: "Tài khoản này đã tồn tại.")
                           .showMyDialog(context);
                     }
                   } else {
-                    const MyDialogNotification(
-                            title: "Thông báo",
+                    MyDialogNotification(
+                            title: AppLocalizations.of(context)!.notification,
                             content:
                                 "Số điện thoại chưa tồn tại trên hệ thống. Liên hệ quản lý để cập nhật!")
                         .showMyDialog(context);
@@ -407,8 +407,8 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
           _otpController3.text +
           _otpController4.text;
       if (enteredOtp == "") {
-        const MyDialogNotification(
-                title: "Thông báo", content: "Không được để trống!")
+         MyDialogNotification(
+                title: AppLocalizations.of(context)!.notification, content: "Không được để trống!")
             .showMyDialog(context);
       } else if (enteredOtp == _currentOtpData.otp) {
         final result = await apiService.fetchSignUpAddAccount(
@@ -419,8 +419,8 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
                 builder: (BuildContext context) => const LoginPage(),
               ),
               (Route<dynamic> route) => false);
-          const MyDialogNotification(
-                  title: "Thông báo", content: "Đăng ký tài khoản thành công.")
+         MyDialogNotification(
+                  title:  AppLocalizations.of(context)!.notification, content: "Đăng ký tài khoản thành công.")
               .showMyDialog(context);
         } else {
           Navigator.of(context).pushAndRemoveUntil(
@@ -428,13 +428,13 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
                 builder: (BuildContext context) => const SignUpPage(),
               ),
               (Route<dynamic> route) => false);
-          const MyDialogNotification(
-                  title: "Thông báo", content: "Xác thực OTP thất bại.")
+          MyDialogNotification(
+                  title:  AppLocalizations.of(context)!.notification, content: "Xác thực OTP thất bại.")
               .showMyDialog(context);
         }
       } else {
-        const MyDialogNotification(
-                title: "Thông báo", content: "OTP không hợp lệ!")
+        MyDialogNotification(
+                title:  AppLocalizations.of(context)!.notification, content: "OTP không hợp lệ!")
             .showMyDialog(context);
       }
     } finally {
@@ -454,14 +454,14 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
         });
         // ScaffoldMessenger.of(context).showSnackBar(
         //     const SnackBar(content: Text('Mã OTP đã được gửi lại.')));
-        const MyDialogNotification(
-                title: "Thông báo",
+        MyDialogNotification(
+                title:  AppLocalizations.of(context)!.notification,
                 content:
                     "Mã OTP đã được gửi lại. Vui lòng kiểm tra thư điện tử!")
             .showMyDialog(context);
       } else {
-        const MyDialogNotification(
-                title: "Thông báo",
+       MyDialogNotification(
+                title:  AppLocalizations.of(context)!.notification,
                 content: "Gửi lại mã OTP thất bại. Vui lòng thử lại!")
             .showMyDialog(context);
       }
@@ -473,8 +473,8 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(children: [
-        const AppBarForm(
-            title_: "Nhập Mã Xác Minh",
+         AppBarForm(
+            title_: AppLocalizations.of(context)!.verificationCode,
             width_: 100,
             icon_: Icons.contact_support_outlined),
         const SizedBox(height: 10),
@@ -677,7 +677,7 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
                     child: TextButton(
                       onPressed: _isButtonEnabled ? _resendOTP : null,
                       child: Text(
-                        "Gửi lại",
+                       AppLocalizations.of(context)!.resend,
                         style: TextStyle(
                           color: _isButtonEnabled
                               ? const Color(0xff6849ef)
@@ -703,7 +703,7 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
                           ? null
                           : _verifyOTP,
                       child: Text(
-                        "Xác nhận",
+                        AppLocalizations.of(context)!.confirm,
                         style: TextStyle(
                           color: (_isButtonEnabled && !_isBtnConfirm)
                               ? Colors.grey.shade400
