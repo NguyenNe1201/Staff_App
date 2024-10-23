@@ -615,7 +615,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
           .isBefore(DateFormat('dd/MM/yyyy').parse(_selectedFromDate))) {
         MyDialogNotification(
                 title: AppLocalizations.of(context)!.notification,
-                content: "Ngày kết thúc không được nhỏ hơn ngày bắt đầu.")
+                content: "${AppLocalizations.of(context)!.endFateMustBeLaterThanTheStartdate}.")
             .showMyDialog(context);
       } else {
         setState(() {

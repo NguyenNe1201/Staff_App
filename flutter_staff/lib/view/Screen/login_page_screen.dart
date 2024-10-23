@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(height: 30),
                           Text(
                             AppLocalizations.of(context)!.login,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 27,
                               fontWeight: FontWeight.bold,
                             ),
@@ -328,7 +328,7 @@ class _LoginPageState extends State<LoginPage> {
                   if (checkAccountUser == null) {
                     MyDialogNotification(
                             title: AppLocalizations.of(context)!.notification,
-                            content: "Mật khẩu không đúng. Vui lòng nhập lại!")
+                            content:  AppLocalizations.of(context)!.incorrectPasswordPleaseInputs)
                         .showMyDialog(context);
                   } else {
                     Navigator.of(context).pushAndRemoveUntil(
@@ -344,7 +344,7 @@ class _LoginPageState extends State<LoginPage> {
                   MyDialogNotification(
                           title: AppLocalizations.of(context)!.notification,
                           content:
-                              "Số điện thoại này không tồn tại. Vui lòng đăng ký tài khoản!")
+                               AppLocalizations.of(context)!.phoneNotFoundPleaseRegisterAc)
                       .showMyDialog(context);
                 }
               } finally {
@@ -396,7 +396,7 @@ Widget buildFolderRow(String _title, IconData? _icon) {
           color: Colors.white.withOpacity(0.2),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: Color(0xff886ff2),
+            color:const Color(0xff886ff2),
             width: 1, // Độ rộng của viền
           ),
         ),
@@ -409,7 +409,7 @@ Widget buildFolderRow(String _title, IconData? _icon) {
               bottom: 0,
               child: Icon(
                 _icon,
-                color: Color(0xff886ff2),
+                color: const Color(0xff886ff2),
               ),
             ),
             Center(

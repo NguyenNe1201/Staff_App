@@ -96,7 +96,7 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'không được để trống';
+                          return '${AppLocalizations.of(context)!.fieldIsRequired}';
                         }
                         return null;
                       },
@@ -126,7 +126,7 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
                                     MyDialogNotification(
                                             title: AppLocalizations.of(context)!
                                                 .notification,
-                                            content: "Lỗi. Vui lòng nhập lại.")
+                                            content: "${ AppLocalizations.of(context)!.errorPleaseEnterAgain}.")
                                         .showMyDialog(context);
                                   }
                                 } finally {
@@ -221,7 +221,7 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
       if (enteredOtp == "") {
         MyDialogNotification(
                 title: AppLocalizations.of(context)!.notification,
-                content: "Không được để trống!")
+                content: "${ AppLocalizations.of(context)!.fieldIsRequired}.")
             .showMyDialog(context);
       } else if (enteredOtp == _currentOtpData.otp) {
         Navigator.of(context).pushAndRemoveUntil(
@@ -233,7 +233,7 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
       } else {
         MyDialogNotification(
                 title: AppLocalizations.of(context)!.notification,
-                content: "OTP không hợp lệ!")
+                content: "${ AppLocalizations.of(context)!.invalidOTP}.")
             .showMyDialog(context);
       }
     } finally {
@@ -255,12 +255,12 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
         MyDialogNotification(
                 title: AppLocalizations.of(context)!.notification,
                 content:
-                    "Mã OTP đã được gửi lại. Vui lòng kiểm tra thư điện tử!")
+                    "${AppLocalizations.of(context)!.oTPResentPlCheckEmail}.")
             .showMyDialog(context);
       } else {
         MyDialogNotification(
                 title: AppLocalizations.of(context)!.notification,
-                content: "Gửi lại mã OTP thất bại. Vui lòng thử lại!")
+                content: "${AppLocalizations.of(context)!.resendOTPfailedPleaseTryAgain}.")
             .showMyDialog(context);
       }
     }
@@ -280,8 +280,8 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
             child: IntrinsicHeight(
               child: Column(
                 children: [
-                  const AppBarForm(
-                      title_: "Xác Thực OTP",
+                  AppBarForm(
+                      title_: AppLocalizations.of(context)!.oTPverification,
                       width_: 100,
                       icon_: Icons.contact_support_outlined),
                   const SizedBox(height: 10),
@@ -292,9 +292,9 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                         Center(
                           child: Column(
                             children: [
-                              const Text(
-                                "Mã xác thực OTP đã được gửi qua:",
-                                style: TextStyle(
+                              Text(
+                                "${AppLocalizations.of(context)!.oTPverificationCodeHasBeenSent}:",
+                                style:const TextStyle(
                                     fontSize: 16, color: Colors.black54),
                               ),
                               Text(
@@ -453,15 +453,15 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTP> {
                               style: TextStyle(
                                   fontSize: 16, color: Colors.grey.shade800),
                               children: <TextSpan>[
-                                const TextSpan(
-                                    text: 'Mã xác thực OTP có hiệu lực trong '),
+                                 TextSpan(
+                                    text: '${AppLocalizations.of(context)!.oTPIsValidFor} '),
                                 TextSpan(
-                                    text: '$_start',
+                                    text: _start.toString(),
                                     style: const TextStyle(color: Colors.red)),
-                                const TextSpan(text: ' giây. \n'),
-                                const TextSpan(
+                                 TextSpan(text: ' ${AppLocalizations.of(context)!.second}. \n'),
+                                 TextSpan(
                                     text:
-                                        'Kiểm tra thông báo thư điện tử để nhận mã.'),
+                                        '${AppLocalizations.of(context)!.checkYourEmailForTheCode}.'),
                               ]),
                           textAlign: TextAlign.center,
                         ),
@@ -585,8 +585,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
       body: Column(
         //  crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const AppBarForm(
-              title_: "Đặt Lại Mật Khẩu",
+           AppBarForm(
+              title_: AppLocalizations.of(context)!.resetPassword,
               width_: 100,
               icon_: Icons.contact_support_outlined),
           const SizedBox(height: 20),
@@ -629,8 +629,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                           size: 26,
                           color: Color(0xff6849ef),
                         ),
-                        labelText: 'Mật khẩu',
-                        labelStyle: TextStyle(
+                        labelText: AppLocalizations.of(context)!.password,
+                        labelStyle: TextStyle(  
                           fontSize: 15,
                           color: Colors.grey[800],
                           fontWeight: FontWeight.w600,
@@ -717,13 +717,13 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                             MyDialogNotification(
                                     title: AppLocalizations.of(context)!
                                         .notification,
-                                    content: "Thay đổi mật khẩu thành công.")
+                                    content: "${AppLocalizations.of(context)!.passwordChangedSuccess}.")
                                 .showMyDialog(context);
                           } else {
                             MyDialogNotification(
                                     title: AppLocalizations.of(context)!
                                         .notification,
-                                    content: "Thay đổi mật khẩu thất bại.")
+                                    content: "${AppLocalizations.of(context)!.passwordChangedFail}.")
                                 .showMyDialog(context);
                           }
                         }

@@ -204,7 +204,7 @@ class _LoglistPageState extends State<LoglistPage> {
       body: Column(
         children: [
           AppBarForm(
-              title_: 'Chấm Công Thực Tế',
+              title_: AppLocalizations.of(context)!.actualTimekeeping,
               title_1: "(${AppLocalizations.of(context)!.checkInOut})",
               width_: 110,
               icon_: Ionicons.search_sharp,
@@ -271,7 +271,7 @@ class _LoglistPageState extends State<LoglistPage> {
           if (isStatusFilter)
             MaterialButton(
                 padding: const EdgeInsets.only(bottom: 15),
-                child: Text('Xóa bộ lọc',
+                child: Text(AppLocalizations.of(context)!.clearFilters,
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
