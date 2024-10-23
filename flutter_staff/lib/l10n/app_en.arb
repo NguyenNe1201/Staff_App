@@ -255,8 +255,8 @@
   "@april": {
     "description": "april"
   },
-  "may":"m=May",
-  "@otherAllowances": {
+  "may":"May",
+  "@may": {
     "may": "may"
   },
   "june":"June",
@@ -374,5 +374,93 @@
   "updateAvatar":"Update avatar",
   "@updateAvatar": {
     "description": "avatar"
+  },
+  "incorrectPasswordPleaseInputs":"Incorrect password. Please try again.",
+  "@incorrectPasswordPleaseInputs": {
+    "description": "Incorrect password. Please try again."
+  },
+  "phoneNotFoundPleaseRegisterAc":"This phone number is not found. Please register for an account.",
+  "@phoneNotFoundPleaseRegisterAc": {
+    "description": "This phone number is not found. Please register for an account."
+  },
+  "fieldIsRequired":"This field is required",
+  "@fieldIsRequired": {
+    "description": "This field is required"
+  },
+  "errorPleaseEnterAgain":"Error. Please enter again",
+  "@errorPleaseEnterAgain": {
+    "description": "Error. Please enter again"
+  },
+  "invalidOTP":"Invalid OTP",
+  "@invalidOTP": {
+    "description": "invalid OTP"
+  },
+  "oTPResentPlCheckEmail":"The OTP has been resent. Please check your email",
+  "@oTPResentPlCheckEmail": {
+    "description": "The OTP has been resent. Please check your email"
+  },
+  "resendOTPfailedPleaseTryAgain":"Resending OTP failed. Please try again",
+  "@resendOTPfailedPleaseTryAgain": {
+    "description": "Resending OTP failed. Please try again"
+  },
+  "oTPverification":"OTP Verification",
+  "@oTPverification": {
+    "description": "OTP verification"
+  },
+  "oTPverificationCodeHasBeenSent":"The OTP verification code has been sent",
+  "@oTPverificationCodeHasBeenSent": {
+    "description": "The OTP verification code has been sent"
+  },
+  "second":"second",
+  "@second": {
+    "description": "second"
+  },
+  "oTPIsValidFor":"The OTP is valid for",
+  "@oTPIsValidFor": {
+    "description": "The OTP is valid for"
+  },
+  "checkYourEmailForTheCode":"Check your email for the code",
+  "@checkYourEmailForTheCode": {
+    "description": "Check your email for the code"
+  },
+  "resetPassword":"Reset password",
+  "@resetPassword": {
+    "description": "Reset password"
+  },
+  "passwordChangedSuccess":"Password changed successfully",
+  "@passwordChangedSuccess": {
+    "description": "Password changed successfully"
+  },
+  "passwordChangedFail":"Password changed failed",
+  "@passwordChangedFail": {
+    "description": "Password changed failed"
+  },
+  "endFateMustBeLaterThanTheStartdate":"The end date must be later than the start date",
+  "@endFateMustBeLaterThanTheStartdate": {
+    "description": "The end date must be later than the start date"
+  },
+  "accountAlreadyExists":"This account already exists",
+  "@accountAlreadyExists": {
+    "description": "This account already exists"
+  },
+  "phoneDoesNotExistPleaseContactAdm":"The phone number does not exist in the system. Please contact the administrator for an update.",
+  "@phoneDoesNotExistPleaseContactAdm": {
+    "description": "The phone number does not exist in the system. Please contact the administrator for an update."
+  },
+  "accountRegistrationSuccess":"Account registration successful",
+  "@accountRegistrationSuccess": {
+    "description": "Account registration successful"
+  },
+  "oTPverificationFailed":"OTP verification failed",
+  "@oTPverificationFailed": {
+    "description": "OTP verification failed"
+  },
+  "actualTimekeeping":"Actual timekeeping",
+  "@actualTimekeeping": {
+    "description": "Actual timekeeping"
+  },
+  "clearFilters":"Clear filters",
+  "@clearFilters": {
+    "description": "Clear filters"
   }
 }

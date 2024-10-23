@@ -279,20 +279,20 @@ class _SignUpPageState extends State<SignUpPage> {
                       } else {
                        MyDialogNotification(
                                 title: AppLocalizations.of(context)!.notification,
-                                content: "Lỗi. Vui lòng tạo lại!")
+                                content: AppLocalizations.of(context)!.errorPleaseEnterAgain)
                             .showMyDialog(context);
                       }
                     } else {
                      MyDialogNotification(
                               title:  AppLocalizations.of(context)!.notification,
-                              content: "Tài khoản này đã tồn tại.")
+                              content: "${AppLocalizations.of(context)!.accountAlreadyExists}.")
                           .showMyDialog(context);
                     }
                   } else {
                     MyDialogNotification(
                             title: AppLocalizations.of(context)!.notification,
                             content:
-                                "Số điện thoại chưa tồn tại trên hệ thống. Liên hệ quản lý để cập nhật!")
+                                AppLocalizations.of(context)!.phoneDoesNotExistPleaseContactAdm)
                         .showMyDialog(context);
                   }
                 } finally {
@@ -408,7 +408,7 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
           _otpController4.text;
       if (enteredOtp == "") {
          MyDialogNotification(
-                title: AppLocalizations.of(context)!.notification, content: "Không được để trống!")
+                title: AppLocalizations.of(context)!.notification, content: "${AppLocalizations.of(context)!.fieldIsRequired}.")
             .showMyDialog(context);
       } else if (enteredOtp == _currentOtpData.otp) {
         final result = await apiService.fetchSignUpAddAccount(
@@ -420,7 +420,7 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
               ),
               (Route<dynamic> route) => false);
          MyDialogNotification(
-                  title:  AppLocalizations.of(context)!.notification, content: "Đăng ký tài khoản thành công.")
+                  title:  AppLocalizations.of(context)!.notification, content: "${AppLocalizations.of(context)!.accountRegistrationSuccess}.")
               .showMyDialog(context);
         } else {
           Navigator.of(context).pushAndRemoveUntil(
@@ -429,12 +429,12 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
               ),
               (Route<dynamic> route) => false);
           MyDialogNotification(
-                  title:  AppLocalizations.of(context)!.notification, content: "Xác thực OTP thất bại.")
+                  title:  AppLocalizations.of(context)!.notification, content: "${AppLocalizations.of(context)!.oTPverificationFailed}.")
               .showMyDialog(context);
         }
       } else {
         MyDialogNotification(
-                title:  AppLocalizations.of(context)!.notification, content: "OTP không hợp lệ!")
+                title:  AppLocalizations.of(context)!.notification, content: "${AppLocalizations.of(context)!.invalidOTP}!")
             .showMyDialog(context);
       }
     } finally {
@@ -457,12 +457,12 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
         MyDialogNotification(
                 title:  AppLocalizations.of(context)!.notification,
                 content:
-                    "Mã OTP đã được gửi lại. Vui lòng kiểm tra thư điện tử!")
+                    "${AppLocalizations.of(context)!.oTPResentPlCheckEmail}.")
             .showMyDialog(context);
       } else {
        MyDialogNotification(
                 title:  AppLocalizations.of(context)!.notification,
-                content: "Gửi lại mã OTP thất bại. Vui lòng thử lại!")
+                content: "${AppLocalizations.of(context)!.resendOTPfailedPleaseTryAgain}.")
             .showMyDialog(context);
       }
     }
@@ -485,9 +485,9 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
               Center(
                 child: Column(
                   children: [
-                    const Text(
-                      "Mã xác thực OTP đã được gửi qua:",
-                      style: TextStyle(fontSize: 16, color: Colors.black54),
+                     Text(
+                      "${AppLocalizations.of(context)!.oTPverificationCodeHasBeenSent}:",
+                      style:const TextStyle(fontSize: 16, color: Colors.black54),
                     ),
                     Text(
                       widget.otpData.gmail ?? '',
@@ -646,14 +646,14 @@ class _ConfirmOTPState extends State<ConfirmOTP> {
                 text: TextSpan(
                     style: TextStyle(fontSize: 16, color: Colors.grey.shade800),
                     children: <TextSpan>[
-                      const TextSpan(
-                          text: 'Mã xác thực OTP có hiệu lực trong '),
                       TextSpan(
-                          text: '$_start',
+                          text: '${AppLocalizations.of(context)!.oTPIsValidFor} '),
+                      TextSpan(
+                          text: _start.toString(),
                           style: const TextStyle(color: Colors.red)),
-                      const TextSpan(text: ' giây. \n'),
-                      const TextSpan(
-                          text: 'Kiểm tra thông báo thư điện tử để nhận mã.'),
+                      TextSpan(text: ' ${AppLocalizations.of(context)!.second}. \n'),
+                      TextSpan(
+                          text: '${AppLocalizations.of(context)!.checkYourEmailForTheCode}.'),
                     ]),
                 textAlign: TextAlign.center,
               ),
