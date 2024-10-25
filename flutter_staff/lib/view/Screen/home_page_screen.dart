@@ -232,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  Container(
+                 Container(
                     height: 300,
                     child: Align(
                         alignment: Alignment.center,
@@ -250,7 +250,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               child: ClipRRect(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                   const BorderRadius.all(Radius.circular(20)),
                                 child: Image.asset(
                                   'assets/images/bg_home.jpg',
                                   height: 200,

@@ -1,5 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staff/config/palette.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
+import 'package:flutter_staff/l10n/cubits/languages_cubit.dart';
 import 'package:flutter_staff/view/Screen/login_page_screen.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_staff/view/Widget/appBar_widget.dart';
 import 'package:flutter_staff/view/Screen/profile_page_screen.dart';
 import 'package:flutter_staff/models/employees.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class SettingPage extends StatefulWidget {
   final String? emp_code;
   final int? emp_id;
@@ -39,9 +42,116 @@ class _SettingPageState extends State<SettingPage> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    context.read<LanguagesCubit>().load(context);
+  }
+
+  @override
   void initState() {
     super.initState();
     getDataEmpCode(widget.emp_code.toString());
+  }
+
+  void _showLanguageDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        Locale? selectedLocale =
+            Localizations.localeOf(context); // Lấy ngôn ngữ hiện tại
+        return AlertDialog(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.language,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff6849ef),
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+            content: StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+                return Column(
+                mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ListTile(
+                      title: Row(
+                       crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/vietnam.png',
+                            height: 20,
+                          ),
+                          const SizedBox(width: 10),
+                          Text('Tiếng Việt',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[700],
+                              )),
+                          
+                        ],
+                      ),
+                      leading: Radio<Locale>(
+                        value: const Locale('vi', ''),
+                        groupValue: selectedLocale,
+                        onChanged: (Locale? value) {
+                          setState(() {
+                            selectedLocale = value;
+                          });
+                          context
+                              .read<LanguagesCubit>()
+                              .change(const Locale('vi', ''));
+                        },
+                      ),
+                    ),
+                    ListTile(
+                      title: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/us.png',
+                            height: 20,
+                          ),
+                            const SizedBox(width: 10),
+                          Text('English',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey[700],
+                              )),
+                        
+                        ],
+                      ),
+                      leading: Radio<Locale>(
+                        value: const Locale('en', ''),
+                        groupValue: selectedLocale,
+                        onChanged: (Locale? value) {
+                          setState(() {
+                            selectedLocale = value;
+                          });
+                          context
+                              .read<LanguagesCubit>()
+                              .change(const Locale('en', ''));
+                        },
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ));
+      },
+    ).then((selectedLocale) {});
   }
 
   @override
@@ -50,21 +160,24 @@ class _SettingPageState extends State<SettingPage> {
       backgroundColor: Palette.backgroundColor,
       body: Column(
         children: [
-        AppBarForm(title_: AppLocalizations.of(context)!.setting,width_: 100,icon_: Icons.contact_support_outlined),
+          AppBarForm(
+              title_: AppLocalizations.of(context)!.setting,
+              width_: 100,
+              icon_: Icons.contact_support_outlined),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               children: [
                 // SizedBox(height: 40),
-               Row(
+                Row(
                   children: [
                     const Icon(
                       Icons.person,
                       color: Color(0xff886ff2),
                     ),
-                   const SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Text(
-                     AppLocalizations.of(context)!.account,
+                      AppLocalizations.of(context)!.account,
                       style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -100,7 +213,7 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                           Text(
                             _employeeViewModel?.titleNameVi ?? "",
-                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                            style: const TextStyle(fontSize: 16, color: Colors.grey),
                           )
                         ],
                       ),
@@ -123,16 +236,16 @@ class _SettingPageState extends State<SettingPage> {
                   ),
                 ),
                 const SizedBox(height: 40),
-                 Row(
+                Row(
                   children: [
-                   const Icon(
+                    const Icon(
                       Icons.settings,
                       color: Color(0xff886ff2),
                     ),
-                   const SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Text(
                       AppLocalizations.of(context)!.setting,
-                      style:const TextStyle(
+                      style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87),
@@ -147,7 +260,9 @@ class _SettingPageState extends State<SettingPage> {
                   bgColor: Colors.orange.shade100,
                   iconColor: Colors.orange,
                   value: AppLocalizations.of(context)!.englishVietnam,
-                  onTap: () {},
+                  onTap: () {
+                    _showLanguageDialog(context);
+                  },
                 ),
                 const SizedBox(height: 20),
                 SettingItem(
@@ -196,8 +311,8 @@ class _SettingPageState extends State<SettingPage> {
                           (Route<dynamic> route) => false);
                     },
                     child: Text(
-                     AppLocalizations.of(context)!.logOut,
-                      style:const TextStyle(
+                      AppLocalizations.of(context)!.logOut,
+                      style: const TextStyle(
                           fontSize: 17,
                           letterSpacing: 2.2,
                           color: Colors.black87),
@@ -242,7 +357,7 @@ class TProfileButton extends StatelessWidget {
           color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Icon(Ionicons.chevron_forward_outline),
+        child:const Icon(Ionicons.chevron_forward_outline),
       ),
     );
   }
@@ -293,7 +408,9 @@ class SettingSwitch extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            value ? AppLocalizations.of(context)!.on : AppLocalizations.of(context)!.off,
+            value
+                ? AppLocalizations.of(context)!.on
+                : AppLocalizations.of(context)!.off,
             style: const TextStyle(
               fontSize: 16,
               color: Colors.grey,

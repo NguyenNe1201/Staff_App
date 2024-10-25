@@ -130,9 +130,9 @@ class _LeavePageState extends State<LeavePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                         Text(
+                        Text(
                           AppLocalizations.of(context)!.detail,
-                          style:const TextStyle(
+                          style: const TextStyle(
                               color: Colors.black87,
                               fontSize: 18,
                               fontWeight: FontWeight.w700),
@@ -187,13 +187,15 @@ class _LeavePageState extends State<LeavePage> {
                         MaterialPageRoute(
                           builder: (context) => LeaveDetailsPage(
                               month: 1,
+                              month_title:
+                                  AppLocalizations.of(context)!.january,
                               emp_id: widget.emp_id,
                               emp_code: widget.emp_code),
                         ),
                       );
                     }),
                     buildBoxLeaveByMonth(
-                       AppLocalizations.of(context)!.february,
+                        AppLocalizations.of(context)!.february,
                         CalLeave_model?.t2.toString() ?? "",
                         CountWaitLeave_model?.wAITINGLEAVET2.toString() ?? "",
                         () {
@@ -202,6 +204,8 @@ class _LeavePageState extends State<LeavePage> {
                         MaterialPageRoute(
                             builder: (context) => LeaveDetailsPage(
                                 month: 2,
+                                month_title:
+                                    AppLocalizations.of(context)!.february,
                                 emp_id: widget.emp_id,
                                 emp_code: widget.emp_code)),
                       );
@@ -216,6 +220,8 @@ class _LeavePageState extends State<LeavePage> {
                         MaterialPageRoute(
                             builder: (context) => LeaveDetailsPage(
                                 month: 3,
+                                month_title:
+                                    AppLocalizations.of(context)!.march,
                                 emp_id: widget.emp_id,
                                 emp_code: widget.emp_code)),
                       );
@@ -230,6 +236,8 @@ class _LeavePageState extends State<LeavePage> {
                         MaterialPageRoute(
                             builder: (context) => LeaveDetailsPage(
                                 month: 4,
+                                month_title:
+                                    AppLocalizations.of(context)!.april,
                                 emp_id: widget.emp_id,
                                 emp_code: widget.emp_code)),
                       );
@@ -244,6 +252,7 @@ class _LeavePageState extends State<LeavePage> {
                         MaterialPageRoute(
                             builder: (context) => LeaveDetailsPage(
                                 month: 5,
+                                month_title: AppLocalizations.of(context)!.may,
                                 emp_id: widget.emp_id,
                                 emp_code: widget.emp_code)),
                       );
@@ -259,6 +268,8 @@ class _LeavePageState extends State<LeavePage> {
                           MaterialPageRoute(
                               builder: (context) => LeaveDetailsPage(
                                   month: 6,
+                                  month_title:
+                                      AppLocalizations.of(context)!.june,
                                   emp_id: widget.emp_id,
                                   emp_code: widget.emp_code)),
                         );
@@ -273,6 +284,8 @@ class _LeavePageState extends State<LeavePage> {
                           MaterialPageRoute(
                               builder: (context) => LeaveDetailsPage(
                                   month: 7,
+                                  month_title:
+                                      AppLocalizations.of(context)!.july,
                                   emp_id: widget.emp_id,
                                   emp_code: widget.emp_code)),
                         );
@@ -287,6 +300,8 @@ class _LeavePageState extends State<LeavePage> {
                           MaterialPageRoute(
                               builder: (context) => LeaveDetailsPage(
                                   month: 8,
+                                  month_title:
+                                      AppLocalizations.of(context)!.august,
                                   emp_id: widget.emp_id,
                                   emp_code: widget.emp_code)),
                         );
@@ -301,6 +316,8 @@ class _LeavePageState extends State<LeavePage> {
                           MaterialPageRoute(
                               builder: (context) => LeaveDetailsPage(
                                   month: 9,
+                                  month_title:
+                                      AppLocalizations.of(context)!.september,
                                   emp_id: widget.emp_id,
                                   emp_code: widget.emp_code)),
                         );
@@ -315,12 +332,14 @@ class _LeavePageState extends State<LeavePage> {
                           MaterialPageRoute(
                               builder: (context) => LeaveDetailsPage(
                                   month: 10,
+                                  month_title:
+                                      AppLocalizations.of(context)!.october,
                                   emp_id: widget.emp_id,
                                   emp_code: widget.emp_code)),
                         );
                       }),
                       buildBoxLeaveByMonth(
-                         AppLocalizations.of(context)!.november,
+                          AppLocalizations.of(context)!.november,
                           CalLeave_model?.t11.toString() ?? "",
                           CountWaitLeave_model?.wAITINGLEAVET11.toString() ??
                               "", () {
@@ -329,6 +348,8 @@ class _LeavePageState extends State<LeavePage> {
                           MaterialPageRoute(
                               builder: (context) => LeaveDetailsPage(
                                   month: 11,
+                                  month_title:
+                                      AppLocalizations.of(context)!.november,
                                   emp_id: widget.emp_id,
                                   emp_code: widget.emp_code)),
                         );
@@ -343,6 +364,8 @@ class _LeavePageState extends State<LeavePage> {
                           MaterialPageRoute(
                               builder: (context) => LeaveDetailsPage(
                                   month: 12,
+                                  month_title:
+                                      AppLocalizations.of(context)!.december,
                                   emp_id: widget.emp_id,
                                   emp_code: widget.emp_code)),
                         );
@@ -615,7 +638,8 @@ class _NewLeavePageState extends State<NewLeavePage> {
           .isBefore(DateFormat('dd/MM/yyyy').parse(_selectedFromDate))) {
         MyDialogNotification(
                 title: AppLocalizations.of(context)!.notification,
-                content: "${AppLocalizations.of(context)!.endFateMustBeLaterThanTheStartdate}.")
+                content:
+                    "${AppLocalizations.of(context)!.endFateMustBeLaterThanTheStartdate}.")
             .showMyDialog(context);
       } else {
         setState(() {
@@ -641,7 +665,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 AppBarForm(
+                  AppBarForm(
                       title_: AppLocalizations.of(context)!.addLeave,
                       width_: 100,
                       icon_: Icons.contact_support_outlined),
@@ -707,7 +731,7 @@ class _NewLeavePageState extends State<NewLeavePage> {
                           ],
                         ),
                         const SizedBox(height: 15),
-                         Text(
+                        Text(
                           '${AppLocalizations.of(context)!.typeOfLeave}/${AppLocalizations.of(context)!.time}',
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w700),
@@ -717,7 +741,8 @@ class _NewLeavePageState extends State<NewLeavePage> {
                           children: [
                             Expanded(
                               child: MyDropdown(
-                                title_: AppLocalizations.of(context)!.typeOfLeave,
+                                title_:
+                                    AppLocalizations.of(context)!.typeOfLeave,
                                 item_list_: kindLeaveNames,
                                 selectedValue_: selectedLeaveType,
                                 onChanged_: (String? value) {
@@ -759,13 +784,14 @@ class _NewLeavePageState extends State<NewLeavePage> {
                           ],
                         ),
                         const SizedBox(height: 15),
-                         Text(
-                           AppLocalizations.of(context)!.reason,
-                          style:const TextStyle(
+                        Text(
+                          AppLocalizations.of(context)!.reason,
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w700),
                         ),
                         MyInputField(
-                            hint: AppLocalizations.of(context)!.enterDetailReasons,
+                            hint: AppLocalizations.of(context)!
+                                .enterDetailReasons,
                             controller: reasonController),
                         const SizedBox(height: 20),
                         MyButton(
@@ -777,8 +803,8 @@ class _NewLeavePageState extends State<NewLeavePage> {
                             if (hours == 0 || selectedKindLeaveID == null) {
                               // print(selectedKindLeaveID.toString());
                               MyDialogNotification(
-                                      content:
-                                          AppLocalizations.of(context)!.pleaseSelectTheFullItem,
+                                      content: AppLocalizations.of(context)!
+                                          .pleaseSelectTheFullItem,
                                       title: AppLocalizations.of(context)!
                                           .notification)
                                   .showMyDialog(context);
@@ -792,9 +818,11 @@ class _NewLeavePageState extends State<NewLeavePage> {
                                   reasonController.text);
                               if (result['status'] == true) {
                                 //  print("thêm thành công!");
-                               MyDialogNotification(
-                                        content: AppLocalizations.of(context)!.addNewLeaveSuccess,
-                                        title:  AppLocalizations.of(context)!.notification)
+                                MyDialogNotification(
+                                        content: AppLocalizations.of(context)!
+                                            .addNewLeaveSuccess,
+                                        title: AppLocalizations.of(context)!
+                                            .notification)
                                     .showMyDialog(context);
                                 setState(() {
                                   _selectedToDate = DateFormat('dd/MM/yyyy')
@@ -810,7 +838,8 @@ class _NewLeavePageState extends State<NewLeavePage> {
                                 // thêm không thành công
                                 MyDialogNotification(
                                         content: result['message'].toString(),
-                                        title:  AppLocalizations.of(context)!.notification)
+                                        title: AppLocalizations.of(context)!
+                                            .notification)
                                     .showMyDialog(context);
                                 //  print("Thêm không th ành công: ${result['message']}");
                               }
@@ -833,13 +862,15 @@ class _NewLeavePageState extends State<NewLeavePage> {
 // ---------------------- form Chi tiết phép nhân viên -----------------------
 class LeaveDetailsPage extends StatefulWidget {
   final int month;
+  final String month_title;
   final String emp_code;
   final int emp_id;
   const LeaveDetailsPage(
       {super.key,
       required this.month,
       required this.emp_id,
-      required this.emp_code});
+      required this.emp_code,
+      required this.month_title});
 
   @override
   State<LeaveDetailsPage> createState() => _LeaveDetailsPageState();
@@ -879,38 +910,38 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
   TextStyle getStatusTextStyle(String status) {
     switch (status) {
       // active
-      case "Approved":
+      case ("Approved" || "Đã duyệt"):
         return const TextStyle(
           color: Color(0xff1fa750),
-          fontSize: 15,
+          fontSize: 14,
           fontWeight: FontWeight.w700,
         );
       // deny
-      case "Deny":
+      case ("Deny" || "Từ chối"):
         return const TextStyle(
           color: Color(0xfffa6767),
-          fontSize: 15,
+          fontSize: 14,
           fontWeight: FontWeight.w700,
         );
       // cancel  backgroundcolor: ac5a2b fde6d8
-      case "Cancel":
+      case ("Cancel" || "Hủy"):
         return const TextStyle(
           color: Color(0xffac5a2b),
-          fontSize: 15,
+          fontSize: 14,
           fontWeight: FontWeight.w700,
         );
       // request  backgroundcolor: e4f4f9
-      case "Request":
+      case ("Request" || "Yêu cầu"):
         return const TextStyle(
           color: Color(0xff2dadcf),
-          fontSize: 15,
+          fontSize: 14,
           fontWeight: FontWeight.w700,
         );
       // awaiting
       default:
         return const TextStyle(
           color: Color(0xffcfa00c),
-          fontSize: 15,
+          fontSize: 14,
           fontWeight: FontWeight.w700,
         );
     }
@@ -932,8 +963,8 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
             child: Row(
               children: [
                 Container(
-                  height: 42,
-                  width: 42,
+                  height: 39,
+                  width: 39,
                   decoration: BoxDecoration(
                     color: Palette.btnColor,
                     borderRadius: BorderRadius.circular(12),
@@ -946,9 +977,9 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
                   children: [
                     //const SizedBox(height: 13),
                     Text(
-                      "Tháng ${widget.month.toString()}",
+                      widget.month_title,
                       style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w900,
                           color: Colors.black54),
                     ),
@@ -960,10 +991,10 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
           isLoading
               ? const Center(child: CircularProgressIndicator())
               : _lists.isEmpty
-                  ?  Center(
+                  ? Center(
                       child: Text(
                       AppLocalizations.of(context)!.noData,
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ))
                   : Expanded(
                       child: ListView(
@@ -974,19 +1005,23 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
                               .format(DateTime.parse(leave.lEAVESTARTDATE!));
                           return buildBoxLeaveDetailsMonth(
                             leave.hOURS == 8
-                                ? AppLocalizations.of(context)!.fullDayApplication
-                                :AppLocalizations.of(context)!.halfDayApplication,
+                                ? AppLocalizations.of(context)!
+                                    .fullDayApplication
+                                : AppLocalizations.of(context)!
+                                    .halfDayApplication,
                             startDate,
                             leave.nAMELEAVEVI ?? "",
                             leave.sTATUSL == 1
-                                ? "Approved"
+                                ? AppLocalizations.of(context)!.approved
                                 : (leave.sTATUSL == 2
-                                    ? "Deny"
+                                    ? AppLocalizations.of(context)!.deny
                                     : (leave.sTATUSL == 3
-                                        ? "Cancel"
+                                        ? AppLocalizations.of(context)!.cancel
                                         : (leave.sTATUSL == 4
-                                            ? "Request"
-                                            : "Awaiting"))),
+                                            ? AppLocalizations.of(context)!
+                                                .request
+                                            : AppLocalizations.of(context)!
+                                                .waiting))),
                           );
                         }).toList(),
                       ),
@@ -1025,14 +1060,14 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
                   style: TextStyle(fontSize: 15, color: Colors.grey[600])),
               Text(day_leave,
                   style: TextStyle(
-                      fontSize: 19,
+                      fontSize: 17,
                       fontWeight: FontWeight.w900,
                       color: Colors.blue.shade900)),
               Text(
                 annual_type,
                 style: TextStyle(
                   color: Colors.yellow.shade700,
-                  fontSize: 15,
+                  fontSize: 14,
                 ),
               ),
             ],
@@ -1048,13 +1083,13 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
                 height: 25,
                 width: 100,
                 decoration: BoxDecoration(
-                  color: status_ == "Approved"
+                  color: (status_ == "Approved" || status_ == "Đã duyệt")
                       ? const Color(0xffcff6dd)
-                      : (status_ == "Deny"
+                      : ((status_ == "Deny" || status_ == "Từ chối")
                           ? const Color(0xfffff0f0)
-                          : (status_ == "Cancel"
+                          : ((status_ == "Cancel" || status_ == "Hủy")
                               ? const Color(0xfffde6d8)
-                              : (status_ == "Request"
+                              : ((status_ == "Request" || status_ == "Yêu cầu")
                                   ? const Color(0xffe4f4f9)
                                   : const Color(0xfffdf5dd)))),
                   borderRadius: BorderRadius.circular(5),
