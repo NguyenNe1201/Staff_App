@@ -462,5 +462,18 @@
   "clearFilters":"Clear filters",
   "@clearFilters": {
     "description": "Clear filters"
-  }
+  },
+  "deny":"Deny",
+  "@deny": {
+    "description": "deny"
+  },
+  "request":"Request",
+  "@request": {
+    "description": "request"
+  },
+  "waiting":"Waiting",
+  "@waiting": {
+    "description": "waiting"
+  },
+  "approved":"Approved"
 }

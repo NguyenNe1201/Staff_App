@@ -52,8 +52,8 @@ class MyApp extends StatelessWidget {
               Locale('vi', ''),
             ],
             locale: locale ?? Locale('vi'), // Ngôn ngữ mặc định nếu null
-          //  home: const HomePage(emp_code: '164', emp_id: 64),
-            home:const LoginPage(),
+            home: const HomePage(emp_code: '164', emp_id: 64),
+           // home: const LoginPage(),
             routes: {},
           );
         },
@@ -76,7 +76,6 @@ class MyApp extends StatelessWidget {
     //   locale: const Locale('en'),
     //   // home: const HomePage(emp_code: '164',emp_id: 64),
     //   home: LoginPage(),
-
     //   routes: {},
     // );
   }
