@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staff/l10n/cubits/languages_cubit.dart';
+import 'package:flutter_staff/view/Screen/appLifecycle.dart';
 import 'package:flutter_staff/view/Screen/signUp_page_screen.dart';
 import 'package:flutter_staff/view/Widget/button_widget.dart';
 import 'package:flutter_staff/view/Widget/dropdown_widget.dart';
@@ -156,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                                 FilteringTextInputFormatter.digitsOnly,
                               ],
                               style: const TextStyle(
-                                color: Color(0xff6849ef),
+                                color: Palette.appbarColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
                               ),
@@ -165,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
-                                    color: Color(0xff886ff2),
+                                    color: Palette.appbarColor,
                                   ), // Màu khi không focus
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -209,7 +210,7 @@ class _LoginPageState extends State<LoginPage> {
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
-                                    color: Color(0xff886ff2),
+                                    color: Palette.appbarColor,
                                   ), // Màu khi không focus
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -333,10 +334,10 @@ class _LoginPageState extends State<LoginPage> {
                   } else {
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
-                          builder: (BuildContext context) => HomePage(
+                          builder: (BuildContext context) => AppLifecycle(child:HomePage(
                             emp_code: checkAccountUser.emp_code.toString(),
                             emp_id: checkAccountUser.emp_id!,
-                          ),
+                          )),
                         ),
                         (Route<dynamic> route) => false);
                   }
@@ -396,7 +397,7 @@ Widget buildFolderRow(String _title, IconData? _icon) {
           color: Colors.white.withOpacity(0.2),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color:const Color(0xff886ff2),
+            color:Palette.appbarColor,
             width: 1, // Độ rộng của viền
           ),
         ),
@@ -409,7 +410,7 @@ Widget buildFolderRow(String _title, IconData? _icon) {
               bottom: 0,
               child: Icon(
                 _icon,
-                color: const Color(0xff886ff2),
+                color:Palette.appbarColor,
               ),
             ),
             Center(

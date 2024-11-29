@@ -96,7 +96,7 @@ class CalLeaveModel {
   }
 }
 // ----------------------- list leave moel employee -------------
-class ListLeaveModel {
+class LeaveModel {
   int? lEAVEID;
   int? eMPLOYEEID;
   int? kINDLEAVEID;
@@ -121,7 +121,7 @@ class ListLeaveModel {
   String? nAMELEAVEVI;
   String? nAMELEAVEEN;
 
-  ListLeaveModel(
+  LeaveModel(
       {this.lEAVEID,
       this.eMPLOYEEID,
       this.kINDLEAVEID,
@@ -146,7 +146,7 @@ class ListLeaveModel {
       this.nAMELEAVEVI,
       this.nAMELEAVEEN});
 
-  ListLeaveModel.fromJson(Map<String, dynamic> json) {
+  LeaveModel.fromJson(Map<String, dynamic> json) {
     lEAVEID = json['LEAVE_ID'];
     eMPLOYEEID = json['EMPLOYEE_ID'];
     kINDLEAVEID = json['KINDLEAVE_ID'];

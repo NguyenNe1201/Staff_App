@@ -173,7 +173,7 @@ class _SettingPageState extends State<SettingPage> {
                   children: [
                     const Icon(
                       Icons.person,
-                      color: Color(0xff886ff2),
+                      color: Palette.appbarColor,
                     ),
                     const SizedBox(width: 10),
                     Text(
@@ -240,7 +240,7 @@ class _SettingPageState extends State<SettingPage> {
                   children: [
                     const Icon(
                       Icons.settings,
-                      color: Color(0xff886ff2),
+                      color: Palette.appbarColor,
                     ),
                     const SizedBox(width: 10),
                     Text(
