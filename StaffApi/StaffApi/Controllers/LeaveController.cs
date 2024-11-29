@@ -31,6 +31,18 @@ namespace StaffApi.Controllers
             }
             return Ok(data_cal_leave);
         }
+        //
+        [HttpGet("GetLeaveByID")]
+        public async Task<ActionResult> GetLeaveByID(int leave_id)
+        {
+            var condition = "AND LEAVE_TAB.LEAVE_ID =" + leave_id.ToString();
+            var data = (await leave_do.SEL_LEAVE(condition)).FirstOrDefault();
+            if (data == null)
+            {
+                return NotFound();
+            }
+            return Ok(data);
+        }
         // count waiting leave (STATUS_L = 0)
         [HttpGet("Count_WaitLeave_EmpID")]
         public async Task<ActionResult> GetCountWaitLeave_EmpID(int emp_id)
@@ -42,7 +54,6 @@ namespace StaffApi.Controllers
             }
             return Ok(data);
         }
-
         // get data leavel by emloyee id
         [HttpGet("GetList_EmpID")]
         public async Task<ActionResult> GetListLeave_EmpID(int emp_id)

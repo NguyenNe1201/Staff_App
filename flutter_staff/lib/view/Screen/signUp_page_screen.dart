@@ -22,8 +22,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passwordConfirmController =
-      TextEditingController();
+  final TextEditingController _passwordConfirmController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
   bool isButtonEnabled = false;
   bool isLoadingSignUp = false;

@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staff/config/palette.dart';
+import 'package:flutter_staff/view/Screen/appLifecycle.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -152,9 +153,10 @@ class _LeavePageState extends State<LeavePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => NewLeavePage(
-                                      empId: widget.emp_id,
-                                      empCode: widget.emp_code)),
+                                  builder: (context) => AppLifecycle(
+                                      child: NewLeavePage(
+                                          empId: widget.emp_id,
+                                          empCode: widget.emp_code))),
                             );
                           },
                           child: Container(
@@ -185,12 +187,13 @@ class _LeavePageState extends State<LeavePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LeaveDetailsPage(
-                              month: 1,
-                              month_title:
-                                  AppLocalizations.of(context)!.january,
-                              emp_id: widget.emp_id,
-                              emp_code: widget.emp_code),
+                          builder: (context) => AppLifecycle(
+                              child: LeaveDetailsPage(
+                                  month: 1,
+                                  month_title:
+                                      AppLocalizations.of(context)!.january,
+                                  emp_id: widget.emp_id,
+                                  emp_code: widget.emp_code)),
                         ),
                       );
                     }),
@@ -202,12 +205,13 @@ class _LeavePageState extends State<LeavePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => LeaveDetailsPage(
-                                month: 2,
-                                month_title:
-                                    AppLocalizations.of(context)!.february,
-                                emp_id: widget.emp_id,
-                                emp_code: widget.emp_code)),
+                            builder: (context) => AppLifecycle(
+                                child: LeaveDetailsPage(
+                                    month: 2,
+                                    month_title:
+                                        AppLocalizations.of(context)!.february,
+                                    emp_id: widget.emp_id,
+                                    emp_code: widget.emp_code))),
                       );
                     }),
                     buildBoxLeaveByMonth(
@@ -218,12 +222,13 @@ class _LeavePageState extends State<LeavePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => LeaveDetailsPage(
-                                month: 3,
-                                month_title:
-                                    AppLocalizations.of(context)!.march,
-                                emp_id: widget.emp_id,
-                                emp_code: widget.emp_code)),
+                            builder: (context) => AppLifecycle(
+                                child: LeaveDetailsPage(
+                                    month: 3,
+                                    month_title:
+                                        AppLocalizations.of(context)!.march,
+                                    emp_id: widget.emp_id,
+                                    emp_code: widget.emp_code))),
                       );
                     }),
                     buildBoxLeaveByMonth(
@@ -234,12 +239,13 @@ class _LeavePageState extends State<LeavePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => LeaveDetailsPage(
-                                month: 4,
-                                month_title:
-                                    AppLocalizations.of(context)!.april,
-                                emp_id: widget.emp_id,
-                                emp_code: widget.emp_code)),
+                            builder: (context) => AppLifecycle(
+                                child: LeaveDetailsPage(
+                                    month: 4,
+                                    month_title:
+                                        AppLocalizations.of(context)!.april,
+                                    emp_id: widget.emp_id,
+                                    emp_code: widget.emp_code))),
                       );
                     }),
                     buildBoxLeaveByMonth(
@@ -250,11 +256,13 @@ class _LeavePageState extends State<LeavePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => LeaveDetailsPage(
-                                month: 5,
-                                month_title: AppLocalizations.of(context)!.may,
-                                emp_id: widget.emp_id,
-                                emp_code: widget.emp_code)),
+                            builder: (context) => AppLifecycle(
+                                child: LeaveDetailsPage(
+                                    month: 5,
+                                    month_title:
+                                        AppLocalizations.of(context)!.may,
+                                    emp_id: widget.emp_id,
+                                    emp_code: widget.emp_code))),
                       );
                     }),
                     if (showAll) ...[
@@ -266,12 +274,13 @@ class _LeavePageState extends State<LeavePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LeaveDetailsPage(
-                                  month: 6,
-                                  month_title:
-                                      AppLocalizations.of(context)!.june,
-                                  emp_id: widget.emp_id,
-                                  emp_code: widget.emp_code)),
+                              builder: (context) => AppLifecycle(
+                                  child: LeaveDetailsPage(
+                                      month: 6,
+                                      month_title:
+                                          AppLocalizations.of(context)!.june,
+                                      emp_id: widget.emp_id,
+                                      emp_code: widget.emp_code))),
                         );
                       }),
                       buildBoxLeaveByMonth(
@@ -282,12 +291,13 @@ class _LeavePageState extends State<LeavePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LeaveDetailsPage(
-                                  month: 7,
-                                  month_title:
-                                      AppLocalizations.of(context)!.july,
-                                  emp_id: widget.emp_id,
-                                  emp_code: widget.emp_code)),
+                              builder: (context) => AppLifecycle(
+                                  child: LeaveDetailsPage(
+                                      month: 7,
+                                      month_title:
+                                          AppLocalizations.of(context)!.july,
+                                      emp_id: widget.emp_id,
+                                      emp_code: widget.emp_code))),
                         );
                       }),
                       buildBoxLeaveByMonth(
@@ -298,12 +308,13 @@ class _LeavePageState extends State<LeavePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LeaveDetailsPage(
-                                  month: 8,
-                                  month_title:
-                                      AppLocalizations.of(context)!.august,
-                                  emp_id: widget.emp_id,
-                                  emp_code: widget.emp_code)),
+                              builder: (context) => AppLifecycle(
+                                  child: LeaveDetailsPage(
+                                      month: 8,
+                                      month_title:
+                                          AppLocalizations.of(context)!.august,
+                                      emp_id: widget.emp_id,
+                                      emp_code: widget.emp_code))),
                         );
                       }),
                       buildBoxLeaveByMonth(
@@ -314,12 +325,13 @@ class _LeavePageState extends State<LeavePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LeaveDetailsPage(
-                                  month: 9,
-                                  month_title:
-                                      AppLocalizations.of(context)!.september,
-                                  emp_id: widget.emp_id,
-                                  emp_code: widget.emp_code)),
+                              builder: (context) => AppLifecycle(
+                                  child: LeaveDetailsPage(
+                                      month: 9,
+                                      month_title: AppLocalizations.of(context)!
+                                          .september,
+                                      emp_id: widget.emp_id,
+                                      emp_code: widget.emp_code))),
                         );
                       }),
                       buildBoxLeaveByMonth(
@@ -330,12 +342,13 @@ class _LeavePageState extends State<LeavePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LeaveDetailsPage(
-                                  month: 10,
-                                  month_title:
-                                      AppLocalizations.of(context)!.october,
-                                  emp_id: widget.emp_id,
-                                  emp_code: widget.emp_code)),
+                              builder: (context) => AppLifecycle(
+                                  child: LeaveDetailsPage(
+                                      month: 10,
+                                      month_title:
+                                          AppLocalizations.of(context)!.october,
+                                      emp_id: widget.emp_id,
+                                      emp_code: widget.emp_code))),
                         );
                       }),
                       buildBoxLeaveByMonth(
@@ -346,12 +359,13 @@ class _LeavePageState extends State<LeavePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LeaveDetailsPage(
-                                  month: 11,
-                                  month_title:
-                                      AppLocalizations.of(context)!.november,
-                                  emp_id: widget.emp_id,
-                                  emp_code: widget.emp_code)),
+                              builder: (context) => AppLifecycle(
+                                  child: LeaveDetailsPage(
+                                      month: 11,
+                                      month_title: AppLocalizations.of(context)!
+                                          .november,
+                                      emp_id: widget.emp_id,
+                                      emp_code: widget.emp_code))),
                         );
                       }),
                       buildBoxLeaveByMonth(
@@ -362,12 +376,13 @@ class _LeavePageState extends State<LeavePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LeaveDetailsPage(
-                                  month: 12,
-                                  month_title:
-                                      AppLocalizations.of(context)!.december,
-                                  emp_id: widget.emp_id,
-                                  emp_code: widget.emp_code)),
+                              builder: (context) => AppLifecycle(
+                                  child: LeaveDetailsPage(
+                                      month: 12,
+                                      month_title: AppLocalizations.of(context)!
+                                          .december,
+                                      emp_id: widget.emp_id,
+                                      emp_code: widget.emp_code))),
                         );
                       }),
                     ],
@@ -879,13 +894,13 @@ class LeaveDetailsPage extends StatefulWidget {
 class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
   final ApiServices apiService = ApiServices();
   bool isLoading = false;
-  List<ListLeaveModel> _lists = [];
+  List<LeaveModel> _lists = [];
   Future<void> getDataListLeaveByMonth() async {
     setState(() {
       isLoading = true;
     });
     try {
-      List<ListLeaveModel> lists = await apiService.fetchListLeaveEmpIdByMonth(
+      List<LeaveModel> lists = await apiService.fetchListLeaveEmpIdByMonth(
           widget.emp_id, widget.month);
       setState(() {
         _lists = lists;
@@ -947,6 +962,71 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
     }
   }
 
+  void _showLeaveDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.notification,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff6849ef),
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+            content: StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
+                return const Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Text("Loại phép:"),
+                        SizedBox(width: 10),
+                        Text('Phép năm')
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text("Thời gian:"),
+                        SizedBox(width: 10),
+                        Text('8h')
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text("Ngày:"),
+                        SizedBox(width: 10),
+                        Text('01/11/2024')
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text("Trạng thái:"),
+                        SizedBox(width: 10),
+                        Text('Đã được duyệt')
+                      ],
+                    )
+                  ],
+                );
+              },
+            ));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1000,7 +1080,7 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
                       child: ListView(
                         children: _lists.asMap().entries.map((entry) {
                           int index = entry.key;
-                          ListLeaveModel leave = entry.value;
+                          LeaveModel leave = entry.value;
                           String startDate = DateFormat('EEE, dd/MM/yyyy')
                               .format(DateTime.parse(leave.lEAVESTARTDATE!));
                           return buildBoxLeaveDetailsMonth(
@@ -1009,6 +1089,7 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
                                     .fullDayApplication
                                 : AppLocalizations.of(context)!
                                     .halfDayApplication,
+                            leave.lEAVEID ?? 0,
                             startDate,
                             leave.nAMELEAVEVI ?? "",
                             leave.sTATUSL == 1
@@ -1031,93 +1112,99 @@ class _LeaveDetailsPageState extends State<LeaveDetailsPage> {
     );
   }
 
-  Widget buildBoxLeaveDetailsMonth(String title_leave, String day_leave,
-      String annual_type, String status_) {
-    return Container(
-      margin: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
-      height: 95,
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.9),
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(.1),
-            blurRadius: 4.0,
-            spreadRadius: .05,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        // crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title_leave,
-                  style: TextStyle(fontSize: 15, color: Colors.grey[600])),
-              Text(day_leave,
+  Widget buildBoxLeaveDetailsMonth(String title_leave, int leaveID,
+      String day_leave, String annual_type, String status_) {
+    return GestureDetector(
+      onTap: () {
+        _showLeaveDialog(context);
+      },
+      child: Container(
+        margin: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+        height: 95,
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.9),
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.1),
+              blurRadius: 4.0,
+              spreadRadius: .05,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title_leave,
+                    style: TextStyle(fontSize: 15, color: Colors.grey[600])),
+                Text(day_leave,
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.blue.shade900)),
+                Text(
+                  annual_type,
                   style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.blue.shade900)),
-              Text(
-                annual_type,
-                style: TextStyle(
-                  color: Colors.yellow.shade700,
-                  fontSize: 14,
-                ),
-              ),
-            ],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              //const SizedBox(height: 5),
-              Container(
-                //     margin: EdgeInsets.only(top: 8),
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                height: 25,
-                width: 100,
-                decoration: BoxDecoration(
-                  color: (status_ == "Approved" || status_ == "Đã duyệt")
-                      ? const Color(0xffcff6dd)
-                      : ((status_ == "Deny" || status_ == "Từ chối")
-                          ? const Color(0xfffff0f0)
-                          : ((status_ == "Cancel" || status_ == "Hủy")
-                              ? const Color(0xfffde6d8)
-                              : ((status_ == "Request" || status_ == "Yêu cầu")
-                                  ? const Color(0xffe4f4f9)
-                                  : const Color(0xfffdf5dd)))),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Center(
-                  child: Text(
-                    status_,
-                    style: getStatusTextStyle(status_),
+                    color: Colors.yellow.shade700,
+                    fontSize: 14,
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(10),
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                //const SizedBox(height: 5),
+                Container(
+                  //     margin: EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  height: 25,
+                  width: 100,
+                  decoration: BoxDecoration(
+                    color: (status_ == "Approved" || status_ == "Đã duyệt")
+                        ? const Color(0xffcff6dd)
+                        : ((status_ == "Deny" || status_ == "Từ chối")
+                            ? const Color(0xfffff0f0)
+                            : ((status_ == "Cancel" || status_ == "Hủy")
+                                ? const Color(0xfffde6d8)
+                                : ((status_ == "Request" ||
+                                        status_ == "Yêu cầu")
+                                    ? const Color(0xffe4f4f9)
+                                    : const Color(0xfffdf5dd)))),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Center(
+                    child: Text(
+                      status_,
+                      style: getStatusTextStyle(status_),
+                    ),
+                  ),
                 ),
-                child: Icon(
-                  Ionicons.chevron_forward_outline,
-                  size: 20,
-                  color: Colors.grey.shade500,
+                const SizedBox(height: 10),
+                Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade100,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(
+                    Ionicons.chevron_forward_outline,
+                    size: 20,
+                    color: Colors.grey.shade500,
+                  ),
                 ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

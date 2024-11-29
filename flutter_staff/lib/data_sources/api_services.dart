@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_staff/models/employees.dart';
 import 'package:flutter_staff/models/leaves.dart';
 import 'package:flutter_staff/models/logListMonths.dart';
@@ -8,11 +6,10 @@ import 'package:flutter_staff/models/salarys.dart';
 import 'package:flutter_staff/models/timeKeeps.dart';
 import 'package:dio/dio.dart';
 
-
 class ApiServices {
- //final String baseUrl = 'https:/localhost:7144/api';
- //final String baseUrl = 'https://192.168.90.111/api';
- final String baseUrl = 'https://gw.conectvn.com:4432/api';
+  //final String baseUrl = 'https:/localhost:7144/api';
+  //final String baseUrl = 'https://192.168.90.111/api';
+  final String baseUrl = 'https://gw.conectvn.com:4432/api';
   final dio = Dio();
 
   // get employee
@@ -40,6 +37,7 @@ class ApiServices {
       throw Exception('Unexpected response format');
     }
   }
+
   //----------------------------- login ----------------------------
   // check time login app
   Future<bool> fetchCheckTimeLogin(String phone) async {
@@ -107,6 +105,7 @@ class ApiServices {
       return null;
     }
   }
+
   // send otp email of forgotPassword Page
   Future<RequestOTP?> fetchSendOtpForgotPass(String phone) async {
     try {
@@ -127,6 +126,7 @@ class ApiServices {
       return null;
     }
   }
+
   // update status login = otp
   Future<bool> fetchUpStatusLogin(
       String emp_code, String phone, String otp) async {
@@ -176,10 +176,11 @@ class ApiServices {
 
   // ------------------------- timekeep -------------------------
   // get data timekeep
-  Future<List<TimeKeepModel>> fetchTimeKeep(String code,String month,String year) async {
+  Future<List<TimeKeepModel>> fetchTimeKeep(
+      String code, String month, String year) async {
     try {
-      var response =
-          await dio.get('$baseUrl/TimeKeep/timeKeepMonth?code=$code&month=$month&year=$year');
+      var response = await dio.get(
+          '$baseUrl/TimeKeep/timeKeepMonth?code=$code&month=$month&year=$year');
       List<TimeKeepModel> timekeeps = (response.data as List)
           .map((userJson) => TimeKeepModel.fromJson(userJson))
           .toList();
@@ -201,10 +202,13 @@ class ApiServices {
       throw Exception('Failed to load data');
     }
   }
+
   //get data log list = emp code by month year
-  Future<List<LogListMonthModel>> fetchLogListEmpByMonth(String code,String month,String year) async {
+  Future<List<LogListMonthModel>> fetchLogListEmpByMonth(
+      String code, String month, String year) async {
     try {
-      var response = await dio.get('$baseUrl/TimeKeep/logListTimeByMonth?code=$code&month=$month&year=$year');
+      var response = await dio.get(
+          '$baseUrl/TimeKeep/logListTimeByMonth?code=$code&month=$month&year=$year');
       List<LogListMonthModel> lists = (response.data as List)
           .map((userJson) => LogListMonthModel.fromJson(userJson))
           .toList();
@@ -213,6 +217,7 @@ class ApiServices {
       throw Exception('Failed to load data');
     }
   }
+
   //------------------------------- LEAVE ------------------------------
   // get select cal leave by employee id
   Future<CalLeaveModel?> fetchGetCalLeave(int emp_id) async {
@@ -232,11 +237,32 @@ class ApiServices {
       return null;
     }
   }
+
+  // get leave table by leave id
+  Future<LeaveModel?> fetchGetLeaveByID(int leaveId) async {
+    try {
+      var response =
+          await dio.get('$baseUrl/Leave/GetLeaveByID?leave_id=$leaveId');
+      if (response.data is List) {
+        return LeaveModel.fromJson(response.data[0]);
+      }
+      if (response.statusCode == 200) {
+        return LeaveModel.fromJson(response.data);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print('Exception: $e');
+      return null;
+    }
+  }
+
   // get count waiting leave by employee id
   Future<CountWaitLeaveModel?> fetchGetCountWaitingLeave(int emp_id) async {
     try {
-      var response = await dio.get('$baseUrl/Leave/Count_WaitLeave_EmpID?emp_id=$emp_id');
-     
+      var response =
+          await dio.get('$baseUrl/Leave/Count_WaitLeave_EmpID?emp_id=$emp_id');
+
       if (response.data is List) {
         return CountWaitLeaveModel.fromJson(response.data[0]);
       }
@@ -250,13 +276,14 @@ class ApiServices {
       return null;
     }
   }
+
   // get select list leave by employee id
-  Future<List<ListLeaveModel>> fetchGetListLeave(int emp_id) async {
+  Future<List<LeaveModel>> fetchGetListLeave(int emp_id) async {
     try {
       var response =
           await dio.get('$baseUrl/Leave/GetListByMonth_EmpID?emp_id=$emp_id');
-      List<ListLeaveModel> lists = (response.data as List)
-          .map((userJson) => ListLeaveModel.fromJson(userJson))
+      List<LeaveModel> lists = (response.data as List)
+          .map((userJson) => LeaveModel.fromJson(userJson))
           .toList();
       return lists;
     } catch (e) {
@@ -278,13 +305,13 @@ class ApiServices {
   }
 
   // get list leave 1 employee by month
-  Future<List<ListLeaveModel>> fetchListLeaveEmpIdByMonth(
+  Future<List<LeaveModel>> fetchListLeaveEmpIdByMonth(
       int empId, int month) async {
     try {
       var response = await dio.get(
           '$baseUrl/Leave/GetListByMonth_EmpID?emp_id=$empId&month=$month');
-      List<ListLeaveModel> lists = (response.data as List)
-          .map((dataJson) => ListLeaveModel.fromJson(dataJson))
+      List<LeaveModel> lists = (response.data as List)
+          .map((dataJson) => LeaveModel.fromJson(dataJson))
           .toList();
       return lists;
     } catch (e) {

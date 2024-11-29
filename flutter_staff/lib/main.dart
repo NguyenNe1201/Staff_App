@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_staff/data_sources/api_services.dart';
 import 'package:flutter_staff/l10n/cubits/languages_cubit.dart';
+import 'package:flutter_staff/view/Screen/appLifecycle.dart';
 import 'package:flutter_staff/view/Screen/leave_page_screen.dart';
 import 'package:flutter_staff/view/Screen/login_page_screen.dart';
 import 'package:flutter_staff/view/Screen/salary_page_screen.dart';
@@ -52,8 +53,8 @@ class MyApp extends StatelessWidget {
               Locale('vi', ''),
             ],
             locale: locale ?? Locale('vi'), // Ngôn ngữ mặc định nếu null
-            home: const HomePage(emp_code: '164', emp_id: 64),
-           // home: const LoginPage(),
+           // home: const HomePage(emp_code: '164', emp_id: 64),
+            home: LoginPage(),
             routes: {},
           );
         },

@@ -15,6 +15,7 @@ import 'package:flutter_staff/view/Screen/setting_page_screen.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter_staff/config/palette.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_staff/view/Screen/appLifecycle.dart';
 
 class HomePage extends StatefulWidget {
   final String? emp_code;
@@ -37,10 +38,11 @@ class _HomePageState extends State<HomePage> {
     if (index == 1) {
       final result =
           await Navigator.of(context).push<String>(MaterialPageRoute<String>(
-              builder: (BuildContext context) => SettingPage(
+              builder: (BuildContext context) => AppLifecycle(
+                      child: SettingPage(
                     emp_code: widget.emp_code,
                     emp_id: widget.emp_id,
-                  )));
+                  ))));
       if (result != null) {
         setState(() {
           _selectedIndex = 0;
@@ -185,8 +187,9 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SalaryPage(
-                                  emp_code: widget.emp_code.toString()),
+                              builder: (context) => AppLifecycle(
+                                  child: SalaryPage(
+                                      emp_code: widget.emp_code.toString())),
                             ),
                           );
                         }),
@@ -196,9 +199,10 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => LeavePage(
-                                  emp_code: widget.emp_code.toString(),
-                                  emp_id: widget.emp_id!),
+                              builder: (context) => AppLifecycle(
+                                  child: LeavePage(
+                                      emp_code: widget.emp_code.toString(),
+                                      emp_id: widget.emp_id!)),
                             ),
                           );
                         }),
@@ -210,8 +214,9 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => LoglistPage(
-                                  emp_code: widget.emp_code.toString()),
+                              builder: (context) => AppLifecycle(
+                                  child: LoglistPage(
+                                      emp_code: widget.emp_code.toString())),
                             ),
                           );
                         }),
@@ -223,8 +228,9 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => TimekeepPage(
-                                  emp_code: widget.emp_code.toString()),
+                              builder: (context) => AppLifecycle(
+                                  child: TimekeepPage(
+                                      emp_code: widget.emp_code.toString())),
                             ),
                           );
                         })
@@ -232,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                 Container(
+                  Container(
                     height: 300,
                     child: Align(
                         alignment: Alignment.center,
@@ -250,7 +256,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               child: ClipRRect(
                                 borderRadius:
-                                   const BorderRadius.all(Radius.circular(20)),
+                                    const BorderRadius.all(Radius.circular(20)),
                                 child: Image.asset(
                                   'assets/images/bg_home.jpg',
                                   height: 200,
@@ -500,7 +506,7 @@ class _HomePageState extends State<HomePage> {
             activeIcon: Icon(
               Icons.home,
               size: 24,
-              color: _selectedIndex == 0 ? const Color(0xff886ff2) : null,
+              color: _selectedIndex == 0 ? Palette.btnColor : null,
             ),
             icon: const Icon(
               Icons.home,
@@ -512,7 +518,7 @@ class _HomePageState extends State<HomePage> {
             activeIcon: Icon(
               Icons.settings,
               size: 24,
-              color: _selectedIndex == 1 ? const Color(0xff886ff2) : null,
+              color: _selectedIndex == 1 ? Palette.btnColor : null,
             ),
             icon: const Icon(
               Icons.settings,
